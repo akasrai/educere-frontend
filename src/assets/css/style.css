@@ -402,6 +402,7 @@ img.logo {
 }
 
 .menu-bar .menu .menu-input:checked + .menu-label {
+  font-weight: bold;
   border-bottom: 2px solid #173b61;
 }
 

@@ -143,7 +143,7 @@ const Menu = ({ name, icon, route }: MenuProps) => (
       onChange={() => handleRoute(route, name)}
     />
     <label className="menu-label" htmlFor={name}>
-      <span className="shake p">
+      <span className="shake p text-primary">
         <i className={`icon ion-${icon} p mr-2 m-0 d-inline-block`} />
         {name}
       </span>
@@ -154,7 +154,7 @@ const Menu = ({ name, icon, route }: MenuProps) => (
 const MenuBar = () => (
   <section className="row menu-bar text-primary p-0">
     <div className="col-md-3"></div>
-    <div className="col-md-9 p-0 m-0">
+    <div className="col-md-9 pl-5">
       <Menu icon="md-clipboard" route="/overview" name="Overview" />
       <Menu icon="md-paper-plane" route="/appoinments" name="Appoinments" />
       <Menu icon="md-calendar" route="/schedule" name="Schedule" />

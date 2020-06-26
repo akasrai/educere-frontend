@@ -13,7 +13,9 @@ const AuthenticatedLayout = ({ children }: LayoutProps) => {
       <FlexRow className="justify-content-between pr-md-3 pl-md-3">
         <PrivateSidebar />
         <div className="col-md-9">
-          <div className="col-md-12 mr-3 p-md-5 p-3 h-100">{children}</div>
+          <div className="col-md-12 mr-3 ml-3 p-md-5 p-3 bg-white h-100">
+            {children}
+          </div>
         </div>
       </FlexRow>
       <Footer />
