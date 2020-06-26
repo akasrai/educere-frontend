@@ -13,11 +13,7 @@ import DashboardView from 'dashboard/view/dashboard.view';
 const AuthenticatedRoute = (props: any) => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  return isAuthenticated ? (
-    <Route {...props} />
-  ) : (
-    <ReloadRoute to={ROUTE.HOME} />
-  );
+  return true ? <Route {...props} /> : <ReloadRoute to={ROUTE.HOME} />;
 };
 
 export const PrivateRoute = withRouter(AuthenticatedRoute);
@@ -25,11 +21,7 @@ export const PrivateRoute = withRouter(AuthenticatedRoute);
 const NonAuthenticatedRoute = (props: any) => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  return isAuthenticated ? (
-    <Redirect to={ROUTE.DASHBOARD} />
-  ) : (
-    <Route {...props} />
-  );
+  return true ? <Redirect to={ROUTE.DASHBOARD} /> : <Route {...props} />;
 };
 
 export const PublicRoute = withRouter(NonAuthenticatedRoute);

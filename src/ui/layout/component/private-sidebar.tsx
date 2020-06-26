@@ -94,11 +94,17 @@ const PrivateSidebar = () => {
       <div className="col-md-12 p-0 pt-3 pb-3 rounded-5 bg-blue text-white sidebar p-sticky">
         <div className="tabs">
           <Tab name="Dashboard" icon="ios-home" route={ROUTE.DASHBOARD} />
-          <Tab name="Quiz" icon="ios-help-circle" route="/">
-            <SubTab name="Availability" route={ROUTE.ADD_AVAILABILITY} />
-            <SubTab name="Appointments" route={ROUTE.TUTOR_APPOINMENTS} />
-          </Tab>
-          <Tab name="Members" icon="md-contacts" route={ROUTE.DASHBOARD} />
+          <Tab
+            name="Availability"
+            icon="md-time"
+            route={ROUTE.ADD_AVAILABILITY}
+          />
+          <Tab
+            name="Appointments"
+            icon="md-calendar"
+            route={ROUTE.TUTOR_APPOINMENTS}
+          />
+
           <Tab name="Settings" icon="md-construct" route={ROUTE.DASHBOARD} />
         </div>
       </div>
