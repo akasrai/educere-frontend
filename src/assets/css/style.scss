@@ -302,9 +302,81 @@ img.logo {
   top: 0;
   // z-index: 999;
   position: sticky;
+  overflow: hidden;
   background-color: #f6f5f8;
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
+
+  .menu {
+    display: inline-block;
+
+    &-label {
+      margin: 0;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 0.8em 1em !important;
+      border-bottom: 2px solid transparent;
+
+      &::before {
+        position: none !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        border: none !important;
+        border-radius: 0% !important;
+        background: transparent !important;
+      }
+
+      &::after {
+        position: none !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        border: none !important;
+        border-radius: 0% !important;
+        background: transparent !important;
+      }
+
+      &:hover {
+        border-bottom: 2px solid #c2c3c4;
+      }
+
+      .arrow {
+        text-align: right;
+        transition: all 0.35s;
+      }
+    }
+    &-content {
+      max-height: 0;
+      color: $color-active-menu;
+      transition: all 0.35s;
+    }
+    &-close {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1em;
+      font-size: 0.75em;
+      background: $color-active-menu;
+      cursor: pointer;
+      &:hover {
+        background: darken($color-active-menu, 10%);
+      }
+    }
+
+    .menu-input {
+      position: absolute;
+      opacity: 0 !important;
+      z-index: -1 !important;
+    }
+
+    .menu-input:checked {
+      + .menu-label {
+        border-bottom: 2px solid #173b61;
+      }
+    }
+  }
 }
 
 .sidebar {

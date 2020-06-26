@@ -5,13 +5,13 @@ import React, {
   useContext,
   useReducer,
 } from 'react';
-import { Link } from 'react-router-dom';
 
 import { Flex } from './flex';
 import * as auth from 'auth/auth.state';
 import { Action } from 'auth/auth.type';
 import { signOut } from 'api/resource.api';
 import { AuthContext } from 'auth/auth.context';
+import { history } from 'app/app.history';
 
 const getPageName = (): String => {
   return window.location.pathname
@@ -106,21 +106,58 @@ const PrivateNavBar = () => {
   );
 };
 
+interface MenuProps {
+  name: string;
+  icon?: string;
+  route?: string;
+}
+
+const TOP_MENU = {
+  MENU: 'menu',
+  ACTIVE_MENU: 'Overview',
+
+  setActiveMenu(menu: string) {
+    return (this.ACTIVE_MENU = menu);
+  },
+
+  isActive(menu: string) {
+    return this.ACTIVE_MENU === menu;
+  },
+};
+
+const redirectTo = (route: string) => history.push(route);
+
+const handleRoute = (route: string = '', menuId: string) => {
+  redirectTo(route);
+  TOP_MENU.setActiveMenu(menuId);
+};
+
+const Menu = ({ name, icon, route }: MenuProps) => (
+  <div className="menu">
+    <input
+      id={name}
+      type="radio"
+      name="top-menu"
+      className="menu-input"
+      checked={TOP_MENU.isActive(name)}
+      onChange={() => handleRoute(route, name)}
+    />
+    <label className="menu-label" htmlFor={name}>
+      <span className="shake p">
+        <i className={`icon ion-${icon} p mr-2 m-0 d-inline-block`} />
+        {name}
+      </span>
+    </label>
+  </div>
+);
+
 const MenuBar = () => (
-  <section className="row menu-bar text-primary p-3">
+  <section className="row menu-bar text-primary p-0">
     <div className="col-md-3"></div>
-    <div className="col-md-9">
-      <Link className="p-3 shake">
-        <i className="icon ion-md-clipboard mr-2 d-inline-block" /> Overview
-      </Link>
-      <Link className="p-3 shake">
-        <i className="icon ion-md-paper-plane mr-2 d-inline-block" />
-        Appoinments
-      </Link>
-      <Link className="p-3 shake">
-        <i className="icon ion-md-calendar mr-2 d-inline-block" />
-        Schedule
-      </Link>
+    <div className="col-md-9 p-0 m-0">
+      <Menu icon="md-clipboard" route="/overview" name="Overview" />
+      <Menu icon="md-paper-plane" route="/appoinments" name="Appoinments" />
+      <Menu icon="md-calendar" route="/schedule" name="Schedule" />
     </div>
   </section>
 );

@@ -321,9 +321,88 @@ img.logo {
   top: 0;
   position: -webkit-sticky;
   position: sticky;
+  overflow: hidden;
   background-color: #f6f5f8;
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
+}
+
+.menu-bar .menu {
+  display: inline-block;
+}
+
+.menu-bar .menu-label {
+  margin: 0;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0.8em 1em !important;
+  border-bottom: 2px solid transparent;
+}
+
+.menu-bar .menu-label::before {
+  position: none !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  border-radius: 0% !important;
+  background: transparent !important;
+}
+
+.menu-bar .menu-label::after {
+  position: none !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  border-radius: 0% !important;
+  background: transparent !important;
+}
+
+.menu-bar .menu-label:hover {
+  border-bottom: 2px solid #c2c3c4;
+}
+
+.menu-bar .menu-label .arrow {
+  text-align: right;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.menu-bar .menu-content {
+  max-height: 0;
+  color: #173b61;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.menu-bar .menu-close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 1em;
+  font-size: 0.75em;
+  background: #173b61;
+  cursor: pointer;
+}
+
+.menu-bar .menu-close:hover {
+  background: #0d2238;
+}
+
+.menu-bar .menu .menu-input {
+  position: absolute;
+  opacity: 0 !important;
+  z-index: -1 !important;
+}
+
+.menu-bar .menu .menu-input:checked + .menu-label {
+  border-bottom: 2px solid #173b61;
 }
 
 .sidebar {

@@ -6,7 +6,7 @@ import PublicNavBar from './component/public-navbar';
 
 const NonAuthenticatedLayout = ({ children }: LayoutProps) => {
   return (
-    <div className="col-md-10 m-auto">
+    <div className="col-md-11 m-auto">
       <PublicNavBar />
       {children}
       <Footer />
