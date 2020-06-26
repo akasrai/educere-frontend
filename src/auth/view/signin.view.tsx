@@ -11,7 +11,7 @@ import { Input } from 'ui/form/input';
 import { Button } from 'ui/form/button';
 import { ErrorAlert } from 'ui/alert/inline-alert';
 import { FlexRow } from 'ui/layout/component/flex';
-import BubbleBackground from 'ui/layout/bubble-background.layout';
+import PlainBackground from 'ui/layout/plain-background.layout';
 
 const handleSignIn = async (
   event: any,
@@ -95,14 +95,14 @@ const SigninForm = () => {
 
 const SigninView = () => {
   return (
-    <BubbleBackground className="fixed-height-layout">
+    <PlainBackground className="fixed-height-layout">
       <FlexRow className="justify-content-center">
         <div className="col-md-4 p-5 rounded bg-white login-form">
           <h3 className="text-primary ml-md-3 ml-0 mb-3">Welcome back :)</h3>
           <SigninForm />
         </div>
       </FlexRow>
-    </BubbleBackground>
+    </PlainBackground>
   );
 };
 
