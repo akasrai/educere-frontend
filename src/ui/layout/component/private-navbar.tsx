@@ -50,7 +50,7 @@ const PrivateNavBar = () => {
           <div className="d-flex">
             <i className="icon ion-md-school h3 mr-2 m-0" />
             <span className=" p pt-1">
-              Daily<span className="bold">Quiz</span>
+              Edu<span className="bold">Cere</span>
             </span>
           </div>
         </div>
