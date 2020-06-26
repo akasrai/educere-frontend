@@ -86,3 +86,9 @@ export const getRomanOf = (num: number): any => {
     }
   }
 };
+
+export const camelCaseOf = (str: string): string => {
+  const lowerCaseStr = str.toLowerCase();
+
+  return lowerCaseStr.charAt(0).toUpperCase() + lowerCaseStr.slice(1);
+};

@@ -5,6 +5,7 @@ import { ROUTE } from './app.route-path';
 import { history } from 'app/app.history';
 import TutorRoutes from 'tutor/tutor.route';
 import SigninView from 'auth/view/signin.view';
+import SignupView from 'auth/view/signup.view';
 import PageNotFound from 'ui/layout/404.layout';
 import { AuthContext } from 'auth/auth.context';
 import { ReloadRoute } from 'ui/route/reload-route';
@@ -35,6 +36,7 @@ const AppRoutes = () => (
     <Switch>
       <PublicRoute exact path={ROUTE.HOME} component={SigninView} />
       <PublicRoute exact path={ROUTE.SIGNIN} component={SigninView} />
+      <PublicRoute exact path={ROUTE.SIGNUP} component={SignupView} />
       <PrivateRoute exact path={ROUTE.DASHBOARD} component={DashboardView} />
       <TutorRoutes />
       <Route component={PageNotFound} />

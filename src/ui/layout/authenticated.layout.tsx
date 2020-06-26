@@ -5,6 +5,7 @@ import { LayoutProps } from './layout.type';
 import PrivateNavBar from './component/private-navbar';
 import BubbleBackground from './bubble-background.layout';
 import PrivateSidebar from './component/private-sidebar';
+import Footer from './component/footer';
 
 const AuthenticatedLayout = ({ children }: LayoutProps) => {
   return (
@@ -18,11 +19,7 @@ const AuthenticatedLayout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </FlexRow>
-      <FlexRow className="justify-content-center p-5">
-        <span>
-          &copy; 2020 Daily<span className="bold">Quiz</span>
-        </span>
-      </FlexRow>
+      <Footer />
     </BubbleBackground>
   );
 };

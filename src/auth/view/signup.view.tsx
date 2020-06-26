@@ -1,5 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import Vr from 'ui/form/vr';
+import PlainBackground from 'ui/layout/plain-background.layout';
+import SignupForm from 'auth/component/signup.component';
+import { ROUTE } from 'app/app.route-path';
 
 const SigninView = () => {
-  return <div>Sign uP</div>;
+  return (
+    <PlainBackground>
+      <div className="col-md-12 m-0 row p-0 mt-5 mb-5 pt-4">
+        <div className="col-md-5 float-left p-5">
+          <h1 className="bold text-primary mt-3">Why?</h1>
+          <p className="text-muted">
+            <span className="bold">EduCere</span> is a one stop solution for
+            institutions, schools, focused groups to book experts for events,
+            for experts to share their availability and facilitate online
+            sessions.
+          </p>
+        </div>
+        <Vr />
+        <div className="col-md-6  float-right">
+          <div className="col-md-12 p-5 rounded login-form">
+            <h3 className="text-primary ml-md-3 ml-0 mb-3">Good choice :)</h3>
+            <SignupForm />
+            <p className="text-muted p-3 small">
+              Already have an account? <Link to={ROUTE.SIGNIN}>Sign In</Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </PlainBackground>
+  );
 };
+
+export default SigninView;
