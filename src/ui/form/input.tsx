@@ -1,4 +1,5 @@
 import React from 'react';
+import { camelCaseOf } from 'helper/common-helper';
 
 interface Options {
   name: string;
@@ -9,13 +10,14 @@ interface InputProps {
   id?: string;
   name: string;
   type?: string;
+  checked?: boolean;
   className?: string;
   required?: boolean;
   hideLabel?: boolean;
   placeholder?: string;
   value?: string | number;
   options?: Array<Options>;
-  onChange?: (e: any) => void;
+  onChange?: (e: any) => any;
 }
 
 export const Input = (props: InputProps) => {
@@ -52,7 +54,7 @@ export const TextArea = (props: InputProps) => {
 };
 
 export const RadioButton = (props: InputProps) => {
-  const { id, name, value, hideLabel, required } = props;
+  const { id, name, value, hideLabel, required, onChange, checked } = props;
 
   return (
     <p>
@@ -62,8 +64,11 @@ export const RadioButton = (props: InputProps) => {
         type="radio"
         value={value}
         required={required}
+        onChange={onChange ? (e) => onChange(e.target.value) : () => {}}
       />
-      <label htmlFor={id}>{!hideLabel && value}</label>
+      <label htmlFor={id}>
+        {!hideLabel && typeof value === 'string' ? camelCaseOf(value) : value}
+      </label>
     </p>
   );
 };
@@ -74,8 +79,8 @@ export const Select = (props: InputProps) => {
   return (
     <select
       name={name}
-      className={`custom-select ${className}`}
       required={required}
+      className={`custom-select ${className}`}
     >
       <option value="">{placeholder}</option>
       {options.map((option, key) => (

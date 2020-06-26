@@ -3,6 +3,7 @@ export const ROUTE = {
   SIGNIN: '/login',
   SIGNUP: '/register',
   DASHBOARD: '/dashboard',
+  FORGOT_PASSWORD: '/forgot/password',
 
   // Tutor
   ADD_AVAILABILITY: '/tutor/availability',
