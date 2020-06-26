@@ -12,6 +12,7 @@ import { Action } from 'auth/auth.type';
 import { signOut } from 'api/resource.api';
 import { AuthContext } from 'auth/auth.context';
 import { history } from 'app/app.history';
+import USER_TYPE from 'app/app.user-type';
 
 const getPageName = (): String => {
   return window.location.pathname
@@ -40,7 +41,7 @@ const handleSignOut = async (
 
 const PrivateNavBar = () => {
   const [isSignedOut, setIsSignedOut] = useState(false);
-  const { user, isHandlingAuth } = useContext(AuthContext);
+  const { user, roles, isHandlingAuth } = useContext(AuthContext);
   const { setCurrentAuth } = React.useContext(AuthContext);
   const [authState, dispatch] = useReducer(auth.reducer, auth.initialState);
 
@@ -101,7 +102,7 @@ const PrivateNavBar = () => {
           </div>
         </Flex>
       </section>
-      <MenuBar />
+      <MenuBar roles={roles} />
     </Fragment>
   );
 };
@@ -151,13 +152,25 @@ const Menu = ({ name, icon, route }: MenuProps) => (
   </div>
 );
 
-const MenuBar = () => (
+const MenuBar = ({ roles }: { roles: Array<string> }) => (
   <section className="row menu-bar text-primary p-0">
     <div className="col-md-3"></div>
     <div className="col-md-9 pl-5">
-      <Menu icon="md-clipboard" route="/overview" name="Overview" />
-      <Menu icon="md-paper-plane" route="/appoinments" name="Appoinments" />
-      <Menu icon="md-calendar" route="/schedule" name="Schedule" />
+      {roles.includes(USER_TYPE.TUTOR) && (
+        <>
+          <Menu icon="md-clipboard" route="/overview" name="Overview" />
+          <Menu icon="md-paper-plane" route="/appoinments" name="Appoinments" />
+          <Menu icon="md-calendar" route="/schedule" name="Schedule" />
+        </>
+      )}
+
+      {roles.includes(USER_TYPE.INSTITUTION) && (
+        <>
+          <Menu icon="md-clipboard" route="/overview" name="Overview" />
+          <Menu icon="md-paper-plane" route="/appoinments" name="Appoinments" />
+          <Menu icon="md-search" route="/tutors" name="Find Tutors" />
+        </>
+      )}
     </div>
   </section>
 );
