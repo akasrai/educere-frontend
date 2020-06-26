@@ -1,1 +1,3 @@
-### Educere UI
+# educere-frontend
+
+Educere Frontend
