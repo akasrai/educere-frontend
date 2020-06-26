@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Vr from 'ui/form/vr';
-import PlainBackground from 'ui/layout/plain-background.layout';
-import SignupForm from 'auth/component/signup.component';
 import { ROUTE } from 'app/app.route-path';
+import SignupForm from 'auth/component/signup.component';
+import NonAuthenticatedLayout from 'ui/layout/non-authenticated.layout';
 
 const SigninView = () => {
   return (
-    <PlainBackground>
+    <NonAuthenticatedLayout>
       <div className="col-md-12 m-0 row p-0 mt-5 mb-5 pt-4">
         <div className="col-md-5 float-left p-5">
           <h1 className="bold text-primary mt-3">Why?</h1>
@@ -30,7 +30,7 @@ const SigninView = () => {
           </div>
         </div>
       </div>
-    </PlainBackground>
+    </NonAuthenticatedLayout>
   );
 };
 

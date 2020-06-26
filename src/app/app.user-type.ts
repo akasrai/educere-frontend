@@ -1,6 +1,6 @@
 const USER_TYPE = {
-  TUTOR: 'TUTOR',
-  INSTITUTION: 'INSTITUTION',
+  TUTOR: 'tutor',
+  INSTITUTION: 'institution',
 };
 
 export default USER_TYPE;

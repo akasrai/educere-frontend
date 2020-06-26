@@ -298,12 +298,31 @@ img.logo {
   box-shadow: 0 0 0 0.2rem #3c8dbc;
 }
 
+.menu-bar {
+  top: 0;
+  // z-index: 999;
+  position: sticky;
+  background-color: #f6f5f8;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
 .sidebar {
   margin-bottom: 15px;
 
   @media screen and (min-width: 767px) {
     margin-bottom: 0;
     min-height: 80vh;
+  }
+
+  .sidebar-dp {
+    font-size: 200px;
+    line-height: 0px;
+    margin-top: -50px;
+
+    i {
+      z-index: 1100;
+    }
   }
 }
 
@@ -312,17 +331,18 @@ img.logo {
 
   .tab {
     width: 100%;
-    color: white;
+    // color: white;
     overflow: hidden;
 
     &-label {
       margin: 0;
       cursor: pointer;
       font-size: 14px;
-      padding: 0.8em 2em;
+      padding: 0.8em 0.6em !important;
       display: flex !important;
-      color: white !important;
+      // color: white !important;
       justify-content: space-between;
+      border-bottom: 2px solid transparent;
 
       &::before {
         position: none !important;
@@ -347,7 +367,8 @@ img.logo {
       }
 
       &:hover {
-        background: darken($color-active-menu, 5%);
+        border-bottom: 2px solid #173b61;
+        // background: darken($color-active-menu, 5%);
       }
 
       .arrow {
@@ -380,8 +401,10 @@ img.logo {
 
     .tab-input:checked {
       + .tab-label {
-        color: white !important;
-        background: darken($color-active-menu, 0%);
+        // color: white !important;
+        // background: darken($color-active-menu, 0%);
+        border-bottom: 2px solid #173b61;
+
         .arrow {
           text-align: right;
           transition: all 0.35s;
@@ -456,7 +479,6 @@ img.logo {
     border: 0;
     outline: 0;
     cursor: pointer;
-    color: white;
     background: transparent;
 
     &:focus,

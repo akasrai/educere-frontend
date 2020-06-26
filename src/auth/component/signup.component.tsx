@@ -1,23 +1,13 @@
-import React, {
-  useContext,
-  useReducer,
-  useState,
-  useEffect,
-  Fragment,
-} from 'react';
+import React, { useContext, useReducer, useState, useEffect } from 'react';
 
 import * as auth from 'auth/auth.state';
-import { Action } from 'auth/auth.type';
-import { signIn } from 'api/resource.api';
-import { ApiResponse } from 'api/api.type';
-import { AuthContext } from 'auth/auth.context';
-import { securedLS } from 'helper/local-storage-helper';
-
-import { Input, RadioButton } from 'ui/form/input';
 import { Button } from 'ui/form/button';
-import { ErrorAlert } from 'ui/alert/inline-alert';
-import { FlexRow, Flex } from 'ui/layout/component/flex';
+import { signIn } from 'api/resource.api';
 import USER_TYPE from 'app/app.user-type';
+import { AuthContext } from 'auth/auth.context';
+import { Input, RadioButton } from 'ui/form/input';
+import { ErrorAlert } from 'ui/alert/inline-alert';
+import { FlexRow } from 'ui/layout/component/flex';
 
 const handleSignIn = async (
   event: any,
@@ -148,8 +138,11 @@ const SignupForm = () => {
         placeholder="Confirm Password"
         className={`${signUpError ? 'is-invalid ' : ''}`}
       />
+      <p className="small text-muted">
+        By signing up you agree to the terms & conditions.
+      </p>
       <Button
-        name="Sign in"
+        name="Register"
         disabled={isHandlingAuth}
         className="md btn-primary"
       />
