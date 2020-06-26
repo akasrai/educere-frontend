@@ -1,2 +1,2 @@
 # educere-frontend
-Educere Backend
+Educere Frontend
