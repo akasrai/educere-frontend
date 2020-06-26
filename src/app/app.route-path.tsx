@@ -4,6 +4,7 @@ export const ROUTE = {
   DASHBOARD: '/dashboard',
 
   // Tutor
+  TUTOR_PROFILE: '/tutor/profile',
   ADD_AVAILABILITY: '/tutor/availability',
   TUTOR_APPOINMENTS: '/tutor/appointment',
 };

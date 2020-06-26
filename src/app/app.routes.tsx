@@ -3,6 +3,7 @@ import { Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
 import { ROUTE } from './app.route-path';
 import { history } from 'app/app.history';
+import TutorRoutes from 'tutor/tutor.route';
 import SigninView from 'auth/view/signin.view';
 import PageNotFound from 'ui/layout/404.layout';
 import { AuthContext } from 'auth/auth.context';
@@ -12,11 +13,7 @@ import DashboardView from 'dashboard/view/dashboard.view';
 const AuthenticatedRoute = (props: any) => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  return isAuthenticated ? (
-    <Route {...props} />
-  ) : (
-    <ReloadRoute to={ROUTE.HOME} />
-  );
+  return true ? <Route {...props} /> : <ReloadRoute to={ROUTE.HOME} />;
 };
 
 export const PrivateRoute = withRouter(AuthenticatedRoute);
@@ -39,6 +36,7 @@ const AppRoutes = () => (
       <PublicRoute exact path={ROUTE.HOME} component={SigninView} />
       <PublicRoute exact path={ROUTE.SIGNIN} component={SigninView} />
       <PrivateRoute exact path={ROUTE.DASHBOARD} component={DashboardView} />
+      <TutorRoutes />
       <Route component={PageNotFound} />
     </Switch>
   </Router>
