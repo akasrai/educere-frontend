@@ -107,7 +107,14 @@ const SidebarAccordinMenu = () => (
 const SidebarProfile = () => (
   <div className="col-12">
     <div className="sidebar-dp text-center">
-      <i className="icon ion-md-contact text-center  mr-2 m-0 text-muted" />
+      {true ? (
+        <img
+          src="https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4"
+          alt="dp"
+        />
+      ) : (
+        <i className="icon ion-md-contact text-center  mr-2 m-0 text-muted" />
+      )}
     </div>
     <div className="pl-4">
       <h3 className="mb-0">Akash Rai</h3>

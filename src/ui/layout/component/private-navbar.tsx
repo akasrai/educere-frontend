@@ -12,7 +12,8 @@ import { Action } from 'auth/auth.type';
 import { signOut } from 'api/resource.api';
 import { AuthContext } from 'auth/auth.context';
 import { history } from 'app/app.history';
-import USER_TYPE from 'app/app.user-type';
+import USER_TYPE, { USER_ROLES } from 'app/app.user-type';
+import { ROUTE } from 'app/app.route-path';
 
 const getPageName = (): String => {
   return window.location.pathname
@@ -70,7 +71,16 @@ const PrivateNavBar = () => {
           </div>
           <div className="col-md-3 p-0">
             <div className="d-flex user-tool">
-              <i className="icon ion-md-contact h3 mr-2 m-0 text-muted" />
+              {true ? (
+                <div className="dp">
+                  <img
+                    src="https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4"
+                    alt="dp"
+                  />
+                </div>
+              ) : (
+                <i className="icon ion-md-contact h3 mr-2 m-0 text-muted" />
+              )}
               <button className="bold p pt-1 user-tool-btn">
                 <span className="d-none d-md-inline text-muted">
                   {user?.name || 'Akash Rai'}{' '}
@@ -102,7 +112,8 @@ const PrivateNavBar = () => {
           </div>
         </Flex>
       </section>
-      <MenuBar roles={roles} />
+
+      {!!!roles.includes(USER_ROLES.GUEST) && <MenuBar roles={roles} />}
     </Fragment>
   );
 };
@@ -156,19 +167,31 @@ const MenuBar = ({ roles }: { roles: Array<string> }) => (
   <section className="row menu-bar text-primary p-0">
     <div className="col-md-3"></div>
     <div className="col-md-9 pl-5">
-      {roles.includes(USER_TYPE.TUTOR) && (
+      {roles.includes(USER_ROLES.TUTOR) && (
         <>
           <Menu icon="md-clipboard" route="/overview" name="Overview" />
-          <Menu icon="md-paper-plane" route="/appoinments" name="Appoinments" />
-          <Menu icon="md-calendar" route="/schedule" name="Schedule" />
+          <Menu
+            icon="md-paper-plane"
+            route={ROUTE.TUTOR_APPOINMENTS}
+            name="Appoinments"
+          />
+          <Menu
+            icon="md-calendar"
+            route={ROUTE.ADD_AVAILABILITY}
+            name="Schedule"
+          />
         </>
       )}
 
-      {roles.includes(USER_TYPE.INSTITUTION) && (
+      {!!!roles.includes(USER_ROLES.INSTITUTION) && (
         <>
           <Menu icon="md-clipboard" route="/overview" name="Overview" />
-          <Menu icon="md-paper-plane" route="/appoinments" name="Appoinments" />
-          <Menu icon="md-search" route="/tutors" name="Find Tutors" />
+          <Menu
+            icon="md-paper-plane"
+            route={ROUTE.INSTITUTION_APPOINTMENTS}
+            name="Appoinments"
+          />
+          <Menu icon="md-search" route={ROUTE.FIND_TUTOR} name="Find Tutors" />
         </>
       )}
     </div>
