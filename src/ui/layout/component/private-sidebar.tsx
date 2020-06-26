@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
+import { Flex } from './flex';
 import { history } from 'app/app.history';
 import { ROUTE } from 'app/app.route-path';
 
@@ -88,25 +90,57 @@ const SubTab = ({ name, icon = 'ios-arrow-forward', route }: TabProps) => {
   );
 };
 
+const SidebarAccordinMenu = () => (
+  <div className="tabs">
+    <Tab name="Dashboard" icon="ios-home" route={ROUTE.DASHBOARD} />
+    <Tab name="Availability" icon="md-time" route={ROUTE.ADD_AVAILABILITY} />
+    <Tab
+      name="Appointments"
+      icon="md-calendar"
+      route={ROUTE.TUTOR_APPOINMENTS}
+    />
+
+    <Tab name="Settings" icon="md-construct" route={ROUTE.DASHBOARD} />
+  </div>
+);
+
+const SidebarProfile = () => (
+  <div className="col-12">
+    <div className="sidebar-dp text-center">
+      <i className="icon ion-md-contact text-center  mr-2 m-0 text-muted" />
+    </div>
+    <div className="pl-4">
+      <h3 className="mb-0">Akash Rai</h3>
+      <p>akasky70@gmail.com</p>
+      <p>I love EduCere.</p>
+      <div className="text-left small">
+        <p className="m-0">
+          <i className="icon ion-md-call mr-2" />
+          9869768601
+        </p>
+        <Flex>
+          <i className="icon ion-md-pin mr-2" />
+          <div>
+            <p className="m-0">Bouddha Rd, Jorpati</p>
+            <p className="m-0">Kathmandu, Nepal</p>
+            <p className="m-0">44600</p>
+          </div>
+        </Flex>
+      </div>
+
+      <Link className="col-12 btn btn-md btn-outline-primary mt-3 p-1">
+        Edit Profile
+      </Link>
+    </div>
+  </div>
+);
+
 const PrivateSidebar = () => {
   return (
     <section className="col-md-3">
-      <div className="col-md-12 p-0 pt-3 pb-3 rounded-5 bg-blue text-white sidebar p-sticky">
-        <div className="tabs">
-          <Tab name="Dashboard" icon="ios-home" route={ROUTE.DASHBOARD} />
-          <Tab
-            name="Availability"
-            icon="md-time"
-            route={ROUTE.ADD_AVAILABILITY}
-          />
-          <Tab
-            name="Appointments"
-            icon="md-calendar"
-            route={ROUTE.TUTOR_APPOINMENTS}
-          />
-
-          <Tab name="Settings" icon="md-construct" route={ROUTE.DASHBOARD} />
-        </div>
+      <div className="col-md-12 p-0 pt-3 pb-3 bg-transparent text-primary sidebar p-sticky">
+        {/* <SidebarAccordinMenu /> */}
+        <SidebarProfile />
       </div>
     </section>
   );

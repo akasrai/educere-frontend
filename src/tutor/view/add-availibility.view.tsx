@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { Input, TextArea, RadioButton } from 'ui/form/input';
 import { Button } from 'ui/form/button';
 import { FlexRow } from 'ui/layout/component/flex';
-import BubbleBackground from 'ui/layout/bubble-background.layout';
+import { Input, TextArea, RadioButton } from 'ui/form/input';
+import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 
 const AvailabilityFormRow = ({
   totalSchedule,
@@ -138,7 +138,7 @@ const removeSchedule = (
 
 const AddAvailibilityView = () => {
   return (
-    <BubbleBackground className="fixed-height-layout">
+    <AuthenticatedLayout className="fixed-height-layout">
       <FlexRow className="justify-content-center">
         <div className="col-md-6 p-5 m-3 rounded bg-white">
           <h4 className="mt-0 p-md-3 text-primary bold">
@@ -149,7 +149,7 @@ const AddAvailibilityView = () => {
           <AddAvailibilityForm />
         </div>
       </FlexRow>
-    </BubbleBackground>
+    </AuthenticatedLayout>
   );
 };
 export default AddAvailibilityView;
