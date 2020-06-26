@@ -21,11 +21,12 @@ interface InputProps {
 }
 
 export const Input = (props: InputProps) => {
-  const { type, name, className, onChange, required, placeholder } = props;
+  const { id, type, name, className, onChange, required, placeholder } = props;
 
   return (
     <div className="col-12 form-group p-0">
       <input
+        id={id}
         type={type}
         name={name}
         onChange={onChange}

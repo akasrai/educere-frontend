@@ -5,63 +5,70 @@ import { Button } from 'ui/form/button';
 import { FlexRow } from 'ui/layout/component/flex';
 import BubbleBackground from 'ui/layout/bubble-background.layout';
 
+const AvailabilityFormRow = ({
+  totalSchedule,
+  availabilityType,
+  setTotalSchedule,
+}: {
+  totalSchedule: Array<number>;
+  availabilityType: string;
+  setTotalSchedule: (props: any) => void;
+}) => {
+  return (
+    <React.Fragment>
+      {totalSchedule.map((element, key) => (
+        <div key={key} className="col-md-12 row p-0">
+          <div className="col-md-4">
+            <label className="p-0" htmlFor={`availabilityFrom${element}`}>
+              From
+            </label>
+            <Input
+              id={`availabilityFrom${element}`}
+              type="date"
+              name="availabilityFrom"
+              required={true}
+            />
+          </div>
+          <div className="col-md-4">
+            <label htmlFor={`availabilityTo${element}`}>To</label>
+            <Input
+              id={`availabilityTo${element}`}
+              type="date"
+              name="availabilityTo"
+              required={true}
+            />
+          </div>
+          {availabilityType === 'Offline' && (
+            <div className="col-md-4">
+              <label htmlFor={`location${element}`}>Location</label>
+              <Input
+                id={`location${element}`}
+                type="text"
+                name="location"
+                required={true}
+                placeholder="Select Location"
+              />
+            </div>
+          )}
+          {element === totalSchedule.length && element !== 1 && (
+            <i
+              className="icon ion-md-close position-absolute right-0"
+              onClick={() => removeSchedule(totalSchedule, setTotalSchedule)}
+            />
+          )}
+        </div>
+      ))}
+    </React.Fragment>
+  );
+};
+
 const AddAvailibilityForm = () => {
   const [error, setError] = useState<String>('');
-  const [totalSchedule, setTotalSchedule] = useState<number>(1);
+  const [totalSchedule, setTotalSchedule] = useState<Array<number>>([1]);
   const [isScheduleFilled, setIsScheduleFilled] = useState<boolean>(true);
-  const [availabilityType, setAvailabilityType] = useState<String>('');
+  const [availabilityType, setAvailabilityType] = useState<string>('');
 
-  const AvailabilityFormRow = () => {
-    return (
-      <React.Fragment>
-        {[...Array(totalSchedule)].map((elem, key) => (
-          <div key={key} className="col-md-12 row p-0">
-            <div className="col-md-4">
-              <label
-                className="p-0"
-                htmlFor={`availabilityFrom${totalSchedule}`}
-              >
-                From
-              </label>
-              <Input
-                type="date"
-                name={`availabilityFrom${totalSchedule}`}
-                required={true}
-                className={`${error ? 'is-invalid ' : ''}`}
-              />
-            </div>
-            <div className="col-md-4">
-              <label htmlFor={`availabilityTo${totalSchedule}`}>To</label>
-              <Input
-                type="date"
-                name={`availabilityTo${totalSchedule}`}
-                required={true}
-                className={`${error ? 'is-invalid ' : ''}`}
-              />
-            </div>
-            {availabilityType === 'Offline' && (
-              <div className="col-md-4">
-                <label htmlFor={`location${totalSchedule}`}>Location</label>
-                <Input
-                  type="text"
-                  name={`location${totalSchedule}`}
-                  required={true}
-                  placeholder="Select Location"
-                  className={`${error ? 'is-invalid ' : ''}`}
-                />
-              </div>
-            )}
-            {totalSchedule >= 2 && (
-              <i
-                className="icon ion-md-close position-absolute right-0"
-                onClick={() => setTotalSchedule(totalSchedule - 1)}
-              />
-            )}
-          </div>
-        ))}
-      </React.Fragment>
-    );
-  };
+  console.log(totalSchedule);
 
   return (
     <form className="col-12 p-md-3 p-0">
@@ -87,11 +94,17 @@ const AddAvailibilityForm = () => {
           </div>
         </div>
 
-        <AvailabilityFormRow />
+        <AvailabilityFormRow
+          totalSchedule={totalSchedule}
+          availabilityType={availabilityType}
+          setTotalSchedule={setTotalSchedule}
+        />
 
         <div
           className={`mb-3 btn btn-link p-0 ${!isScheduleFilled && 'disabled'}`}
-          onClick={() => setTotalSchedule(totalSchedule + 1)}
+          onClick={() =>
+            setTotalSchedule([...totalSchedule, totalSchedule.length + 1])
+          }
         >
           Add New Schedule
         </div>
@@ -112,6 +125,15 @@ const AddAvailibilityForm = () => {
       </div>
     </form>
   );
+};
+
+const removeSchedule = (
+  totalSchedule: Array<number>,
+  setTotalSchedule: (props: any) => void
+) => {
+  totalSchedule.pop();
+  console.log(totalSchedule);
+  setTotalSchedule([...totalSchedule]);
 };
 
 const AddAvailibilityView = () => {
