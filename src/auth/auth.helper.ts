@@ -12,7 +12,7 @@ const getUser = (data: any) => ({
   github: data.github,
   website: data.website,
   address: data.address,
-  twitter: data.twittter,
+  twitter: data.twitter,
   facebook: data.facebook,
   linkedIn: data.linkedIn,
   phoneNumber: data.phoneNumber,

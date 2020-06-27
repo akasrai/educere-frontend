@@ -31,3 +31,7 @@ export const getCurrentUser = () => {
 export const signOut = () => {
   return http.get(`/auth/signout`);
 };
+
+export const fetchAllTutors = () => {
+  return http.get(`/tutors`);
+};

@@ -36,7 +36,7 @@ const getFormData = (inputs: any): CompleteSignupPayload => {
 
 const CompleteSignupForm = () => {
   const [signUpError, setSignUpError] = useState<string>('');
-  const { user, setCurrentAuth, isHandlingAuth } = useContext(AuthContext);
+  const { setCurrentAuth, isHandlingAuth } = useContext(AuthContext);
   const [authState, dispatch] = useReducer(auth.reducer, auth.initialState);
 
   useEffect(() => {

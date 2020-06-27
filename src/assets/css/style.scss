@@ -10,7 +10,7 @@ input,
 textarea,
 select,
 button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 body {
   overflow-x: hidden;
@@ -129,6 +129,9 @@ input[type='number'] {
   }
   &-primary {
     color: $color-blue !important;
+  }
+  &-black {
+    color: #2a2b2b;
   }
 }
 
@@ -411,6 +414,11 @@ img.logo {
 
 .change-dp {
   margin-top: -40px;
+}
+
+.tutor-list-dp {
+  line-height: 0;
+  font-size: 115px;
 }
 
 .tabs {
