@@ -6,6 +6,7 @@ import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import TutorOverView from 'dashboard/components/tutor-overview.component';
 import { getCurrentUser } from 'api/resource.api';
 import InstitutionOverView from 'dashboard/components/institution-overview.component';
+import { USER_ROLES } from 'app/app.user-type';
 
 const getUser = async (dispatch: (props: any) => void) => {
   dispatch({ type: auth.AUTH_ACTION_PENDING });
@@ -36,7 +37,7 @@ const getUser = async (dispatch: (props: any) => void) => {
 };
 
 const DashboardView = () => {
-  const { user } = useContext(AuthContext);
+  const { user, roles } = useContext(AuthContext);
 
   const { setCurrentUser } = useContext(AuthContext);
   const [isUserFetched, setIsUserFetched] = useState<boolean>(false);
@@ -56,10 +57,11 @@ const DashboardView = () => {
       <h3 className="p-3">
         Hi, <span className="bold">{user.name}!</span>
       </h3>
-      {/* <TutorOverView />  */}
-      {/* Show this view if role is tutor */}
-      {/* <InstitutionOverView /> */}
-      {/* Show this view if role is institution */}
+      {roles.includes(USER_ROLES.TUTOR) ? (
+        <InstitutionOverView />
+      ) : (
+        <InstitutionOverView />
+      )}
     </AuthenticatedLayout>
   );
 };

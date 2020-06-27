@@ -1,6 +1,6 @@
 import * as http from './http.api';
-import { Experties } from 'tutor/tutor.type';
+import { ExpertiesPayload } from 'tutor/tutor.type';
 
-export const addExperties = (requestBody: Experties) => {
+export const addExperties = (requestBody: ExpertiesPayload) => {
   return http.post('/experties', { requestBody });
 };

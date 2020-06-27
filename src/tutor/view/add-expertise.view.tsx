@@ -7,6 +7,7 @@ import { SuccessMessage } from 'ui/alert/toast-alert';
 import { Button } from 'ui/form/button';
 import { TextArea, Input } from 'ui/form/input';
 import { ErrorAlert } from 'ui/alert/inline-alert';
+import { addExperties } from 'api/request.api';
 
 const ExpertiseFormRow = ({
   totalExpertise,
@@ -78,25 +79,31 @@ const ExpertiseFormRow = ({
   );
 };
 
-const handleSubmit = async (e: any, setError: Function) => {
+const handleSubmit = async (
+  e: any,
+  setError: Function,
+  setTotalExpertise: Function
+) => {
   e.preventDefault();
 
-  const formData = getFormData(e.target);
-  console.log(formData);
-  // const response = await sendData(formData);
+  const formData: any = getFormData(e.target);
+  await addExperties(formData).then((response: any) => {
+    // if (response.error) {
+    //   return setError('Network Error');
+    // }
 
-  // if (response) {
-  toast.success(
-    <SuccessMessage message={'Expetise has been added successfully'} />
-  );
-  // }
+    return toast.success(
+      <SuccessMessage message={'Expetise has been added successfully'} />
+    );
+  });
 };
 const getFormData = (inputs: any) => {
   const formData: Array<object> = [];
   for (let i = 0; i < inputs.length - 1; i += 4) {
     const data: any = {};
     for (let j = 0; j < 4; j++) {
-      if (inputs[i + j].name) data[inputs[i + j].name] = inputs[i + j].value;
+      const tempName = inputs[i + j].name.replace(/[0-9]/g, '');
+      if (inputs[i + j].name) data[tempName] = inputs[i + j].value;
     }
     formData.push(data);
   }
@@ -118,7 +125,7 @@ const AddExpertiseForm = () => {
   return (
     <form
       className="col-12 p-md-3 p-0"
-      onSubmit={(e) => handleSubmit(e, setError)}
+      onSubmit={(e) => handleSubmit(e, setError, setTotalExpertise)}
     >
       <ErrorAlert message={error} />
       <ExpertiseFormRow

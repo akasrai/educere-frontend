@@ -101,7 +101,7 @@ const UpcomingAppointments = () => {
   return (
     <div className="row">
       {appointments.map((appointment, key) => (
-        <div className="col-md-6 p-3">
+        <div key={key} className="col-md-6 p-3">
           <div className="appointment-card bg-lightblue rounded">
             <p className="m-0 p-2">
               Date:{' '}
