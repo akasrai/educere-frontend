@@ -23,7 +23,7 @@ export const Button = (props: ButtonProps) => {
         <WhiteDottedLoader />
       ) : (
         <>
-          <i className={`icon ion-${icon} pr-2 d-inline-block`} />
+          {icon && <i className={`icon ion-${icon} pr-2 d-inline-block`} />}
           {name}
         </>
       )}

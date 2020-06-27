@@ -62,16 +62,32 @@ const AvailabilityFormRow = ({
   );
 };
 
+const handleSubmit = (e: any) => {
+  e.preventDefault();
+};
+
+const handleValidation = (input: any, setError: Function) => {
+  const inputName = input.name;
+  const inputValue = input.value;
+
+  if (!inputValue) {
+    return setError('Empty');
+  }
+  return true;
+};
+
 const AddAvailibilityForm = () => {
   const [error, setError] = useState<String>('');
   const [totalSchedule, setTotalSchedule] = useState<Array<number>>([1]);
   const [isScheduleFilled, setIsScheduleFilled] = useState<boolean>(true);
   const [availabilityType, setAvailabilityType] = useState<string>('');
 
-  console.log(totalSchedule);
-
   return (
-    <form className="col-12 p-md-3 p-0">
+    <form
+      className="col-12 p-md-3 p-0"
+      onSubmit={(e) => handleSubmit(e)}
+      onChange={(e) => handleValidation(e.target, setError)}
+    >
       <FlexRow>
         <div className="col-md-12 clearfix p-0">
           <div className="col-md-3 float-left p-0">
@@ -132,7 +148,6 @@ const removeSchedule = (
   setTotalSchedule: (props: any) => void
 ) => {
   totalSchedule.pop();
-  console.log(totalSchedule);
   setTotalSchedule([...totalSchedule]);
 };
 
@@ -140,7 +155,7 @@ const AddAvailibilityView = () => {
   return (
     <AuthenticatedLayout className="fixed-height-layout">
       <FlexRow className="justify-content-center">
-        <div className="col-md-6 p-5 m-3 rounded bg-white">
+        <div className="col-md-12 p-5 m-3 rounded border">
           <h4 className="mt-0 p-md-3 text-primary bold">
             <i className="icon ion-md-time mr-2" />
             Add your availability schedule
