@@ -85,9 +85,9 @@ const handleSubmit = async (
   setError: Function,
   availabilityType: string
 ) => {
-  // e.preventDefault();
+  e.preventDefault();
 
-  const formData = getFormData(e.target, setError, availabilityType);
+  const formData: any = getFormData(e.target, setError, availabilityType);
   console.log(formData);
 
   // const response = await sendData(formData);
@@ -106,30 +106,23 @@ const getFormData = (
   setError: Function,
   availabilityType: string
 ) => {
-  const formData: any = {};
-  console.log(inputs.length);
-  // for (let i = 0; i < inputs.length; i++) {
-  //   if (handleValidation(inputs[i], setError)) {
-  //     if (inputs[i].type === 'radio') {
-  //       if (inputs[i].checked) formData[inputs[i].name] = inputs[i].value;
+  const formData: any = [];
+  // console.log(inputs.length);
+  // const totalField = availabilityType==='Offline'?7:6
+  // for (let i = 0; i < inputs.length - 1; i = +6) {
+  //   const data: any = {};
+  //   for (let j = 0; j < 6; j++) {
+  //     const tempName = inputs[i + j].name.replace(/[0-9]/g, '');
+  //     if (inputs[i + j].type === 'radio') {
+  //       if (inputs[i + j].checked) data[tempName] = inputs[i + j].value;
   //       continue;
   //     }
-  //     if (inputs[i].name) formData[inputs[i].name] = inputs[i].value;
+  //     if (inputs[i + j].name) data[tempName] = inputs[i + j].value;
   //   }
+  //   formData.push(data);
   // }
+
   return formData;
-};
-
-const handleValidation = (input: any, setError: Function) => {
-  const inputName = input.name;
-  const inputValue = input.value;
-
-  if (!inputValue && inputName === 'description') {
-    return setError('This field cannot be Empty');
-  } else {
-    setError('');
-  }
-  return true;
 };
 
 const AddAvailibilityForm = () => {
@@ -141,8 +134,8 @@ const AddAvailibilityForm = () => {
     <form
       className="col-12 p-md-3 p-0"
       onSubmit={(e) => handleSubmit(e, setError, availabilityType)}
-      onBlur={(e) => handleValidation(e.target, setError)}
     >
+      <ErrorAlert message={error} />
       <FlexRow className="tutor-list">
         <div className="col-md-12 clearfix p-0">
           <div className="col-md-3 float-left p-0">
@@ -189,7 +182,6 @@ const AddAvailibilityForm = () => {
           placeholder="Enter description"
           className="col-md-12"
         />
-        <ErrorAlert message={error} />
       </div>
       <div className="col-md-3 p-0">
         <Button name="Add Availibility" className="md btn-primary" />
