@@ -2,42 +2,18 @@ import React, { useContext, useReducer, useState, useEffect } from 'react';
 
 import * as auth from 'auth/auth.state';
 import { Action } from 'auth/auth.type';
-import { signIn, getCurrentUser } from 'api/resource.api';
-import { ApiResponse } from 'api/api.type';
 import { AuthContext } from 'auth/auth.context';
-import { securedLS } from 'helper/local-storage-helper';
+import { getSignedInUser, restoreAuthentication } from 'auth/auth.helper';
+
+import { Token } from 'api/token.api';
+import { signIn } from 'api/resource.api';
+import { ApiResponse } from 'api/api.type';
 
 import { Input } from 'ui/form/input';
 import { Button } from 'ui/form/button';
 import { ErrorAlert } from 'ui/alert/inline-alert';
-import { Token } from 'api/token.api';
 
-const getUser = (data: any) => ({
-  bio: data.bio,
-  name: data.name,
-  photo: data.photo,
-  email: data.email,
-  github: data.github,
-  website: data.website,
-  address: data.address,
-  twitter: data.twittter,
-  facebook: data.facebook,
-  linkedIn: data.linkedIn,
-  phoneNumber: data.phoneNumber,
-});
-
-const completeSignIn = async (
-  token: string,
-  dispatch: (props: any) => void
-) => {
-  const { data, error } = await getCurrentUser();
-
-  if (!error)
-    dispatch({
-      type: auth.SIGN_IN_SUCCESS,
-      payload: { token: token, roles: data.roles, user: getUser(data) },
-    });
-};
+import { securedLS } from 'helper/local-storage-helper';
 
 const handleSignIn = async (
   event: any,
@@ -58,18 +34,7 @@ const handleSignIn = async (
   }
 
   Token.setAccessToken(data.token);
-  completeSignIn(data.token, dispatch);
-};
-
-const restoreAuthentication = (dispatch: (props: Action) => void) => {
-  dispatch({ type: auth.AUTH_ACTION_PENDING });
-  const { data }: ApiResponse = securedLS.get(auth.AUTH_LS_KEY);
-
-  if (data) {
-    return dispatch({ type: auth.RESTORE_AUTH, payload: data });
-  }
-
-  dispatch({ type: auth.SIGN_IN_ERROR });
+  getSignedInUser(data.token, dispatch);
 };
 
 const SigninForm = () => {

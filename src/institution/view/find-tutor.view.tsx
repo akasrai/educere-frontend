@@ -1,19 +1,34 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
+import { fetchAllTutors } from 'api/resource.api';
 import { FlexRow } from 'ui/layout/component/flex';
+import { Tutor } from 'institution/institution.type';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 
-const Tutor = () => (
+const getTutors = async (setTutors: (props: any) => void) => {
+  const { data, error } = await fetchAllTutors();
+
+  if (error) {
+    return;
+  }
+
+  setTutors(data.result);
+};
+
+const TutorCard = ({ tutor }: { tutor: Tutor }) => (
   <div className="col-md-3 p-2">
     <div className="w-100 rounded border tutor">
-      <div className="image">
-        <img
-          src="https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4"
-          alt="dp"
-        />
-      </div>
-      <p className="bold m-0">Pasang Dorje Lama</p>
+      {tutor.dp ? (
+        <div className="image">
+          <img src={tutor.dp} alt="dp" />
+        </div>
+      ) : (
+        <i className="icon ion-md-contact tutor-list-dp text-muted" />
+      )}
+      <p className="bold m-0">
+        {tutor.firstName} {tutor.lastName}
+      </p>
       <p className="small">Teacher</p>
       <Link to="" className="col-12 btn btn-md btn-outline-primary p-1">
         <span className="small">View Details</span>
@@ -24,12 +39,18 @@ const Tutor = () => (
 );
 
 const FindTutorView = () => {
+  const [tutors, setTutors] = useState<Array<Tutor>>([]);
+
+  useEffect(() => {
+    getTutors(setTutors);
+  }, []);
+
   return (
     <AuthenticatedLayout>
       <p className="p-0">Tutors</p>
       <FlexRow className="tutor-list">
-        {Array.from(Array(100)).map((key) => (
-          <Tutor />
+        {tutors.map((tutor, key) => (
+          <TutorCard key={key} tutor={tutor} />
         ))}
       </FlexRow>
     </AuthenticatedLayout>

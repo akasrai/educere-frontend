@@ -92,3 +92,19 @@ export const camelCaseOf = (str: string): string => {
 
   return lowerCaseStr.charAt(0).toUpperCase() + lowerCaseStr.slice(1);
 };
+
+export const socialMedia = {
+  getFacebook(username: string) {
+    return `https://facebook.com/${username}`;
+  },
+
+  getTwitter(username: string) {
+    return `https://twitter.com/${username}`;
+  },
+  getLinkedIn(username: string) {
+    return `https://linkedin.com/${username}`;
+  },
+  getGithub(username: string) {
+    return `https://github.com/${username}`;
+  },
+};

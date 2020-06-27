@@ -5,12 +5,19 @@ import { Flex } from './flex';
 import { history } from 'app/app.history';
 import { ROUTE } from 'app/app.route-path';
 import { AuthContext } from 'auth/auth.context';
+import { socialMedia } from 'helper/common-helper';
 
 interface TabProps {
   name: String;
   icon?: String;
   route?: string;
   children?: ReactNode;
+}
+
+interface SocialMedaProps {
+  icon: string;
+  link: string;
+  username: string | undefined;
 }
 
 const sidebarMenu = {
@@ -105,6 +112,16 @@ const SidebarAccordinMenu = () => (
   </div>
 );
 
+const SocialMedia = ({ icon, link, username }: SocialMedaProps) =>
+  username ? (
+    <p className="m-0">
+      <a href={link} target="_blank">
+        <i className={`icon ion-${icon} mr-1`} />
+        {username}
+      </a>
+    </p>
+  ) : null;
+
 const SidebarProfile = () => {
   const { user } = useContext(AuthContext);
 
@@ -119,15 +136,43 @@ const SidebarProfile = () => {
           <i className="icon ion-md-contact text-center  mr-2 m-0 text-muted" />
         )}
       </div>
-      <div className="pl-4 p-sticky">
-        <h3 className="mb-0">{user.name}</h3>
-        <p>{user.email}</p>
+      <div className="pl-4 p-sticky text-black">
+        <h5 className="mb-0">{user.name}</h5>
+        <p className="text-muted">
+          <i className="icon ion-md-mail mr-1 small" />
+          {user.email}
+        </p>
         <p>{user.bio}</p>
-        <div className="text-left small">
+        <div className="text-left">
           <p className="m-0">
-            <i className="icon ion-md-call mr-2" />
+            <i className="icon ion-md-call mr-1" />
             {user.phoneNumber}
           </p>
+          <SocialMedia
+            icon="md-globe"
+            username={user.website}
+            link={user.website || ''}
+          />
+          <SocialMedia
+            icon="logo-facebook"
+            username={user.facebook}
+            link={socialMedia.getFacebook(user.facebook || '')}
+          />
+          <SocialMedia
+            icon="logo-twitter"
+            username={user.twitter}
+            link={socialMedia.getTwitter(user.twitter || '')}
+          />
+          <SocialMedia
+            icon="logo-linkedin"
+            username={user.linkedIn}
+            link={socialMedia.getLinkedIn(user.linkedIn || '')}
+          />
+          <SocialMedia
+            icon="logo-github"
+            username={user.github}
+            link={socialMedia.getGithub(user.github || '')}
+          />
           <Flex>
             <i className="icon ion-md-pin mr-2" />
             <div>
