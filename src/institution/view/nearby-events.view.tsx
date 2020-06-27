@@ -2,108 +2,172 @@ import React from 'react';
 
 import { FlexRow } from 'ui/layout/component/flex';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
+import { profession, categories } from 'data/mock.data';
+import { Input, Select } from 'ui/form/input';
+import { Button } from 'ui/form/button';
 
 const nearbyEvents = [
   {
     expertName: 'Akash Rai',
-    date: 'Jun 29th 2020',
     startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    avaiableOption: 'Online',
-    location: 'Jorpati, Kathmandu',
+    endTime: '12:00 pm',
+    location: 'Online',
     contactNo: '9807898767',
+    email: 'akashrai@gmail.com',
+    avaibility: [
+      {
+        date: 'Jun 29th 2020',
+        time: ['10:00am - 12:00pm', '03:00pm - 06:00pm'],
+      },
+      {
+        date: 'Jun 30th 2020',
+        time: ['10:00am - 04:00pm'],
+      },
+    ],
   },
   {
     expertName: 'Pasang Dorje Lama',
     date: 'July 20th 2020',
     startTime: '08:00 am',
     endTime: '09:30 am',
-    avaiableOption: 'Offline',
-    location: 'Jorpati, Kathmandu',
-    contactNo: '9807898767',
+    location: 'Baneswor, Kathmandu',
+    contactNo: '9807896233',
+    email: 'pasang234242@gmail.com',
+    avaibility: [
+      { date: 'Jul 5th 2020', time: ['10:00am - 3:00pm'] },
+      {
+        date: 'Jul 8th 2020',
+        time: ['10:00am - 04:00pm'],
+      },
+    ],
   },
   {
     expertName: 'Bikash Gurung',
     date: 'Aug 29th 2020',
     startTime: '04:00 pm',
     endTime: '07:30 pm',
-    avaiableOption: 'Offline',
-    location: 'Jorpati, Kathmandu',
-    contactNo: '9807898767',
+    location: 'Sikles Gau, Kaski',
+    contactNo: '9869874567',
+    email: 'bikashgrg23@gmail.com',
+    avaibility: [
+      { date: 'Jul 5th 2020', time: ['09:00am - 11:00am', '03:pm - 05:00pm'] },
+      {
+        date: 'Jul 8th 2020',
+        time: ['06:00am - 12:00pm', '04:00am - 06:00pm'],
+      },
+    ],
   },
   {
-    expertName: 'Akash Rai',
+    expertName: 'Ram Sharan Shrestha',
     date: 'Jun 29th 2020',
     startTime: '08:00 pm',
     endTime: '08:30 pm',
-    avaiableOption: 'Online',
-    location: 'Jorpati, Kathmandu',
-    contactNo: '9807898767',
+    location: 'Online',
+    contactNo: '98412376567',
+    email: 'sharanram56@gmail.com',
+    avaibility: [
+      { date: 'Jul 5th 2020', time: ['03:00pm - 05:00pm'] },
+      {
+        date: 'Jul 8th 2020',
+        time: ['12:00pm - 06:00pm'],
+      },
+    ],
   },
   {
-    expertName: 'Pasang Dorje Lama',
+    expertName: 'Namita Sapkota',
     date: 'July 20th 2020',
     startTime: '08:00 am',
     endTime: '09:30 am',
-    avaiableOption: 'Offline',
-    location: 'Jorpati, Kathmandu',
-    contactNo: '9807898767',
+    location: 'Salleri Nayabazaar, Solukhumbu',
+    contactNo: '9818239878',
+    email: 'sapkotanamita@gmail.com',
+    avaibility: [
+      { date: 'Jul 5th 2020', time: ['07:00am - 05:00pm'] },
+      {
+        date: 'Jul 8th 2020',
+        time: ['03:00pm - 06:00pm'],
+      },
+    ],
   },
 ];
 
-const EventList = () => {
+const SearchTutor = () => {
   return (
     <FlexRow>
+      <div className="col-md-8 pl-2 pr-1">
+        <Input name="search" placeholder="Find by location" />
+      </div>
+      <div className="col-md-2 pl-1 pr-1">
+        <Select name="Category" placeholder="Category" options={categories} />
+      </div>
+      <div className="col-md-2 pr-2 pl-1">
+        <Button className="-md btn-primary" name="Find" icon="md-search" />
+      </div>
+    </FlexRow>
+  );
+};
+
+const EventList = () => {
+  return (
+    <>
       {nearbyEvents.map((event, key) => (
-        <div key={key} className="col-md-6 p-3">
-          <FlexRow className="appointment-card bg-lightblue rounded">
-            <p className="col-md-6 m-0 p-3">
-              Expert Name:{' '}
-              <span className="text-primary bold">{event.expertName} </span>
-            </p>
-            <p className="col-md-6  m-0 p-3">
-              Date: <span className="text-primary bold">{event.date} </span>
-            </p>
-            <p className="col-md-6  m-0 p-3">
-              Available Time:{' '}
-              <span className="text-primary bold">
-                {event.startTime} - {event.endTime}
-              </span>
-            </p>
-            <p className="col-md-6  m-0 p-3">
-              Available Option:{' '}
-              <span className="text-primary bold">{event.avaiableOption} </span>
-            </p>
-            {event.avaiableOption === 'Offline' && (
-              <p className="col-md-6  m-0 p-3">
-                Location:{' '}
+        <div key={key} className="col-md-12 p-2">
+          <FlexRow className="appointment-card border p-3 rounded">
+            <div className="col-md-6">
+              <h5 className="m-0 text-primary">{event.expertName}</h5>
+              <p className="m-0">
+                <i className="icon ion-md-briefcase mr-1" />
+                {profession.getRandomJob()}
+              </p>
+              <p className="m-0">
+                <i className="icon ion-md-mail mr-1" />
+                {event.email}
+              </p>
+              <p className="m-0">
+                <i className="icon ion-md-call mr-1" />
+                {event.contactNo}
+              </p>
+              <p className="m-0">
+                <i className="icon ion-md-pin mr-1" />
                 <span className="text-primary bold">{event.location} </span>
               </p>
-            )}
-            <p className="col-md-6  m-0 p-3">
-              Contact No.:{' '}
-              <span className="text-primary bold">{event.contactNo} </span>
-            </p>
-            <div className="col-md-12 m-0 p-2 text-center">
-              <span className="col-md-3  m-0 btn btn-outline-primary btn-md p-1">
-                Book Now
-              </span>
+              <div className="col-md-4 mt-3  m-0 btn btn-outline-primary btn-md p-1">
+                <span className="">Book Now</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <p className="m-0 bold mt-2">
+                <i className="icon ion-md-calendar mr-1" />
+                Avaibility
+              </p>
+              <table>
+                {event.avaibility.map((avl, key) => (
+                  <tr key={key}>
+                    <td className="p-2">{avl.date}</td>
+                    <td className="p-2">
+                      {avl.time.map((t, key) => (
+                        <p key={key} className="m-0">
+                          {t}
+                        </p>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </table>
             </div>
           </FlexRow>
         </div>
       ))}
-    </FlexRow>
+    </>
   );
 };
 
 const NearbyEventsView = () => {
   return (
     <AuthenticatedLayout>
-      <p className="p-0">Nearby Events</p>
+      <SearchTutor />
       <FlexRow className="tutor-list">
-        <div className="col-12 rounded border p-4">
-          <EventList />
-        </div>
+        <EventList />
       </FlexRow>
     </AuthenticatedLayout>
   );

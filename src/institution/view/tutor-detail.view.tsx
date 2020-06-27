@@ -96,6 +96,11 @@ const TutorDetailView = (props: any) => {
               <i className="icon ion-ios-arrow-forward mr-1" />
               Data Engineer
             </p>
+
+            <p className="m-0">
+              <i className="icon ion-ios-arrow-forward mr-1" />
+              UI/UX Engineer
+            </p>
           </div>
         </div>
       </FlexRow>

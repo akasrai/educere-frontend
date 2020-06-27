@@ -101,7 +101,8 @@ const UpcomingAppointments = () => {
     <div className="row">
       {appointments.map((appointment, key) => (
         <div key={key} className="col-md-6 p-3">
-          <div className="appointment-card bg-lightblue rounded">
+          <div className="appointment-card">
+            <h5>{appointment.agenda} </h5>
             <p className="m-0 p-2">
               Date:{' '}
               <span className="text-primary bold">{appointment.date} </span>
@@ -159,19 +160,38 @@ const TutorList = () => {
 
 const InstitutionOverView = () => {
   return (
-    <React.Fragment>
-      <FlexRow>
-        <div className="col-md-8 p-4 mr-4 border">
-          <h4 className="text-center">Upcoming Appointments</h4>
-          <UpcomingAppointments />
+    <FlexRow>
+      <div className="col-md-12 p-0 row">
+        <div className="col-md-4 mb-3">
+          <div className="rounded border p-3 text-center">
+            <h1 className="bold">10</h1>
+            <p className="text-muted m-0">Events this months</p>
+          </div>
         </div>
-        <div className="col-md-3 p-4 ml-4 border tutor-list">
-          <h4 className="text-center p-1">Subscribed Tutors</h4>
 
-          <TutorList />
+        <div className="col-md-4">
+          <div className="rounded border p-3 text-center">
+            <h1 className="bold">10</h1>
+            <p className="text-muted m-0">Events this months</p>
+          </div>
         </div>
-      </FlexRow>
-    </React.Fragment>
+
+        <div className="col-md-4">
+          <div className="rounded border p-3 text-center">
+            <h1 className="bold">10</h1>
+            <p className="text-muted m-0">Events this months</p>
+          </div>
+        </div>
+      </div>
+      <div className="col-md-8 p-4 mr-4 border rounded">
+        <UpcomingAppointments />
+      </div>
+      <div className="col-md-3 p-4 ml-4 border tutor-list">
+        <h4 className="text-center p-1">Subscribed Tutors</h4>
+
+        <TutorList />
+      </div>
+    </FlexRow>
   );
 };
 
