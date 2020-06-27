@@ -2,14 +2,15 @@ import React, { useContext, useReducer, useState, useEffect } from 'react';
 
 import * as auth from 'auth/auth.state';
 import { Button } from 'ui/form/button';
-import { signIn } from 'api/resource.api';
+import { signIn, signUp } from 'api/resource.api';
 import USER_TYPE from 'app/app.user-type';
 import { AuthContext } from 'auth/auth.context';
 import { Input, RadioButton } from 'ui/form/input';
 import { ErrorAlert } from 'ui/alert/inline-alert';
 import { FlexRow } from 'ui/layout/component/flex';
+import { SignupPayload } from 'auth/auth.type';
 
-const handleSignIn = async (
+const handleSignUp = async (
   event: any,
   dispatch: (props: any) => void,
   setSignUpError: (error: string) => void
@@ -17,10 +18,7 @@ const handleSignIn = async (
   event.preventDefault();
   dispatch({ type: auth.SIGN_IN_PENDING });
 
-  const { data, error } = await signIn({
-    email: event.target[0].value,
-    password: event.target[1].value,
-  });
+  const { data, error } = await signUp(getFormData(event.target));
 
   if (error) {
     setSignUpError(error.message);
@@ -33,12 +31,27 @@ const handleSignIn = async (
   });
 };
 
+const getFormData = (inputs: any): SignupPayload => {
+  const formData: any = {};
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].type === 'radio') {
+      if (inputs[i].checked) formData[inputs[i].name] = inputs[i].value;
+      continue;
+    }
+
+    if (inputs[i].name) formData[inputs[i].name] = inputs[i].value;
+  }
+
+  return formData;
+};
+
 const TutorName = ({ error }: { error: any }) => (
   <>
     <div className="col-md-6 p-0 pr-1">
       <Input
         type="text"
-        name="fName"
+        name="firstName"
         required={true}
         placeholder="First name"
         className={`${error ? 'is-invalid ' : ''}`}
@@ -48,7 +61,7 @@ const TutorName = ({ error }: { error: any }) => (
     <div className="col-md-6 p-0 pl-1">
       <Input
         type="text"
-        name="lName"
+        name="lastName"
         required={true}
         placeholder="Last name"
         className={`${error ? 'is-invalid ' : ''}`}
@@ -61,8 +74,8 @@ const InstitutionName = ({ error }: { error: any }) => (
   <div className="col-md-12 p-0 pr-1">
     <Input
       type="text"
-      name="name"
       required={true}
+      name="institutionName"
       placeholder="Institution Name"
       className={`${error ? 'is-invalid ' : ''}`}
     />
@@ -90,13 +103,13 @@ const SignupForm = () => {
     <form
       className="col-12 p-md-3 p-0"
       onChange={() => setSignUpError('')}
-      onSubmit={(e) => handleSignIn(e, dispatch, setSignUpError)}
+      onSubmit={(e) => handleSignUp(e, dispatch, setSignUpError)}
     >
       <ErrorAlert message={signUpError} />
       <FlexRow>
         <div className="col-md-3 p-0">
           <RadioButton
-            name="options"
+            name="userType"
             checked={true}
             required={true}
             onChange={setType}
@@ -107,7 +120,7 @@ const SignupForm = () => {
         </div>
         <div className="col-md-6 p-0">
           <RadioButton
-            name="options"
+            name="userType"
             required={true}
             onChange={setType}
             id={USER_TYPE.INSTITUTION}
@@ -129,13 +142,6 @@ const SignupForm = () => {
         name="password"
         required={true}
         placeholder="Password"
-        className={`${signUpError ? 'is-invalid ' : ''}`}
-      />
-      <Input
-        type="password"
-        name="rePassword"
-        required={true}
-        placeholder="Confirm Password"
         className={`${signUpError ? 'is-invalid ' : ''}`}
       />
       <p className="small text-muted">

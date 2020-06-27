@@ -72,19 +72,16 @@ const PrivateNavBar = () => {
           </div>
           <div className="col-md-3 p-0">
             <div className="d-flex user-tool">
-              {true ? (
+              {user.photo ? (
                 <div className="dp">
-                  <img
-                    src="https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4"
-                    alt="dp"
-                  />
+                  <img src={user.photo} alt="dp" />
                 </div>
               ) : (
                 <i className="icon ion-md-contact h3 mr-2 m-0 text-muted" />
               )}
               <button className="bold p pt-1 user-tool-btn">
                 <span className="d-none d-md-inline text-muted">
-                  {user?.name || 'Akash Rai'}{' '}
+                  {user.name}
                 </span>
                 <i className="icon ion-ios-arrow-down ml-2 text-primary" />
                 <div className="dropdown text-muted">

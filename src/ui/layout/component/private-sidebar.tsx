@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Flex } from './flex';
 import { history } from 'app/app.history';
 import { ROUTE } from 'app/app.route-path';
+import { AuthContext } from 'auth/auth.context';
 
 interface TabProps {
   name: String;
@@ -104,43 +105,46 @@ const SidebarAccordinMenu = () => (
   </div>
 );
 
-const SidebarProfile = () => (
-  <div className="col-12">
-    <div className="sidebar-dp text-center">
-      {true ? (
-        <img
-          src="https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4"
-          alt="dp"
-        />
-      ) : (
-        <i className="icon ion-md-contact text-center  mr-2 m-0 text-muted" />
-      )}
-    </div>
-    <div className="pl-4 p-sticky">
-      <h3 className="mb-0">Akash Rai</h3>
-      <p>akasky70@gmail.com</p>
-      <p>I love EduCere.</p>
-      <div className="text-left small">
-        <p className="m-0">
-          <i className="icon ion-md-call mr-2" />
-          9869768601
-        </p>
-        <Flex>
-          <i className="icon ion-md-pin mr-2" />
-          <div>
-            <p className="m-0">Bouddha Rd, Jorpati</p>
-            <p className="m-0">Kathmandu, Nepal</p>
-            <p className="m-0">44600</p>
-          </div>
-        </Flex>
-      </div>
+const SidebarProfile = () => {
+  const { user } = useContext(AuthContext);
 
-      <Link className="col-12 btn btn-md btn-outline-primary mt-3 p-1">
-        Edit Profile
-      </Link>
+  return (
+    <div className="col-12">
+      <div className="sidebar-dp text-center">
+        {user.photo ? (
+          <div className="dp-circle ">
+            <img src={user.photo} alt="dp" />
+          </div>
+        ) : (
+          <i className="icon ion-md-contact text-center  mr-2 m-0 text-muted" />
+        )}
+      </div>
+      <div className="pl-4 p-sticky">
+        <h3 className="mb-0">{user.name}</h3>
+        <p>{user.email}</p>
+        <p>{user.bio}</p>
+        <div className="text-left small">
+          <p className="m-0">
+            <i className="icon ion-md-call mr-2" />
+            {user.phoneNumber}
+          </p>
+          <Flex>
+            <i className="icon ion-md-pin mr-2" />
+            <div>
+              <p className="m-0">Bouddha Rd, Jorpati</p>
+              <p className="m-0">Kathmandu, Nepal</p>
+              <p className="m-0">44600</p>
+            </div>
+          </Flex>
+        </div>
+
+        <Link className="col-12 btn btn-md btn-outline-primary mt-3 p-1">
+          Edit Profile
+        </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PrivateSidebar = () => {
   return (
