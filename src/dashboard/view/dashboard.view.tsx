@@ -58,7 +58,7 @@ const DashboardView = () => {
         Hi, <span className="bold">{user.name}!</span>
       </h3>
       {roles.includes(USER_ROLES.TUTOR) ? (
-        <InstitutionOverView />
+        <TutorOverView />
       ) : (
         <InstitutionOverView />
       )}
