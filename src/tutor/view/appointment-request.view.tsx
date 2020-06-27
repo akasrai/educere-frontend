@@ -21,28 +21,29 @@ const AppointmentList = () => {
           </span>
           {appointment.status === 'Pending' ? (
             <React.Fragment>
-              <div className="col-md-2">
+              <span className="col-md-2 p-1"></span>
+              <div className="col-md-1 p-1">
                 <Button
                   name="Accept"
                   // onClick={() => handleAppointment('Accept')}
-                  className="sm btn-outline-success"
+                  className="sm btn-outline-success p-1"
                 />
               </div>
-              <div className="col-md-2">
+              <div className="col-md-1 p-1">
                 <Button
                   name="Reject"
                   // onClick={() => handleAppointment('Reject')}
-                  className="sm btn-outline-danger"
+                  className="sm btn-outline-danger p-1"
                 />
               </div>
             </React.Fragment>
           ) : (
-            <div className="col-md-4 text-right text-white">
+            <div className="col-md-4 p-1 text-right text-white">
               <span
                 className={`p-1 ${
                   appointment.status === 'Accepted'
-                    ? 'btn btn-sm bg-success'
-                    : 'btn btn-sm bg-danger'
+                    ? 'btn-sm bg-success pt-2 pb-2 pr-3 pl-3'
+                    : 'btn-sm bg-danger pt-2 pb-2 pr-3 pl-3'
                 }`}
               >
                 {appointment.status}
@@ -58,13 +59,10 @@ const AppointmentList = () => {
 const AppointmentRequestView = () => {
   return (
     <AuthenticatedLayout className="fixed-height-layout">
+      <h3 className="p-3"> Appointment Requests</h3>
       <FlexRow className="justify-content-center">
-        <div className="col-md-12 p-5 m-3 rounded bg-white border">
-          <h4 className="mt-0 text-primary bold">
-            <i className="icon ion-md-time mr-2" />
-            Appointment Requests
-            <span className="border-bottom mt-2 d-block"></span>
-          </h4>
+        <div className="col-md-12 p-3 m-3 rounded border">
+          {/* <h3 className="mt-0 text-primary">Appointment Requests</h3> */}
           <AppointmentList />
         </div>
       </FlexRow>

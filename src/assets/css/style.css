@@ -895,4 +895,14 @@ img.logo {
   -webkit-box-shadow: 0 0 0 0.2rem #f58634;
           box-shadow: 0 0 0 0.2rem #f58634;
 }
+
+.appointment-text {
+  line-height: 35px;
+}
+
+.availability-close-btn {
+  right: 0;
+  top: -5px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
