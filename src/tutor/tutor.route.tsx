@@ -17,7 +17,7 @@ const TutorRoutes = () => (
     />
     <PrivateRoute
       exact
-      path={ROUTE.TUTOR_APPOINMENTS}
+      path={ROUTE.TUTOR_APPOINTMENTS}
       component={AppointmentRequestView}
     />
   </Switch>

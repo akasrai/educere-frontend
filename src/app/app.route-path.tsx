@@ -8,7 +8,7 @@ export const ROUTE = {
   // Tutor
   TUTOR_PROFILE: '/tutor/profile',
   ADD_AVAILABILITY: '/tutor/availability',
-  TUTOR_APPOINMENTS: '/tutor/appointment',
+  TUTOR_APPOINTMENTS: '/tutor/appointment',
 
   // INSTITUTION
   FIND_TUTOR: '/institution/tutors',
