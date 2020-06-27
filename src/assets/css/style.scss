@@ -389,6 +389,7 @@ img.logo {
     margin-top: -50px;
     z-index: 1100;
     margin-bottom: 20px;
+    position: relative;
   }
 
   .dp-circle {
@@ -400,6 +401,15 @@ img.logo {
     border-radius: 100%;
     border: 2px solid rgb(236, 236, 236);
   }
+}
+
+.complete-profile-dp {
+  font-size: 150px;
+  line-height: 0;
+}
+
+.change-dp {
+  margin-top: -40px;
 }
 
 .tabs {

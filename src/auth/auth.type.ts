@@ -9,6 +9,15 @@ export interface User {
   github?: string;
   linkedIn?: string;
   twitter?: string;
+  address: {
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    zip: string;
+    latitude?: string;
+    longitude?: string;
+  };
 }
 
 export interface AuthState {
@@ -39,4 +48,27 @@ export interface SignupPayload {
   email: string;
   password: string;
   userType: string;
+}
+
+export interface CompleteSignupPayload {
+  dp?: string;
+  bio?: string;
+  wall?: string;
+  github?: string;
+  website?: string;
+  twitter?: string;
+  linkedin?: string;
+  facebook?: string;
+  phoneOne: string;
+  phoneTwo?: string;
+  phoneThree?: string;
+  address: {
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    zip: string;
+    latitude?: string;
+    longitude?: string;
+  };
 }

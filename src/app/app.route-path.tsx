@@ -4,6 +4,7 @@ export const ROUTE = {
   SIGNUP: '/register',
   DASHBOARD: '/overview',
   FORGOT_PASSWORD: '/forgot/password',
+  COMPLETE_SIGNUP: '/complete/registration',
 
   // Tutor
   TUTOR_PROFILE: '/tutor/profile',

@@ -8,7 +8,10 @@ interface Options {
 
 interface InputProps {
   id?: string;
+  max?: number;
+  min?: number;
   name: string;
+  label?: string;
   type?: string;
   checked?: boolean;
   className?: string;
@@ -21,14 +24,28 @@ interface InputProps {
 }
 
 export const Input = (props: InputProps) => {
-  const { id, type, name, className, onChange, required, placeholder } = props;
+  const {
+    id,
+    max,
+    min,
+    type,
+    name,
+    label,
+    onChange,
+    required,
+    className,
+    placeholder,
+  } = props;
 
   return (
     <div className="col-12 form-group p-0">
+      {label && <label className="small mb-0">{label}</label>}
       <input
         id={id}
         type={type}
         name={name}
+        minLength={min}
+        maxLength={max}
         onChange={onChange}
         required={required}
         placeholder={placeholder}
@@ -39,10 +56,11 @@ export const Input = (props: InputProps) => {
 };
 
 export const TextArea = (props: InputProps) => {
-  const { name, className, required, placeholder } = props;
+  const { name, label, className, required, placeholder } = props;
 
   return (
     <div className="col-12 form-group p-0">
+      {label && <label className="small mb-0">{label}</label>}
       <textarea
         name={name}
         rows={Number(4)}
