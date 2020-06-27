@@ -109,7 +109,7 @@ const AppointmentRequestView = () => {
           {console.log(isTakingAction, isModalOpen)}
           <PopupAlert
             alert={isModalOpen}
-            title="Appointment Request"
+            title="Are you sure?"
             message={`${
               action === 'Accept'
                 ? 'Are you sure you want to accept?'

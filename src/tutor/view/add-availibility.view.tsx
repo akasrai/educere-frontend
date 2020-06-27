@@ -81,20 +81,20 @@ const AvailabilityFormRow = ({
 };
 
 const handleSubmit = async (e: any, setError: Function) => {
-  e.preventDefault();
+  // e.preventDefault();
 
   const formData = getFormData(e.target, setError);
   console.log(formData);
 
-  const response = await sendData(formData);
+  // const response = await sendData(formData);
 
-  if (response) {
-    toast.success(
-      <SuccessMessage
-        message={'Availability Schedule has been added successfully'}
-      />
-    );
-  }
+  // if (response) {
+  toast.success(
+    <SuccessMessage
+      message={'Availability Schedule has been added successfully'}
+    />
+  );
+  // }
 };
 
 const getFormData = (inputs: any, setError: Function) => {
