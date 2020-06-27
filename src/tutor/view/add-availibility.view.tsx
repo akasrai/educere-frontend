@@ -143,7 +143,7 @@ const AddAvailibilityForm = () => {
       onSubmit={(e) => handleSubmit(e, setError, availabilityType)}
       onBlur={(e) => handleValidation(e.target, setError)}
     >
-      <FlexRow>
+      <FlexRow className="tutor-list">
         <div className="col-md-12 clearfix p-0">
           <div className="col-md-3 float-left p-0">
             <RadioButton

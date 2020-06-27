@@ -99,7 +99,7 @@ const AppointmentRequestView = () => {
     <AuthenticatedLayout className="fixed-height-layout">
       <p className="p-0">Appointment Requests</p>
 
-      <FlexRow className="justify-content-center">
+      <FlexRow className="justify-content-center tutor-list">
         <div className="col-md-12 p-4 border">
           <AppointmentList
             setIsModalOpen={setIsModalOpen}

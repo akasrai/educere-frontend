@@ -214,6 +214,7 @@ const MenuBar = ({ roles }: { roles: Array<string> }) => {
               route={ROUTE.FIND_TUTOR}
               name="Find Tutors"
             />
+            <Menu icon="md-search" route={ROUTE.NEARBY_EVENTS} name="Nearby" />
           </>
         )}
       </div>

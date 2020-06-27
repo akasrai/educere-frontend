@@ -5,6 +5,7 @@ import { ROUTE } from 'app/app.route-path';
 import { PrivateRoute } from 'app/app.routes';
 import FindTutorView from './view/find-tutor.view';
 import AppointmentsView from './view/appointment.view';
+import NearbyEventsView from './view/nearby-events.view';
 
 const InstitutionRoute = () => (
   <Switch>
@@ -13,6 +14,11 @@ const InstitutionRoute = () => (
       exact
       path={ROUTE.INSTITUTION_APPOINTMENTS}
       component={AppointmentsView}
+    />
+    <PrivateRoute
+      exact
+      path={ROUTE.NEARBY_EVENTS}
+      component={NearbyEventsView}
     />
   </Switch>
 );
