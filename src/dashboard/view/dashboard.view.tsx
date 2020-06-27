@@ -5,6 +5,7 @@ import { AuthContext } from 'auth/auth.context';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import TutorOverView from 'dashboard/components/tutor-overview.component';
 import { getCurrentUser } from 'api/resource.api';
+import InstitutionOverView from 'dashboard/components/institution-overview.component';
 
 const getUser = async (dispatch: (props: any) => void) => {
   dispatch({ type: auth.AUTH_ACTION_PENDING });
@@ -57,6 +58,8 @@ const DashboardView = () => {
       </h3>
       {/* <TutorOverView />  */}
       {/* Show this view if role is tutor */}
+      {/* <InstitutionOverView /> */}
+      {/* Show this view if role is institution */}
     </AuthenticatedLayout>
   );
 };

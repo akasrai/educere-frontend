@@ -935,6 +935,13 @@ img.logo {
   cursor: pointer;
 }
 
+.expertise-close-btn {
+  right: -10px;
+  font-size: 2rem;
+  cursor: pointer;
+  bottom: 200px;
+}
+
 .appointment-card {
   border-color: #d6e9f9;
   font-size: 0.9rem;

@@ -80,10 +80,14 @@ const AvailabilityFormRow = ({
   );
 };
 
-const handleSubmit = async (e: any, setError: Function) => {
+const handleSubmit = async (
+  e: any,
+  setError: Function,
+  availabilityType: string
+) => {
   // e.preventDefault();
 
-  const formData = getFormData(e.target, setError);
+  const formData = getFormData(e.target, setError, availabilityType);
   console.log(formData);
 
   // const response = await sendData(formData);
@@ -97,17 +101,22 @@ const handleSubmit = async (e: any, setError: Function) => {
   // }
 };
 
-const getFormData = (inputs: any, setError: Function) => {
+const getFormData = (
+  inputs: any,
+  setError: Function,
+  availabilityType: string
+) => {
   const formData: any = {};
-  for (let i = 0; i < inputs.length; i++) {
-    if (handleValidation(inputs[i], setError)) {
-      if (inputs[i].type === 'radio') {
-        if (inputs[i].checked) formData[inputs[i].name] = inputs[i].value;
-        continue;
-      }
-      if (inputs[i].name) formData[inputs[i].name] = inputs[i].value;
-    }
-  }
+  console.log(inputs.length);
+  // for (let i = 0; i < inputs.length; i++) {
+  //   if (handleValidation(inputs[i], setError)) {
+  //     if (inputs[i].type === 'radio') {
+  //       if (inputs[i].checked) formData[inputs[i].name] = inputs[i].value;
+  //       continue;
+  //     }
+  //     if (inputs[i].name) formData[inputs[i].name] = inputs[i].value;
+  //   }
+  // }
   return formData;
 };
 
@@ -131,7 +140,7 @@ const AddAvailibilityForm = () => {
   return (
     <form
       className="col-12 p-md-3 p-0"
-      onSubmit={(e) => handleSubmit(e, setError)}
+      onSubmit={(e) => handleSubmit(e, setError, availabilityType)}
       onBlur={(e) => handleValidation(e.target, setError)}
     >
       <FlexRow>
