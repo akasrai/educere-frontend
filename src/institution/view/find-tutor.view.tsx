@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import { FlexRow } from 'ui/layout/component/flex';
+import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 
 const Tutor = () => (
   <div className="col-md-3 p-2">
