@@ -32,7 +32,7 @@ export const getSignedInUser = async (
 
   dispatch({
     type: auth.SIGN_IN_SUCCESS,
-    payload: { token: token, roles: data.roles, user: getUser(data) },
+    payload: { token, roles: data.roles, user: getUser(data) },
   });
 };
 

@@ -11,6 +11,7 @@ const appointments = [
     endTime: '08:30 pm',
     agenda: 'Conference for SEE students',
     location: 'Jorpati, Kathmandu',
+    tutor: 'Akasky Rai',
   },
   {
     id: 1,
@@ -19,6 +20,7 @@ const appointments = [
     endTime: '08:30 pm',
     agenda: 'Conference for SEE students',
     location: 'Jorpati, Kathmandu',
+    tutor: 'Akasky Rai',
   },
   {
     id: 1,
@@ -27,6 +29,7 @@ const appointments = [
     endTime: '08:30 pm',
     agenda: 'Conference for SEE students',
     location: 'Jorpati, Kathmandu',
+    tutor: 'Akasky Rai',
   },
   {
     id: 1,
@@ -35,6 +38,7 @@ const appointments = [
     endTime: '08:30 pm',
     agenda: 'Conference for SEE students',
     location: 'Jorpati, Kathmandu',
+    tutor: 'Akasky Rai',
   },
   {
     id: 1,
@@ -43,6 +47,7 @@ const appointments = [
     endTime: '08:30 pm',
     agenda: 'Conference for SEE students',
     location: 'Jorpati, Kathmandu',
+    tutor: 'Akasky Rai',
   },
   {
     id: 1,
@@ -51,6 +56,7 @@ const appointments = [
     endTime: '08:30 pm',
     agenda: 'Conference for SEE students',
     location: 'Jorpati, Kathmandu',
+    tutor: 'Akasky Rai',
   },
   {
     id: 1,
@@ -59,39 +65,32 @@ const appointments = [
     endTime: '08:30 pm',
     agenda: 'Conference for SEE students',
     location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
+    tutor: 'Akasky Rai',
   },
 ];
 
-const subscribersList = [
+const subscribedTutorList = [
   {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
+    name: 'Akasky Rai',
+    field: 'Software Engineer',
     imgUrl:
       'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
   },
   {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
+    name: 'Akasky Rai',
+    field: 'Software Engineer',
     imgUrl:
       'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
   },
   {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
+    name: 'Akasky Rai',
+    field: 'Software Engineer',
     imgUrl:
       'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
   },
   {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
+    name: 'Akasky Rai',
+    field: 'Software Engineer',
     imgUrl:
       'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
   },
@@ -121,6 +120,10 @@ const UpcomingAppointments = () => {
               Location:{' '}
               <span className="text-primary bold">{appointment.location} </span>
             </p>
+            <p className="m-0 p-2">
+              Tutor:{' '}
+              <span className="text-primary bold">{appointment.tutor} </span>
+            </p>
           </div>
         </div>
       ))}
@@ -128,19 +131,25 @@ const UpcomingAppointments = () => {
   );
 };
 
-const SubscriberList = () => {
+const TutorList = () => {
   return (
     <div className="col-md-12 p-2">
-      {subscribersList.map((subscriber, key) => (
+      {subscribedTutorList.map((tutor, key) => (
         <div key={key} className="w-100 rounded border tutor bg-lightblue mb-2">
           <div className="image">
-            <img src={subscriber.imgUrl} alt="dp" />
+            <img src={tutor.imgUrl} alt="dp" />
           </div>
-          <p className="bold m-0">{subscriber.name}</p>
-          <p className="small">{subscriber.location}</p>
-          <Link to="" className="col-12 btn btn-md btn-outline-primary p-1">
+          <p className="bold m-0">{tutor.name}</p>
+          <p className="small">{tutor.field}</p>
+          <Link
+            to=""
+            className="col-12 btn btn-md btn-outline-primary p-1 mb-1"
+          >
             <span className="small">View Details</span>
           </Link>
+          <div className="col-12 btn btn-md btn-outline-primary p-1">
+            <span className="small">Unsubscribe</span>
+          </div>
           <div />
         </div>
       ))}
@@ -148,7 +157,7 @@ const SubscriberList = () => {
   );
 };
 
-const TutorOverView = () => {
+const InstitutionOverView = () => {
   return (
     <React.Fragment>
       <FlexRow>
@@ -156,14 +165,14 @@ const TutorOverView = () => {
           <h4 className="text-center">Upcoming Appointments</h4>
           <UpcomingAppointments />
         </div>
-        <div className="col-md-3 p-4 border ml-4 tutor-list">
-          <h4 className="text-center p-1">Subscribers</h4>
+        <div className="col-md-3 p-4 ml-4 border tutor-list">
+          <h4 className="text-center p-1">Subscribed Tutors</h4>
 
-          <SubscriberList />
+          <TutorList />
         </div>
       </FlexRow>
     </React.Fragment>
   );
 };
 
-export default TutorOverView;
+export default InstitutionOverView;

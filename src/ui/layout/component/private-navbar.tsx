@@ -193,6 +193,11 @@ const MenuBar = ({ roles }: { roles: Array<string> }) => {
               route={ROUTE.ADD_AVAILABILITY}
               name="Schedule"
             />
+            <Menu
+              icon="md-calendar"
+              route={ROUTE.ADD_EXPERTISE}
+              name="Expertise"
+            />
           </>
         )}
 

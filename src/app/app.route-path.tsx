@@ -10,6 +10,7 @@ export const ROUTE = {
   TUTOR_PROFILE: '/tutor/profile',
   ADD_AVAILABILITY: '/tutor/availability',
   TUTOR_APPOINTMENTS: '/tutor/appointment',
+  ADD_EXPERTISE: '/tutor/expertise',
 
   // INSTITUTION
   FIND_TUTOR: '/institution/tutors',
