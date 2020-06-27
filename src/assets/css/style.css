@@ -929,8 +929,18 @@ img.logo {
 }
 
 .availability-close-btn {
-  right: 0;
+  right: -10px;
   top: -5px;
+  font-size: 2rem;
   cursor: pointer;
+}
+
+.appointment-card {
+  border-color: #d6e9f9;
+  font-size: 0.9rem;
+}
+
+.bg-lightblue {
+  background-color: #e2f0fb;
 }
 /*# sourceMappingURL=style.css.map */

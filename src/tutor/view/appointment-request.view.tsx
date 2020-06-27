@@ -100,7 +100,6 @@ const AppointmentRequestView = () => {
       <h3 className="p-3"> Appointment Requests</h3>
       <FlexRow className="justify-content-center">
         <div className="col-md-12 p-3 m-3 rounded border">
-          {/* <h3 className="mt-0 text-primary">Appointment Requests</h3> */}
           <AppointmentList
             setIsModalOpen={setIsModalOpen}
             setAction={setAction}
@@ -109,7 +108,7 @@ const AppointmentRequestView = () => {
           {console.log(isTakingAction, isModalOpen)}
           <PopupAlert
             alert={isModalOpen}
-            title="Appointment Request"
+            title="Are you sure?"
             message={`${
               action === 'Accept'
                 ? 'Are you sure you want to accept?'

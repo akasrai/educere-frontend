@@ -70,7 +70,7 @@ const AvailabilityFormRow = ({
           )}
           {element === totalSchedule.length && element !== 1 && (
             <i
-              className="icon ion-md-close position-absolute availability-close-btn"
+              className="icon ion-md-close position-absolute availability-close-btn text-danger"
               onClick={() => removeSchedule(totalSchedule, setTotalSchedule)}
             />
           )}
@@ -81,20 +81,20 @@ const AvailabilityFormRow = ({
 };
 
 const handleSubmit = async (e: any, setError: Function) => {
-  e.preventDefault();
+  // e.preventDefault();
 
   const formData = getFormData(e.target, setError);
   console.log(formData);
 
-  const response = await sendData(formData);
+  // const response = await sendData(formData);
 
-  if (response) {
-    toast.success(
-      <SuccessMessage
-        message={'Availability Schedule has been added successfully'}
-      />
-    );
-  }
+  // if (response) {
+  toast.success(
+    <SuccessMessage
+      message={'Availability Schedule has been added successfully'}
+    />
+  );
+  // }
 };
 
 const getFormData = (inputs: any, setError: Function) => {
@@ -142,7 +142,6 @@ const AddAvailibilityForm = () => {
               name="availabilityType"
               value="Online"
               required={true}
-              checked={true}
               onChange={(e) => setAvailabilityType('Online')}
             />
           </div>

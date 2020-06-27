@@ -73,7 +73,7 @@ const ActionButtons = (props: ActionButtonsProps) => {
     <React.Fragment>
       <button
         disabled={isTakingAction}
-        className={`btn btn-default mr-2 w-25`}
+        className={`btn btn-${className} mr-2 w-25`}
         onClick={toggleConfirmationBox}
       >
         No

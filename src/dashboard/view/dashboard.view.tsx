@@ -3,6 +3,7 @@ import React, { useContext, useState, useReducer, useEffect } from 'react';
 import * as auth from 'auth/auth.state';
 import { AuthContext } from 'auth/auth.context';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
+import TutorOverView from 'dashboard/components/tutor-overview.component';
 import { getCurrentUser } from 'api/resource.api';
 
 const getUser = async (dispatch: (props: any) => void) => {
@@ -54,6 +55,8 @@ const DashboardView = () => {
       <h3 className="p-3">
         Hi, <span className="bold">{user.name}!</span>
       </h3>
+      {/* <TutorOverView />  */}
+      {/* Show this view if role is tutor */}
     </AuthenticatedLayout>
   );
 };
