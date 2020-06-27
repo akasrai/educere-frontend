@@ -13,7 +13,7 @@ button {
 
 body {
   overflow-x: hidden;
-  background-color: #f6f5f8;
+  background-color: #fff;
 }
 
 h4,
@@ -322,7 +322,7 @@ img.logo {
   position: -webkit-sticky;
   position: sticky;
   overflow: hidden;
-  background-color: #f6f5f8;
+  background-color: #fff;
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
 }
@@ -418,9 +418,15 @@ img.logo {
 }
 
 .sidebar .sidebar-dp {
+  width: 70%;
+  margin: auto;
   font-size: 200px;
   line-height: 0px;
   margin-top: -50px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #ececec;
 }
 
 .sidebar .sidebar-dp i {
@@ -590,6 +596,13 @@ img.logo {
           justify-content: flex-end;
 }
 
+.user-tool .dp {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 100%;
+}
+
 .user-tool .user-tool-btn {
   border: 0;
   outline: 0;
@@ -599,7 +612,7 @@ img.logo {
 
 .user-tool .user-tool-btn:focus .dropdown, .user-tool .user-tool-btn:active .dropdown {
   opacity: 1;
-  z-index: 888;
+  z-index: 1300;
   visibility: visible;
   -webkit-transform: translate(0, 20px);
           transform: translate(0, 20px);
@@ -630,6 +643,7 @@ img.logo {
   right: 15px;
   width: 0;
   height: 0;
+  z-index: 1300;
   -webkit-box-shadow: 2px -2px 6px rgba(31, 71, 114, 0.05);
           box-shadow: 2px -2px 6px rgba(31, 71, 114, 0.05);
   border-top: 6px solid #f9fafc;

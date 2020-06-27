@@ -3,4 +3,10 @@ const USER_TYPE = {
   INSTITUTION: 'institution',
 };
 
+export const USER_ROLES = {
+  GUEST: 'GUEST',
+  TUTOR: 'TUTOR',
+  INSTITUTION: 'INSTITUTION',
+};
+
 export default USER_TYPE;
