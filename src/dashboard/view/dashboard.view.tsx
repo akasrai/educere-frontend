@@ -55,7 +55,8 @@ const DashboardView = () => {
       <h3 className="p-3">
         Hi, <span className="bold">{user.name}!</span>
       </h3>
-      <TutorOverView />
+      {/* <TutorOverView />  */}
+      {/* Show this view if role is tutor */}
     </AuthenticatedLayout>
   );
 };
