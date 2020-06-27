@@ -7,7 +7,7 @@ import TutorOverView from 'dashboard/components/tutor-overview.component';
 import InstitutionOverView from 'dashboard/components/institution-overview.component';
 
 const DashboardView = () => {
-  const { user, roles } = useContext(AuthContext);
+  const { roles } = useContext(AuthContext);
 
   return (
     <AuthenticatedLayout>
