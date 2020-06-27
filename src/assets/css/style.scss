@@ -399,6 +399,7 @@ img.logo {
     overflow: hidden;
     position: relative;
     border-radius: 100%;
+    background-color: #fff;
     border: 2px solid rgb(236, 236, 236);
   }
 }
@@ -682,7 +683,7 @@ img.logo {
   overflow-y: auto;
   overflow-x: hidden;
   background: rgba(0, 0, 0, 0.73);
-  z-index: 999;
+  z-index: 9999;
 }
 
 .modal-dialog {

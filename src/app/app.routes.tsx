@@ -16,7 +16,7 @@ import { USER_ROLES } from './app.user-type';
 import CompleteSigninView from 'auth/view/complete-signup.view';
 
 const AuthenticatedRoute = (props: any) => {
-  const { roles, isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   return isAuthenticated ? (
     <Route {...props} />
