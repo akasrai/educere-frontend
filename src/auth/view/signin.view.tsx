@@ -9,8 +9,8 @@ import NonAuthenticatedLayout from 'ui/layout/non-authenticated.layout';
 const SigninView = () => {
   return (
     <NonAuthenticatedLayout>
-      <div className="col-md-12 m-0 row p-0 mt-5 mb-5 pt-4">
-        <div className="col-md-5 float-left p-5">
+      <div className="col-md-11 m-auto m-0 row p-0 mt-5 mb-5 pt-4">
+        <div className="col-md-6 float-left p-5">
           <h1 className="bold text-primary mt-3">Why?</h1>
           <p className="text-muted">
             <span className="bold">EduCere</span> is a one stop solution for
@@ -20,8 +20,8 @@ const SigninView = () => {
           </p>
         </div>
         <Vr />
-        <div className="col-md-6  float-right">
-          <div className="col-md-11 p-5 rounded login-form">
+        <div className="col-md-5 float-right">
+          <div className="col-md-11 mb-5 pt-5 pl-5 pr-1 rounded login-form">
             <h3 className="text-primary ml-md-3 ml-0 mb-3">Welcome back :)</h3>
             <SigninForm />
             <Link className="pl-3 small" to={ROUTE.FORGOT_PASSWORD}>
