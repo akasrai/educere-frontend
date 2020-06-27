@@ -61,8 +61,16 @@ const PrivateNavBar = () => {
               {/* <span className="bold lead page-title">{getPageName()}</span> */}
             </div>
           </div>
-          <div className="col-md-3 p-0">
-            <div className="d-flex user-tool">
+          <div className="col-md-3 p-0 d-flex">
+            <div className="notification">
+              <button className="bold p pt-1 notification-btn">
+                <i className="icon ion-md-notifications-outline h3 mr-4 m-0 text-muted" />
+
+                <div className="dropdown text-muted">Hello</div>
+              </button>
+            </div>
+
+            <div className="user-tool">
               {user.photo ? (
                 <div className="dp">
                   <img src={user.photo} alt="dp" />

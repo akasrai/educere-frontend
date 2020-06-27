@@ -12,3 +12,36 @@ export const pictures = {
     return this.image[rand];
   },
 };
+
+export const categories = [
+  {
+    name: 'Science',
+    value: 'science',
+  },
+  {
+    name: 'Technology',
+    value: 'technology',
+  },
+  {
+    name: 'Food',
+    value: 'food',
+  },
+  {
+    name: 'Health',
+    value: 'health',
+  },
+  {
+    name: 'Agriculture',
+    value: 'agriculture',
+  },
+];
+
+export const profession = {
+  job: ['Professor', 'Software Engineer', 'Doctor', 'Surgeon'],
+
+  getRandomJob() {
+    const rand = Math.floor(Math.random() * Math.floor(this.job.length));
+
+    return this.job[rand];
+  },
+};

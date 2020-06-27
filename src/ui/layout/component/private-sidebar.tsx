@@ -14,7 +14,7 @@ interface TabProps {
   children?: ReactNode;
 }
 
-interface SocialMedaProps {
+interface SocialMediaProps {
   icon: string;
   link: string;
   username: string | undefined;
@@ -112,7 +112,7 @@ const SidebarAccordinMenu = () => (
   </div>
 );
 
-const SocialMedia = ({ icon, link, username }: SocialMedaProps) =>
+const SocialMedia = ({ icon, link, username }: SocialMediaProps) =>
   username ? (
     <p className="m-0">
       <a href={link} target="_blank">
