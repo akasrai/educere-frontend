@@ -116,7 +116,7 @@ const SidebarProfile = () => (
         <i className="icon ion-md-contact text-center  mr-2 m-0 text-muted" />
       )}
     </div>
-    <div className="pl-4">
+    <div className="pl-4 p-sticky">
       <h3 className="mb-0">Akash Rai</h3>
       <p>akasky70@gmail.com</p>
       <p>I love EduCere.</p>
@@ -145,7 +145,7 @@ const SidebarProfile = () => (
 const PrivateSidebar = () => {
   return (
     <section className="col-md-3">
-      <div className="col-md-12 p-0 pt-3 pb-3 bg-transparent text-primary sidebar p-sticky">
+      <div className="col-md-12 p-0 pt-3 pb-3 bg-transparent text-primary sidebar">
         {/* <SidebarAccordinMenu /> */}
         <SidebarProfile />
       </div>

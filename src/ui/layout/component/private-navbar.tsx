@@ -4,6 +4,7 @@ import React, {
   Fragment,
   useContext,
   useReducer,
+  useRef,
 } from 'react';
 
 import { Flex } from './flex';
@@ -59,7 +60,7 @@ const PrivateNavBar = () => {
           <div className="col-md-3 p-0">
             <div className="d-flex">
               <i className="icon ion-md-school h3 mr-2 m-0" />
-              <span className=" p pt-1">
+              <span className="p pt-1">
                 Edu<span className="bold">Cere</span>
               </span>
             </div>
@@ -163,39 +164,67 @@ const Menu = ({ name, icon, route }: MenuProps) => (
   </div>
 );
 
-const MenuBar = ({ roles }: { roles: Array<string> }) => (
-  <section className="row menu-bar text-primary p-0">
-    <div className="col-md-3"></div>
-    <div className="col-md-9 pl-5">
-      {roles.includes(USER_ROLES.TUTOR) && (
-        <>
-          <Menu icon="md-clipboard" route="/overview" name="Overview" />
-          <Menu
-            icon="md-paper-plane"
-            route={ROUTE.TUTOR_APPOINMENTS}
-            name="Appoinments"
-          />
-          <Menu
-            icon="md-calendar"
-            route={ROUTE.ADD_AVAILABILITY}
-            name="Schedule"
-          />
-        </>
-      )}
+const showLogo = (ref: any) => {
+  window.addEventListener('scroll', function () {
+    console.log();
+    if (window.scrollY > 300 && !ref.current?.classList?.contains('show')) {
+      ref.current?.classList?.add('show');
+    }
 
-      {!!!roles.includes(USER_ROLES.INSTITUTION) && (
-        <>
-          <Menu icon="md-clipboard" route="/overview" name="Overview" />
-          <Menu
-            icon="md-paper-plane"
-            route={ROUTE.INSTITUTION_APPOINTMENTS}
-            name="Appoinments"
-          />
-          <Menu icon="md-search" route={ROUTE.FIND_TUTOR} name="Find Tutors" />
-        </>
-      )}
-    </div>
-  </section>
-);
+    if (window.scrollY < 300 && ref.current?.classList?.contains('show')) {
+      ref.current?.classList?.remove('show');
+    }
+  });
+};
 
+const MenuBar = ({ roles }: { roles: Array<string> }) => {
+  const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
+  showLogo(ref);
+
+  return (
+    <section className="row menu-bar text-primary p-0">
+      <div className="col-md-3">
+        <div ref={ref} className="d-flex pt-2 pl-5 hide">
+          <i className="icon ion-md-school h3 mr-2 m-0" />
+          <span className="p pt-1">
+            Edu<span className="bold">Cere</span>
+          </span>
+        </div>
+      </div>
+      <div className="col-md-9 pl-5">
+        {roles.includes(USER_ROLES.TUTOR) && (
+          <>
+            <Menu icon="md-clipboard" route="/overview" name="Overview" />
+            <Menu
+              icon="md-paper-plane"
+              route={ROUTE.TUTOR_APPOINMENTS}
+              name="Appoinments"
+            />
+            <Menu
+              icon="md-calendar"
+              route={ROUTE.ADD_AVAILABILITY}
+              name="Schedule"
+            />
+          </>
+        )}
+
+        {!!!roles.includes(USER_ROLES.INSTITUTION) && (
+          <>
+            <Menu icon="md-clipboard" route="/overview" name="Overview" />
+            <Menu
+              icon="md-paper-plane"
+              route={ROUTE.INSTITUTION_APPOINTMENTS}
+              name="Appoinments"
+            />
+            <Menu
+              icon="md-search"
+              route={ROUTE.FIND_TUTOR}
+              name="Find Tutors"
+            />
+          </>
+        )}
+      </div>
+    </section>
+  );
+};
 export default PrivateNavBar;

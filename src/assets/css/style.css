@@ -138,6 +138,16 @@ input[type='number'] {
   color: #0e3c65 !important;
 }
 
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: -webkit-inline-box !important;
+  display: -ms-inline-flexbox !important;
+  display: inline-flex !important;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 100% !important;
@@ -319,6 +329,7 @@ img.logo {
 
 .menu-bar {
   top: 0;
+  z-index: 999;
   position: -webkit-sticky;
   position: sticky;
   overflow: hidden;
@@ -425,12 +436,10 @@ img.logo {
   margin-top: -50px;
   margin-bottom: 20px;
   overflow: hidden;
+  z-index: 1100;
+  position: relative;
   border-radius: 100%;
   border: 2px solid #ececec;
-}
-
-.sidebar .sidebar-dp i {
-  z-index: 1100;
 }
 
 .tabs {
@@ -894,5 +903,20 @@ img.logo {
 .show > .btn-outline-orange.dropdown-toggle:focus {
   -webkit-box-shadow: 0 0 0 0.2rem #f58634;
           box-shadow: 0 0 0 0.2rem #f58634;
+}
+
+.tutor-list .tutor {
+  padding: 16px;
+  text-align: center;
+}
+
+.tutor-list .tutor .image {
+  width: 100px;
+  height: auto;
+  margin: auto;
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #dfdede;
 }
 /*# sourceMappingURL=style.css.map */

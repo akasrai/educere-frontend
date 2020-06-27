@@ -132,6 +132,14 @@ input[type='number'] {
   }
 }
 
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: inline-flex !important;
+}
+
 .container {
   @media (min-width: 1200px) {
     max-width: 100% !important;
@@ -300,7 +308,7 @@ img.logo {
 
 .menu-bar {
   top: 0;
-  // z-index: 999;
+  z-index: 999;
   position: sticky;
   overflow: hidden;
   background-color: #fff;
@@ -396,12 +404,10 @@ img.logo {
     margin-top: -50px;
     margin-bottom: 20px;
     overflow: hidden;
+    z-index: 1100;
+    position: relative;
     border-radius: 100%;
     border: 2px solid rgb(236, 236, 236);
-
-    i {
-      z-index: 1100;
-    }
   }
 }
 
@@ -769,6 +775,23 @@ img.logo {
 .btn-outline-orange:not(:disabled):not(.disabled):active:focus,
 .show > .btn-outline-orange.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #f58634;
+}
+
+.tutor-list {
+  .tutor {
+    padding: 16px;
+    text-align: center;
+
+    .image {
+      width: 100px;
+      height: auto;
+      margin: auto;
+      margin-bottom: 15px;
+      overflow: hidden;
+      border-radius: 100%;
+      border: 2px solid rgb(223, 222, 222);
+    }
+  }
 }
 
 @import '_custom.scss';
