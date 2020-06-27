@@ -1,6 +1,6 @@
 const USER_TYPE = {
-  TUTOR: 'tutor',
-  INSTITUTION: 'institution',
+  TUTOR: 'TUTOR',
+  INSTITUTION: 'INSTITUTION',
 };
 
 export const USER_ROLES = {

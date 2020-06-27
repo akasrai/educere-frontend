@@ -16,7 +16,7 @@ const getUser = async (dispatch: (props: any) => void) => {
   dispatch({
     type: auth.UPDATE_USER,
     payload: {
-      user: { name: data.fullName, photo: data.photo, email: data.email },
+      user: { name: data.name, photo: data.photo, email: data.email },
     },
   });
 };

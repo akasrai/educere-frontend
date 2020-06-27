@@ -2,6 +2,13 @@ export interface User {
   name: string | null;
   photo: string | null;
   email?: string | null;
+  phoneNumber?: string;
+  bio?: string;
+  website?: string;
+  facebook?: string;
+  github?: string;
+  linkedIn?: string;
+  twitter?: string;
 }
 
 export interface AuthState {
@@ -22,4 +29,14 @@ export interface Action {
 export interface Credentials {
   email: string;
   password: string;
+}
+
+export interface SignupPayload {
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
+  institutionName?: string;
+  email: string;
+  password: string;
+  userType: string;
 }

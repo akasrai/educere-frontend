@@ -16,9 +16,16 @@ export const SIGN_OUT_SUCCESS = `${AUTH}_SIGN_OUT_SUCCESS`;
 
 export const initialState: AuthState = {
   user: {
+    bio: '',
     name: '',
     email: '',
     photo: '',
+    website: '',
+    github: '',
+    facebook: '',
+    linkedIn: '',
+    twitter: '',
+    phoneNumber: '',
   },
   token: '',
   roles: [],

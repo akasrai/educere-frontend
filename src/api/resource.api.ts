@@ -1,6 +1,6 @@
 import * as http from './http.api';
 import { Token } from './token.api';
-import { Credentials } from 'auth/auth.type';
+import { Credentials, SignupPayload } from 'auth/auth.type';
 
 export const refreshAccessToken = () => {
   return http.post(`/auth/token`, {
@@ -10,6 +10,10 @@ export const refreshAccessToken = () => {
 
 export const signIn = (credentials: Credentials) => {
   return http.post(`/auth/signin`, credentials);
+};
+
+export const signUp = (user: SignupPayload) => {
+  return http.post(`/auth/users`, user);
 };
 
 export const getCurrentUser = () => {
