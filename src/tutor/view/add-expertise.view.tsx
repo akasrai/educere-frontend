@@ -150,9 +150,9 @@ const AddExpertiseForm = () => {
 const AddExpertiseView = () => {
   return (
     <AuthenticatedLayout className="fixed-height-layout">
-      <h3 className="p-3"> Add Expertise</h3>
+      <p className="p-0">Add Expertise</p>
       <FlexRow className="justify-content-center">
-        <div className="col-md-12 p-3 m-3 rounded border">
+        <div className="col-md-12 p-4 border">
           <AddExpertiseForm />
         </div>
       </FlexRow>

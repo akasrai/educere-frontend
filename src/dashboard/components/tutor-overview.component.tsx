@@ -152,11 +152,11 @@ const TutorOverView = () => {
   return (
     <React.Fragment>
       <FlexRow>
-        <div className="col-md-8 p-3 m-3 rounded border d-block">
+        <div className="col-md-8 p-4 mr-4 border">
           <h4 className="text-center">Upcoming Appointments</h4>
           <UpcomingAppointments />
         </div>
-        <div className="col-md-3 p-3 m-3 rounded border d-block tutor-list">
+        <div className="col-md-3 p-4 border ml-4 tutor-list">
           <h4 className="text-center p-1">Subscribers</h4>
 
           <SubscriberList />

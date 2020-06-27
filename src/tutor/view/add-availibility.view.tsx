@@ -223,9 +223,9 @@ const removeSchedule = (
 const AddAvailibilityView = () => {
   return (
     <AuthenticatedLayout className="fixed-height-layout">
-      <h3 className="p-3"> Appointment Requests</h3>
+      <p className="p-0">Add Availability Schedule</p>
       <FlexRow className="justify-content-center">
-        <div className="col-md-12 p-3 m-3 rounded border">
+        <div className="col-md-12 p-4 border">
           <AddAvailibilityForm />
         </div>
       </FlexRow>
