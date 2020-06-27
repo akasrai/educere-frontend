@@ -423,6 +423,7 @@ img.logo {
   margin-top: -50px;
   z-index: 1100;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .sidebar .dp-circle {
@@ -433,6 +434,15 @@ img.logo {
   position: relative;
   border-radius: 100%;
   border: 2px solid #ececec;
+}
+
+.complete-profile-dp {
+  font-size: 150px;
+  line-height: 0;
+}
+
+.change-dp {
+  margin-top: -40px;
 }
 
 .tabs {

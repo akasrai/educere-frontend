@@ -6,12 +6,12 @@ import { Token } from 'api/token.api';
 const AUTH = 'AUTH';
 export const AUTH_LS_KEY = '_lst';
 export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_AUTH = 'UPDATE_AUTH';
 export const RESTORE_AUTH = 'RESTORE_AUTH';
+export const AUTH_ACTION_STOPPED = 'AUTH_ACTION_STOPPED';
+export const AUTH_ACTION_PENDING = `${AUTH}_SIGN_IN_PENDING`;
 export const SIGN_IN_ERROR = `${AUTH}_SIGN_IN_ERROR`;
-export const SIGN_IN_PENDING = `${AUTH}_SIGN_IN_PENDING`;
 export const SIGN_IN_SUCCESS = `${AUTH}_SIGN_IN_SUCCESS`;
-export const SIGN_OUT_ERROR = `${AUTH}_SIGN_IN_ERROR`;
-export const SIGN_OUT_PENDING = `${AUTH}_SIGN_OUT_PENDING`;
 export const SIGN_OUT_SUCCESS = `${AUTH}_SIGN_OUT_SUCCESS`;
 
 export const initialState: AuthState = {
@@ -26,6 +26,15 @@ export const initialState: AuthState = {
     linkedIn: '',
     twitter: '',
     phoneNumber: '',
+    address: {
+      zip: '',
+      city: '',
+      state: '',
+      street: '',
+      country: '',
+      latitude: '',
+      longitude: '',
+    },
   },
   token: '',
   roles: [],
@@ -40,8 +49,7 @@ export const reducer = (
   action: Action
 ): any => {
   switch (action.type) {
-    case SIGN_IN_PENDING:
-    case SIGN_OUT_PENDING:
+    case AUTH_ACTION_PENDING:
       return updateObject(state, {
         isHandlingAuth: true,
       });
@@ -64,7 +72,7 @@ export const reducer = (
         isHandlingAuth: false,
       });
 
-    case SIGN_OUT_ERROR:
+    case AUTH_ACTION_STOPPED:
       return updateObject(state, {
         isHandlingAuth: false,
       });
@@ -94,6 +102,16 @@ export const reducer = (
         isHandlingAuth: false,
         isAuthenticated: true,
         ...action.payload,
+      });
+
+    case UPDATE_AUTH:
+      Token.setAccessToken(action.payload.token);
+
+      return updateObject(state, {
+        ...state,
+        isHandlingAuth: false,
+        token: action.payload.token,
+        roles: action.payload.roles,
       });
 
     default:

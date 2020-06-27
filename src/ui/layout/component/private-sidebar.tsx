@@ -131,9 +131,11 @@ const SidebarProfile = () => {
           <Flex>
             <i className="icon ion-md-pin mr-2" />
             <div>
-              <p className="m-0">Bouddha Rd, Jorpati</p>
-              <p className="m-0">Kathmandu, Nepal</p>
-              <p className="m-0">44600</p>
+              <p className="m-0">{user.address.street}</p>
+              <p className="m-0">
+                {user.address.city}, {user.address.country}
+              </p>
+              <p className="m-0">{user.address.zip}</p>
             </div>
           </Flex>
         </div>

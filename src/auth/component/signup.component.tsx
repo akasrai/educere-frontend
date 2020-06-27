@@ -16,7 +16,7 @@ const handleSignUp = async (
   setSignUpError: (error: string) => void
 ) => {
   event.preventDefault();
-  dispatch({ type: auth.SIGN_IN_PENDING });
+  dispatch({ type: auth.AUTH_ACTION_PENDING });
 
   const { data, error } = await signUp(getFormData(event.target));
 
@@ -53,6 +53,7 @@ const TutorName = ({ error }: { error: any }) => (
         type="text"
         name="firstName"
         required={true}
+        label="First Name"
         placeholder="First name"
         className={`${error ? 'is-invalid ' : ''}`}
       />
@@ -63,6 +64,7 @@ const TutorName = ({ error }: { error: any }) => (
         type="text"
         name="lastName"
         required={true}
+        label="Last Name"
         placeholder="Last name"
         className={`${error ? 'is-invalid ' : ''}`}
       />
@@ -76,6 +78,7 @@ const InstitutionName = ({ error }: { error: any }) => (
       type="text"
       required={true}
       name="institutionName"
+      label="Institution Name"
       placeholder="Institution Name"
       className={`${error ? 'is-invalid ' : ''}`}
     />
@@ -101,7 +104,7 @@ const SignupForm = () => {
 
   return (
     <form
-      className="col-12 p-md-3 p-0"
+      className="col-12 p-md-3 p-0 text-muted"
       onChange={() => setSignUpError('')}
       onSubmit={(e) => handleSignUp(e, dispatch, setSignUpError)}
     >
@@ -134,6 +137,7 @@ const SignupForm = () => {
         type="email"
         name="email"
         required={true}
+        label="Email"
         placeholder="Email"
         className={`${signUpError ? 'is-invalid ' : ''}`}
       />
@@ -141,6 +145,7 @@ const SignupForm = () => {
         type="password"
         name="password"
         required={true}
+        label="Password"
         placeholder="Password"
         className={`${signUpError ? 'is-invalid ' : ''}`}
       />

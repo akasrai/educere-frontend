@@ -17,7 +17,7 @@ const handleSignIn = async (
   setSignInError: (error: string) => void
 ) => {
   event.preventDefault();
-  dispatch({ type: auth.SIGN_IN_PENDING });
+  dispatch({ type: auth.AUTH_ACTION_PENDING });
 
   const { data, error } = await signIn({
     email: event.target[0].value,
@@ -36,7 +36,7 @@ const handleSignIn = async (
 };
 
 const restoreAuthentication = (dispatch: (props: Action) => void) => {
-  dispatch({ type: auth.SIGN_IN_PENDING });
+  dispatch({ type: auth.AUTH_ACTION_PENDING });
   const { data }: ApiResponse = securedLS.get(auth.AUTH_LS_KEY);
 
   if (data) {
@@ -63,7 +63,7 @@ const SigninForm = () => {
 
   return (
     <form
-      className="col-12 p-md-3 p-0"
+      className="col-12 p-md-3 p-0 text-muted"
       onChange={() => setSignInError('')}
       onSubmit={(e) => handleSignIn(e, dispatch, setSignInError)}
     >
@@ -72,6 +72,7 @@ const SigninForm = () => {
         type="email"
         name="email"
         required={true}
+        label="Email"
         placeholder="Email"
         className={`${signInError ? 'is-invalid ' : ''}`}
       />
@@ -79,6 +80,7 @@ const SigninForm = () => {
         type="password"
         name="password"
         required={true}
+        label="Password"
         placeholder="Password"
         className={`${signInError ? 'is-invalid ' : ''}`}
       />
