@@ -455,6 +455,18 @@ img.logo {
   font-size: 115px;
 }
 
+.tutor-detail .image {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #dfdede;
+}
+
+.tutor-detail .image img {
+  width: 100%;
+}
+
 .tabs {
   overflow: hidden;
 }

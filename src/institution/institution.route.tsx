@@ -5,10 +5,16 @@ import { ROUTE } from 'app/app.route-path';
 import { PrivateRoute } from 'app/app.routes';
 import FindTutorView from './view/find-tutor.view';
 import AppointmentsView from './view/appointment.view';
+import TutorDetailView from './view/tutor-detail.view';
 
 const InstitutionRoute = () => (
   <Switch>
     <PrivateRoute exact path={ROUTE.FIND_TUTOR} component={FindTutorView} />
+    <PrivateRoute
+      exact
+      path={ROUTE.TUTOR_DETAILS}
+      component={TutorDetailView}
+    />
     <PrivateRoute
       exact
       path={ROUTE.INSTITUTION_APPOINTMENTS}

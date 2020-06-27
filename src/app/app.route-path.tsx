@@ -13,5 +13,6 @@ export const ROUTE = {
 
   // INSTITUTION
   FIND_TUTOR: '/institution/tutors',
+  TUTOR_DETAILS: '/institution/tutor',
   INSTITUTION_APPOINTMENTS: '/institution/appointment',
 };
