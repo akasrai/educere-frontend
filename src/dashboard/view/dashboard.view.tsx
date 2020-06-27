@@ -7,7 +7,6 @@ import TutorOverView from 'dashboard/components/tutor-overview.component';
 import { getCurrentUser } from 'api/resource.api';
 import InstitutionOverView from 'dashboard/components/institution-overview.component';
 import { USER_ROLES } from 'app/app.user-type';
-import AppointmentRequestForm from 'institution/view/appointment-request-form.component';
 
 const getUser = async (dispatch: (props: any) => void) => {
   dispatch({ type: auth.AUTH_ACTION_PENDING });
@@ -61,8 +60,7 @@ const DashboardView = () => {
       {roles.includes(USER_ROLES.TUTOR) ? (
         <TutorOverView />
       ) : (
-        // <InstitutionOverView />
-        <AppointmentRequestForm />
+        <InstitutionOverView />
       )}
     </AuthenticatedLayout>
   );
