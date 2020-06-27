@@ -9,6 +9,9 @@ import { completeSignUp } from 'api/resource.api';
 import { ErrorAlert } from 'ui/alert/inline-alert';
 import { FlexRow } from 'ui/layout/component/flex';
 import { CompleteSignupPayload } from 'auth/auth.type';
+import { USER_ROLES } from 'app/app.user-type';
+import { Token } from 'api/token.api';
+import { getSignedInUser } from 'auth/auth.helper';
 
 const isAddressComponents = (name: string) =>
   name === 'street' || name === 'city' || name === 'country';
@@ -33,8 +36,17 @@ const getFormData = (inputs: any): CompleteSignupPayload => {
 
 const CompleteSignupForm = () => {
   const [signUpError, setSignUpError] = useState<string>('');
-  const { setCurrentAuth, isHandlingAuth } = useContext(AuthContext);
+  const { user, setCurrentAuth, isHandlingAuth } = useContext(AuthContext);
   const [authState, dispatch] = useReducer(auth.reducer, auth.initialState);
+
+  useEffect(() => {
+    if (
+      authState.roles.length &&
+      !!!authState.roles.includes(USER_ROLES.GUEST)
+    ) {
+      setCurrentAuth(authState);
+    }
+  }, [authState, setCurrentAuth]);
 
   const handleSignUp = async (event: any) => {
     event.preventDefault();
@@ -47,11 +59,8 @@ const CompleteSignupForm = () => {
       return dispatch({ type: auth.AUTH_ACTION_STOPPED });
     }
 
-    dispatch({
-      type: auth.UPDATE_AUTH,
-      payload: { token: data.token, roles: data.roles },
-    });
-    // setCurrentAuth(authState);
+    Token.setAccessToken(data.token);
+    getSignedInUser(data.token, dispatch);
   };
 
   return (

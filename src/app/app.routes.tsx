@@ -15,14 +15,21 @@ import DashboardView from 'dashboard/view/dashboard.view';
 import { USER_ROLES } from './app.user-type';
 import CompleteSigninView from 'auth/view/complete-signup.view';
 
-const AuthenticatedRoute = (props: any) => {
-  const { isAuthenticated } = useContext(AuthContext);
+const isCompletelyRegistered = (roles: Array<string>) =>
+  roles.includes(USER_ROLES.TUTOR) || roles.includes(USER_ROLES.INSTITUTION);
 
-  return isAuthenticated ? (
-    <Route {...props} />
-  ) : (
-    <ReloadRoute to={ROUTE.HOME} />
-  );
+const AuthenticatedRoute = (props: any) => {
+  const { component } = props;
+  const { roles, isAuthenticated } = useContext(AuthContext);
+
+  if (isAuthenticated) {
+    if (component === CompleteSigninView && isCompletelyRegistered(roles))
+      return <Redirect to={ROUTE.DASHBOARD} />;
+
+    return <Route {...props} />;
+  }
+
+  return <ReloadRoute to={ROUTE.HOME} />;
 };
 
 export const PrivateRoute = withRouter(AuthenticatedRoute);
@@ -30,15 +37,14 @@ export const PrivateRoute = withRouter(AuthenticatedRoute);
 const NonAuthenticatedRoute = (props: any) => {
   const { roles, isAuthenticated } = useContext(AuthContext);
 
-  return isAuthenticated ? (
-    roles.includes(USER_ROLES.GUEST) ? (
-      <Redirect to={ROUTE.COMPLETE_SIGNUP} />
-    ) : (
-      <Redirect to={ROUTE.DASHBOARD} />
-    )
-  ) : (
-    <Route {...props} />
-  );
+  if (isAuthenticated) {
+    if (roles.includes(USER_ROLES.GUEST))
+      return <Redirect to={ROUTE.COMPLETE_SIGNUP} />;
+
+    return <Redirect to={ROUTE.DASHBOARD} />;
+  }
+
+  return <Route {...props} />;
 };
 
 export const PublicRoute = withRouter(NonAuthenticatedRoute);

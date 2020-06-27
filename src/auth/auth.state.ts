@@ -6,7 +6,6 @@ import { Token } from 'api/token.api';
 const AUTH = 'AUTH';
 export const AUTH_LS_KEY = '_lst';
 export const UPDATE_USER = 'UPDATE_USER';
-export const UPDATE_AUTH = 'UPDATE_AUTH';
 export const RESTORE_AUTH = 'RESTORE_AUTH';
 export const AUTH_ACTION_STOPPED = 'AUTH_ACTION_STOPPED';
 export const AUTH_ACTION_PENDING = `${AUTH}_SIGN_IN_PENDING`;
@@ -102,16 +101,6 @@ export const reducer = (
         isHandlingAuth: false,
         isAuthenticated: true,
         ...action.payload,
-      });
-
-    case UPDATE_AUTH:
-      Token.setAccessToken(action.payload.token);
-
-      return updateObject(state, {
-        ...state,
-        isHandlingAuth: false,
-        token: action.payload.token,
-        roles: action.payload.roles,
       });
 
     default:

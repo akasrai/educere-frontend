@@ -1,42 +1,19 @@
 import React, { useContext, useReducer, useState, useEffect } from 'react';
 
 import { Token } from 'api/token.api';
+import { signUp } from 'api/resource.api';
+
 import * as auth from 'auth/auth.state';
-import { Button } from 'ui/form/button';
-import USER_TYPE from 'app/app.user-type';
 import { SignupPayload } from 'auth/auth.type';
 import { AuthContext } from 'auth/auth.context';
+import { getSignedInUser } from 'auth/auth.helper';
+
+import USER_TYPE from 'app/app.user-type';
+
+import { Button } from 'ui/form/button';
 import { Input, RadioButton } from 'ui/form/input';
 import { ErrorAlert } from 'ui/alert/inline-alert';
 import { FlexRow } from 'ui/layout/component/flex';
-import { signUp, getCurrentUser } from 'api/resource.api';
-
-const getUser = (data: any) => ({
-  bio: data.bio,
-  name: data.name,
-  photo: data.photo,
-  email: data.email,
-  github: data.github,
-  website: data.website,
-  address: data.address,
-  twitter: data.twittter,
-  facebook: data.facebook,
-  linkedIn: data.linkedIn,
-  phoneNumber: data.phoneNumber,
-});
-
-const completeSignIn = async (
-  token: string,
-  dispatch: (props: any) => void
-) => {
-  const { data, error } = await getCurrentUser();
-
-  if (!error)
-    dispatch({
-      type: auth.SIGN_IN_SUCCESS,
-      payload: { token: token, roles: data.roles, user: getUser(data) },
-    });
-};
 
 const handleSignUp = async (
   event: any,
@@ -54,7 +31,7 @@ const handleSignUp = async (
   }
 
   Token.setAccessToken(data.token);
-  completeSignIn(data.token, dispatch);
+  getSignedInUser(data.token, dispatch);
 };
 
 const getFormData = (inputs: any): SignupPayload => {
