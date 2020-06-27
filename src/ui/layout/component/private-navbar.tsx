@@ -238,8 +238,8 @@ const MenuBar = ({ roles }: { roles: Array<string> }) => {
             <Menu icon="md-clipboard" route="/overview" name="Overview" />
             <Menu
               icon="md-paper-plane"
-              route={ROUTE.TUTOR_APPOINMENTS}
-              name="Appoinments"
+              route={ROUTE.TUTOR_APPOINTMENTS}
+              name="Appointments"
             />
             <Menu
               icon="md-calendar"
@@ -255,7 +255,7 @@ const MenuBar = ({ roles }: { roles: Array<string> }) => {
             <Menu
               icon="md-paper-plane"
               route={ROUTE.INSTITUTION_APPOINTMENTS}
-              name="Appoinments"
+              name="Appointments"
             />
             <Menu
               icon="md-search"

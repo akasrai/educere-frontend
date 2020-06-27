@@ -98,7 +98,7 @@ const SidebarAccordinMenu = () => (
     <Tab
       name="Appointments"
       icon="md-calendar"
-      route={ROUTE.TUTOR_APPOINMENTS}
+      route={ROUTE.TUTOR_APPOINTMENTS}
     />
 
     <Tab name="Settings" icon="md-construct" route={ROUTE.DASHBOARD} />
