@@ -1,59 +1,20 @@
 import React, {
+  useRef,
   useMemo,
   useState,
   Fragment,
   useContext,
   useReducer,
-  useRef,
-  useEffect,
 } from 'react';
 
 import { Flex } from './flex';
 import * as auth from 'auth/auth.state';
 import { Action } from 'auth/auth.type';
-import { signOut, getCurrentUser } from 'api/resource.api';
-import { AuthContext } from 'auth/auth.context';
 import { history } from 'app/app.history';
-import USER_TYPE, { USER_ROLES } from 'app/app.user-type';
+import { signOut } from 'api/resource.api';
 import { ROUTE } from 'app/app.route-path';
-
-const getPageName = (): String => {
-  return window.location.pathname
-    .split('/')
-    .map((path) => {
-      return path.charAt(0).toUpperCase() + path.slice(1);
-    })
-    .join(' ')
-    .slice(1);
-};
-
-const getUser = async (dispatch: (props: any) => void) => {
-  dispatch({ type: auth.AUTH_ACTION_PENDING });
-  const { data, error } = await getCurrentUser();
-
-  if (error) {
-    return dispatch({ type: auth.SIGN_IN_ERROR });
-  }
-
-  dispatch({
-    type: auth.UPDATE_USER,
-    payload: {
-      user: {
-        bio: data.bio,
-        name: data.name,
-        photo: data.photo,
-        email: data.email,
-        github: data.github,
-        website: data.website,
-        address: data.address,
-        twitter: data.twittter,
-        facebook: data.facebook,
-        linkedIn: data.linkedIn,
-        phoneNumber: data.phoneNumber,
-      },
-    },
-  });
-};
+import { AuthContext } from 'auth/auth.context';
+import { USER_ROLES } from 'app/app.user-type';
 
 const handleSignOut = async (
   dispatch: (props: Action) => void,
@@ -71,15 +32,10 @@ const handleSignOut = async (
 };
 
 const PrivateNavBar = () => {
-  const {
-    user,
-    roles,
-    isHandlingAuth,
-    setCurrentUser,
-    setCurrentAuth,
-  } = useContext(AuthContext);
+  const { user, roles, isHandlingAuth, setCurrentAuth } = useContext(
+    AuthContext
+  );
   const [isSignedOut, setIsSignedOut] = useState(false);
-  const [isUserFetched, setIsUserFetched] = useState<boolean>(false);
   const [authState, dispatch] = useReducer(auth.reducer, auth.initialState);
 
   useMemo(() => {
@@ -87,15 +43,6 @@ const PrivateNavBar = () => {
       setCurrentAuth(authState);
     }
   }, [isSignedOut, authState, setCurrentAuth]);
-
-  useEffect(() => {
-    setCurrentUser(authState.user);
-
-    if (!isUserFetched) {
-      getUser(dispatch);
-      setIsUserFetched(true);
-    }
-  }, [authState, isUserFetched, setCurrentUser]);
 
   return (
     <Fragment>

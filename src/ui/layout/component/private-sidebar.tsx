@@ -140,7 +140,7 @@ const SidebarProfile = () => {
           </Flex>
         </div>
 
-        <Link className="col-12 btn btn-md btn-outline-primary mt-3 p-1">
+        <Link to="" className="col-12 btn btn-md btn-outline-primary mt-3 p-1">
           Edit Profile
         </Link>
       </div>

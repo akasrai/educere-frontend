@@ -17,7 +17,6 @@ export const useAuth = (): AuthState => {
 
   return {
     ...auth,
-    user,
     setCurrentAuth,
     setCurrentUser,
   };

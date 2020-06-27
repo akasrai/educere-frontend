@@ -33,13 +33,8 @@ const getFormData = (inputs: any): CompleteSignupPayload => {
 
 const CompleteSignupForm = () => {
   const [signUpError, setSignUpError] = useState<string>('');
-  const [updateAuth, setUpdateAuth] = useState<boolean>(false);
   const { setCurrentAuth, isHandlingAuth } = useContext(AuthContext);
   const [authState, dispatch] = useReducer(auth.reducer, auth.initialState);
-
-  useEffect(() => {
-    if (updateAuth) setCurrentAuth(authState);
-  }, [authState, setCurrentAuth]);
 
   const handleSignUp = async (event: any) => {
     event.preventDefault();
@@ -56,7 +51,7 @@ const CompleteSignupForm = () => {
       type: auth.UPDATE_AUTH,
       payload: { token: data.token, roles: data.roles },
     });
-    setUpdateAuth(true);
+    // setCurrentAuth(authState);
   };
 
   return (

@@ -82,7 +82,6 @@ export const RadioButton = (props: InputProps) => {
         name={name}
         type="radio"
         value={value}
-        checked={checked}
         required={required}
         onChange={onChange ? (e) => onChange(e.target.value) : () => {}}
       />
