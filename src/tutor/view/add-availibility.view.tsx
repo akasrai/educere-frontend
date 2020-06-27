@@ -70,7 +70,7 @@ const AvailabilityFormRow = ({
           )}
           {element === totalSchedule.length && element !== 1 && (
             <i
-              className="icon ion-md-close position-absolute availability-close-btn"
+              className="icon ion-md-close position-absolute availability-close-btn text-danger"
               onClick={() => removeSchedule(totalSchedule, setTotalSchedule)}
             />
           )}
@@ -142,7 +142,6 @@ const AddAvailibilityForm = () => {
               name="availabilityType"
               value="Online"
               required={true}
-              checked={true}
               onChange={(e) => setAvailabilityType('Online')}
             />
           </div>
