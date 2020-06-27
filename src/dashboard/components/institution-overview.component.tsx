@@ -182,14 +182,11 @@ const InstitutionOverView = () => {
             <p className="text-muted m-0">Events this months</p>
           </div>
         </div>
-      </div>
-      <div className="col-md-8 p-4 mr-4 border rounded">
-        <UpcomingAppointments />
-      </div>
-      <div className="col-md-3 p-4 ml-4 border tutor-list">
-        <h4 className="text-center p-1">Subscribed Tutors</h4>
-
-        <TutorList />
+        <div className="col-md-12 mt-2">
+          <div className="border rounded p-4">
+            <UpcomingAppointments />
+          </div>
+        </div>
       </div>
     </FlexRow>
   );
