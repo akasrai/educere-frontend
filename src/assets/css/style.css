@@ -907,4 +907,14 @@ img.logo {
   border-radius: 100%;
   border: 2px solid #dfdede;
 }
+
+.appointment-text {
+  line-height: 35px;
+}
+
+.availability-close-btn {
+  right: 0;
+  top: -5px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */

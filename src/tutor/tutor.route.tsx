@@ -5,6 +5,7 @@ import { ROUTE } from 'app/app.route-path';
 import { PrivateRoute } from 'app/app.routes';
 import UserProfile from './components/profile';
 import AddAvailibilityView from './view/add-availibility.view';
+import AppointmentRequestView from './view/appointment-request.view';
 
 const TutorRoutes = () => (
   <Switch>
@@ -13,6 +14,11 @@ const TutorRoutes = () => (
       exact
       path={ROUTE.ADD_AVAILABILITY}
       component={AddAvailibilityView}
+    />
+    <PrivateRoute
+      exact
+      path={ROUTE.TUTOR_APPOINMENTS}
+      component={AppointmentRequestView}
     />
   </Switch>
 );

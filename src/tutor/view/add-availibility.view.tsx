@@ -17,11 +17,20 @@ const AvailabilityFormRow = ({
   return (
     <React.Fragment>
       {totalSchedule.map((element, key) => (
-        <div key={key} className="col-md-12 row p-0">
-          <div className="col-md-4">
-            <label className="p-0" htmlFor={`availabilityFrom${element}`}>
-              From
-            </label>
+        <div
+          key={key}
+          className={`col-md-${
+            availabilityType === 'Offline' ? '12' : '8'
+          } row p-0`}
+        >
+          <div
+            className={`col-md-${availabilityType === 'Offline' ? '4' : '6'}`}
+          >
+            {element === 1 && (
+              <label className="p-0" htmlFor={`availabilityFrom${element}`}>
+                From
+              </label>
+            )}
             <Input
               id={`availabilityFrom${element}`}
               type="date"
@@ -29,8 +38,12 @@ const AvailabilityFormRow = ({
               required={true}
             />
           </div>
-          <div className="col-md-4">
-            <label htmlFor={`availabilityTo${element}`}>To</label>
+          <div
+            className={`col-md-${availabilityType === 'Offline' ? '4' : '6'}`}
+          >
+            {element === 1 && (
+              <label htmlFor={`availabilityTo${element}`}>To</label>
+            )}
             <Input
               id={`availabilityTo${element}`}
               type="date"
@@ -40,7 +53,9 @@ const AvailabilityFormRow = ({
           </div>
           {availabilityType === 'Offline' && (
             <div className="col-md-4">
-              <label htmlFor={`location${element}`}>Location</label>
+              {element === 1 && (
+                <label htmlFor={`location${element}`}>Location</label>
+              )}
               <Input
                 id={`location${element}`}
                 type="text"
@@ -52,7 +67,7 @@ const AvailabilityFormRow = ({
           )}
           {element === totalSchedule.length && element !== 1 && (
             <i
-              className="icon ion-md-close position-absolute right-0"
+              className="icon ion-md-close position-absolute availability-close-btn"
               onClick={() => removeSchedule(totalSchedule, setTotalSchedule)}
             />
           )}
@@ -62,16 +77,32 @@ const AvailabilityFormRow = ({
   );
 };
 
+const handleSubmit = (e: any) => {
+  e.preventDefault();
+};
+
+const handleValidation = (input: any, setError: Function) => {
+  const inputName = input.name;
+  const inputValue = input.value;
+
+  if (!inputValue) {
+    return setError('Empty');
+  }
+  return true;
+};
+
 const AddAvailibilityForm = () => {
   const [error, setError] = useState<String>('');
   const [totalSchedule, setTotalSchedule] = useState<Array<number>>([1]);
   const [isScheduleFilled, setIsScheduleFilled] = useState<boolean>(true);
   const [availabilityType, setAvailabilityType] = useState<string>('');
 
-  console.log(totalSchedule);
-
   return (
-    <form className="col-12 p-md-3 p-0">
+    <form
+      className="col-12 p-md-3 p-0"
+      onSubmit={(e) => handleSubmit(e)}
+      onChange={(e) => handleValidation(e.target, setError)}
+    >
       <FlexRow>
         <div className="col-md-12 clearfix p-0">
           <div className="col-md-3 float-left p-0">
@@ -99,16 +130,15 @@ const AddAvailibilityForm = () => {
           availabilityType={availabilityType}
           setTotalSchedule={setTotalSchedule}
         />
-
-        <div
-          className={`mb-3 btn btn-link p-0 ${!isScheduleFilled && 'disabled'}`}
-          onClick={() =>
-            setTotalSchedule([...totalSchedule, totalSchedule.length + 1])
-          }
-        >
-          Add New Schedule
-        </div>
       </FlexRow>
+      <div
+        className="mb-3 btn btn-link p-0"
+        onClick={() =>
+          setTotalSchedule([...totalSchedule, totalSchedule.length + 1])
+        }
+      >
+        Add New Schedule
+      </div>
 
       <div>
         <label htmlFor="description">Description</label>
@@ -132,20 +162,16 @@ const removeSchedule = (
   setTotalSchedule: (props: any) => void
 ) => {
   totalSchedule.pop();
-  console.log(totalSchedule);
   setTotalSchedule([...totalSchedule]);
 };
 
 const AddAvailibilityView = () => {
   return (
     <AuthenticatedLayout className="fixed-height-layout">
+      <h3 className="p-3"> Appointment Requests</h3>
       <FlexRow className="justify-content-center">
-        <div className="col-md-6 p-5 m-3 rounded bg-white">
-          <h4 className="mt-0 p-md-3 text-primary bold">
-            <i className="icon ion-md-time mr-2" />
-            Add your availability schedule
-            <span className="border-bottom mt-2 d-block"></span>
-          </h4>
+        <div className="col-md-12 p-3 m-3 rounded border">
+          {/* <h3 className="mt-0 text-primary">Appointment Requests</h3> */}
           <AddAvailibilityForm />
         </div>
       </FlexRow>
