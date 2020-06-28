@@ -36,10 +36,14 @@
 }
 
 .notification-message {
-  line-height: 25px;
+  line-height: 22px;
+  font-weight: 100;
 }
 
 .notification-picture {
-  max-width: 65px;
+  max-width: 45px;
+  max-height: 40px;
   border-radius: 100%;
+  line-height: 60px;
+  margin-top: 3px;
 }

@@ -94,7 +94,7 @@ const PrivateNavBar = () => {
                             alt="img"
                           />
                           <span className="col-md-9 notification-message pr-0">
-                            <strong className="text-primary">
+                            <strong className="text-primary bold">
                               {persons.getRandomName()}
                             </strong>
                             {roles.includes(USER_ROLES.TUTOR)
