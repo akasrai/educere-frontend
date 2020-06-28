@@ -9,83 +9,76 @@ import { Button } from 'ui/form/button';
 const nearbyEvents = [
   {
     expertName: 'Akash Rai',
-    startTime: '08:00 pm',
-    endTime: '12:00 pm',
     location: 'Online',
     contactNo: '9807898767',
     email: 'akashrai@gmail.com',
     avaibility: [
       {
         date: 'Jun 29th 2020',
-        time: ['10:00am - 12:00pm', '03:00pm - 06:00pm'],
+        time: ['10:00 am - 12:00 pm', '03:00 pm - 06:00 pm'],
       },
       {
         date: 'Jun 30th 2020',
-        time: ['10:00am - 04:00pm'],
+        time: ['10:00 am - 04:00 pm'],
       },
     ],
   },
   {
     expertName: 'Pasang Dorje Lama',
     date: 'July 20th 2020',
-    startTime: '08:00 am',
-    endTime: '09:30 am',
     location: 'Baneswor, Kathmandu',
     contactNo: '9807896233',
     email: 'pasang234242@gmail.com',
     avaibility: [
-      { date: 'Jul 5th 2020', time: ['10:00am - 3:00pm'] },
+      { date: 'Jul 5th 2020', time: ['10:00 am - 3:00 pm'] },
       {
         date: 'Jul 8th 2020',
-        time: ['10:00am - 04:00pm'],
+        time: ['10:00 am - 04:00 pm'],
       },
     ],
   },
   {
     expertName: 'Bikash Gurung',
     date: 'Aug 29th 2020',
-    startTime: '04:00 pm',
-    endTime: '07:30 pm',
     location: 'Sikles Gau, Kaski',
     contactNo: '9869874567',
     email: 'bikashgrg23@gmail.com',
     avaibility: [
-      { date: 'Jul 5th 2020', time: ['09:00am - 11:00am', '03:pm - 05:00pm'] },
+      {
+        date: 'Jul 5th 2020',
+        time: ['09:00 am - 11:00 am', '03:00 pm - 05:00 pm'],
+      },
       {
         date: 'Jul 8th 2020',
-        time: ['06:00am - 12:00pm', '04:00am - 06:00pm'],
+        time: ['06:00 am - 12:00 pm', '04:00 am - 06:00 pm'],
       },
     ],
   },
   {
     expertName: 'Ram Sharan Shrestha',
     date: 'Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
     location: 'Online',
     contactNo: '98412376567',
     email: 'sharanram56@gmail.com',
     avaibility: [
-      { date: 'Jul 5th 2020', time: ['03:00pm - 05:00pm'] },
+      { date: 'Jul 5th 2020', time: ['03:00 pm - 05:00 pm'] },
       {
         date: 'Jul 8th 2020',
-        time: ['12:00pm - 06:00pm'],
+        time: ['12:00 pm - 06:00 pm'],
       },
     ],
   },
   {
     expertName: 'Namita Sapkota',
     date: 'July 20th 2020',
-    startTime: '08:00 am',
-    endTime: '09:30 am',
     location: 'Salleri Nayabazaar, Solukhumbu',
     contactNo: '9818239878',
     email: 'sapkotanamita@gmail.com',
     avaibility: [
-      { date: 'Jul 5th 2020', time: ['07:00am - 05:00pm'] },
+      { date: 'Jul 5th 2020', time: ['07:00 am - 05:00 pm'] },
       {
         date: 'Jul 8th 2020',
-        time: ['03:00pm - 06:00pm'],
+        time: ['03:00 pm - 06:00 pm'],
       },
     ],
   },

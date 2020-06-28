@@ -104,7 +104,7 @@ const UpcomingAppointments = () => {
         <div key={key} className="col-md-6 p-3">
           <div className="appointment-card bg-lightblue rounded">
             <p className="m-0 p-2">
-              Date:{' '}
+              <i className="icon ion-md-calendar mr-1" />
               <span className="text-primary bold">{appointment.date} </span>
             </p>
             <p className="m-0 p-2">
