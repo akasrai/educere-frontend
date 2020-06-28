@@ -1,150 +1,78 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
 
+import Hr from 'ui/form/hr';
 import { FlexRow } from 'ui/layout/component/flex';
 
 const appointments = [
   {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-  {
-    id: 1,
-    date: ' Jun 29th 2020',
-    startTime: '08:00 pm',
-    endTime: '08:30 pm',
-    agenda: 'Conference for SEE students',
-    location: 'Jorpati, Kathmandu',
-  },
-];
-
-const subscribersList = [
-  {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
-    imgUrl:
-      'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
-  },
-  {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
-    imgUrl:
-      'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
-  },
-  {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
-    imgUrl:
-      'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
-  },
-  {
-    name: 'Akasky Academy',
-    location: 'Boudha, Tusal',
-    imgUrl:
-      'https://avatars0.githubusercontent.com/u/18304391?s=460&u=b8a8e241f410db24197bd5f8fd3131e31d272ac7&v=4',
+    date: ' Jul 9th 2020',
+    startTime: '11:00 am',
+    endTime: '01:00 pm',
+    agenda: 'Research and Design',
+    location: 'Mahendrapul Pokhara, Kaski',
   },
 ];
 
 const UpcomingAppointments = () => {
   return (
-    <div className="row">
+    <Fragment>
       {appointments.map((appointment, key) => (
-        <div key={key} className="col-md-6 p-3">
-          <div className="appointment-card bg-lightblue rounded">
-            <p className="m-0 p-2">
-              <i className="icon ion-md-calendar mr-1" />
-              <span className="text-primary bold">{appointment.date} </span>
-            </p>
-            <p className="m-0 p-2">
-              Time:{' '}
-              <span className="text-primary bold">
+        <Fragment key={key}>
+          <div className="col-md-12 d-flex shake">
+            <i className="icon ion-md-notifications-outline mr-2 d-inline-block text-muted" />
+            <div className="">
+              <p className="m-0">
+                You have{' '}
+                <span className="text-primary bold">{appointment.agenda}</span>{' '}
+                event on
+                <span className="text-primary bold">{appointment.date} </span>
+              </p>
+              <p className="m-0 d-inline text-muted mr-3">
+                <i className="icon ion-md-calendar mr-1" />
+                {appointment.date}
+              </p>
+              <p className="m-0 d-inline text-muted mr-3">
+                <i className="icon ion-md-time mr-1" />
                 {appointment.startTime} - {appointment.endTime}
-              </span>
-            </p>
-            <p className="m-0 p-2">
-              Agenda:{' '}
-              <span className="text-primary bold">{appointment.agenda} </span>
-            </p>
-            <p className="m-0 p-2">
-              Location:{' '}
-              <span className="text-primary bold">{appointment.location} </span>
-            </p>
+              </p>
+              <p className="m-0 d-inline text-muted mr-3">
+                <i className="icon ion-md-pin mr-1" />
+                {appointment.location}{' '}
+              </p>
+            </div>
           </div>
-        </div>
+          <Hr className="col-md-12 p-0" />
+        </Fragment>
       ))}
-    </div>
-  );
-};
+      <div className="col-md-12 d-flex shake">
+        <i className="icon ion-md-notifications-outline mr-2 d-inline-block text-muted" />
 
-const SubscriberList = () => {
-  return (
-    <div className="col-md-12 p-2">
-      {subscribersList.map((subscriber, key) => (
-        <div key={key} className="w-100 rounded border tutor bg-lightblue mb-2">
-          <div className="image">
-            <img src={subscriber.imgUrl} alt="dp" />
-          </div>
-          <p className="bold m-0">{subscriber.name}</p>
-          <p className="small">{subscriber.location}</p>
-          <Link to="" className="col-12 btn btn-md btn-outline-primary p-1">
-            <span className="small">View Details</span>
-          </Link>
-          <div />
-        </div>
-      ))}
-    </div>
+        <p className="m-0">
+          <span className="text-primary bold">The National College</span> is
+          looking for guest lecturer on{' '}
+          <span className="text-primary bold">Research Methodology</span>
+        </p>
+      </div>
+      <Hr className="col-md-12 p-0" />
+      <div className="col-md-12 d-flex shake">
+        <i className="icon ion-md-notifications-outline mr-2 d-inline-block text-muted" />
+
+        <p className="m-0">
+          <span className="text-primary bold">Arbor School</span> is looking for
+          trainer on <span className="text-primary bold">Cloud Computing</span>
+        </p>
+      </div>
+      <Hr className="col-md-12 p-0" />
+      <div className="col-md-12 d-flex shake">
+        <i className="icon ion-md-notifications-outline mr-2 d-inline-block text-muted" />
+
+        <p className="m-0">
+          <span className="text-primary bold">Antioch University</span> is
+          hosting event Research Methodology on{' '}
+          <span className="text-primary bold">Jul 18th 2020</span>
+        </p>
+      </div>
+    </Fragment>
   );
 };
 
@@ -152,14 +80,10 @@ const TutorOverView = () => {
   return (
     <React.Fragment>
       <FlexRow>
-        <div className="col-md-8 p-4 mr-4 border">
-          <h4 className="text-center">Upcoming Appointments</h4>
-          <UpcomingAppointments />
-        </div>
-        <div className="col-md-3 p-4 border ml-4 tutor-list">
-          <h4 className="text-center p-1">Subscribers</h4>
-
-          <SubscriberList />
+        <div className="col-md-12 p-0 mt-2">
+          <div className="border rounded p-4">
+            <UpcomingAppointments />
+          </div>
         </div>
       </FlexRow>
     </React.Fragment>

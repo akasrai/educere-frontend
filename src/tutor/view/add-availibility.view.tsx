@@ -7,6 +7,7 @@ import { FlexRow } from 'ui/layout/component/flex';
 import { SuccessMessage } from 'ui/alert/toast-alert';
 import { Input, TextArea, RadioButton } from 'ui/form/input';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
+import Hr from 'ui/form/hr';
 
 const AvailabilityFormRow = ({
   totalSchedule,
@@ -20,42 +21,53 @@ const AvailabilityFormRow = ({
   return (
     <React.Fragment>
       {totalSchedule.map((element, key) => (
-        <div
-          key={key}
-          className={`col-md-${
-            availabilityType === 'Offline' ? '12' : '8'
-          } row p-0`}
-        >
-          <div
-            className={`col-md-${availabilityType === 'Offline' ? '4' : '6'}`}
-          >
+        <div key={key} className={`col-md-12 row p-0`}>
+          <div className={`col-md-4`}>
             {element === 1 && (
               <label className="p-0" htmlFor={`availabilityFrom${element}`}>
-                From
+                Date
               </label>
             )}
             <Input
-              id={`availabilityFrom${element}`}
               type="date"
-              name={`availabilityFrom${element}`}
               required={true}
+              id={`availabilityFrom${element}`}
+              name={`availabilityFrom${element}`}
             />
           </div>
           <div
-            className={`col-md-${availabilityType === 'Offline' ? '4' : '6'}`}
+            className={`col-md-${
+              availabilityType === 'Offline' ? '2' : '4'
+            } p-1 pr-1`}
+          >
+            {element === 1 && (
+              <label htmlFor={`availabilityTo${element}`}>From</label>
+            )}
+            <Input
+              id={`availabilityTo${element}`}
+              type="time"
+              name={`availabilityTo${element}`}
+              required={true}
+            />
+          </div>
+
+          <div
+            className={`col-md-${
+              availabilityType === 'Offline' ? '2' : '4'
+            } p-1 pr-1`}
           >
             {element === 1 && (
               <label htmlFor={`availabilityTo${element}`}>To</label>
             )}
             <Input
               id={`availabilityTo${element}`}
-              type="date"
+              type="time"
               name={`availabilityTo${element}`}
               required={true}
             />
           </div>
           {availabilityType === 'Offline' && (
-            <div className="col-md-4">
+            <div className="col-md-4 p-1 pr-0">
               {element === 1 && (
                 <label htmlFor={`location${element}`}>Location</label>
               )}
@@ -70,7 +82,7 @@ const AvailabilityFormRow = ({
           )}
           {element === totalSchedule.length && element !== 1 && (
             <i
-              className="icon ion-md-close position-absolute availability-close-btn text-danger"
+              className="icon ion-md-close position-absolute availability-close-btn text-danger small"
               onClick={() => removeSchedule(totalSchedule, setTotalSchedule)}
             />
           )}
@@ -107,20 +119,20 @@ const getFormData = (
   availabilityType: string
 ) => {
   const formData: any = [];
-  // console.log(inputs.length);
-  // const totalField = availabilityType==='Offline'?7:6
-  // for (let i = 0; i < inputs.length - 1; i = +6) {
-  //   const data: any = {};
-  //   for (let j = 0; j < 6; j++) {
-  //     const tempName = inputs[i + j].name.replace(/[0-9]/g, '');
-  //     if (inputs[i + j].type === 'radio') {
-  //       if (inputs[i + j].checked) data[tempName] = inputs[i + j].value;
-  //       continue;
-  //     }
-  //     if (inputs[i + j].name) data[tempName] = inputs[i + j].value;
-  //   }
-  //   formData.push(data);
-  // }
+  const totalField = availabilityType === 'Offline' ? 7 : 6;
+
+  for (let i = 0; i < inputs.length - 1; i = +6) {
+    const data: any = {};
+    for (let j = 0; j < 6; j++) {
+      const tempName = inputs[i + j].name.replace(/[0-9]/g, '');
+      if (inputs[i + j].type === 'radio') {
+        if (inputs[i + j].checked) data[tempName] = inputs[i + j].value;
+        continue;
+      }
+      if (inputs[i + j].name) data[tempName] = inputs[i + j].value;
+    }
+    formData.push(data);
+  }
 
   return formData;
 };
@@ -184,7 +196,7 @@ const AddAvailibilityForm = () => {
         />
       </div>
       <div className="col-md-3 p-0">
-        <Button name="Add Availibility" className="md btn-primary" />
+        <Button name="Add" className="md btn-primary" />
       </div>
     </form>
   );
@@ -215,10 +227,13 @@ const removeSchedule = (
 const AddAvailibilityView = () => {
   return (
     <AuthenticatedLayout className="fixed-height-layout">
-      <p className="p-0">Add Availability Schedule</p>
       <FlexRow className="justify-content-center">
-        <div className="col-md-12 p-4 border">
-          <AddAvailibilityForm />
+        <div className="col-md-12 p-4 border rounded">
+          <div className="p-1">
+            <h5>Add Availability</h5>
+            <Hr className="col-md-12 p-0" />
+            <AddAvailibilityForm />
+          </div>
         </div>
       </FlexRow>
     </AuthenticatedLayout>

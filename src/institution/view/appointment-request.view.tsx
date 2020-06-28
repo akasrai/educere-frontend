@@ -41,10 +41,10 @@ const AppointmentRequestForm = () => {
   const [availabilityType, setAvailabilityType] = useState<string>('');
   return (
     <form
-      className="col-12 p-md-3 p-0"
+      className="col-8 p-md-3 p-0 m-auto"
       onSubmit={(e) => handleSubmit(e, setError)}
     >
-      <h4 className="p-2">Appointment Request Form</h4>
+      <h4 className="p-2 text-primary">Appointment Request</h4>
 
       <ErrorAlert message={error} />
       <div className="col-md-12">
@@ -139,11 +139,11 @@ const AppointmentRequestForm = () => {
   );
 };
 
-const AppointmentRequestFormView = () => {
+const AppointmentRequestView = () => {
   return (
     <AuthenticatedLayout className="fixed-height-layout">
       <FlexRow>
-        <div className="col-md-6 p-4 rounded border">
+        <div className="col-md-12 p-4 rounded border">
           <AppointmentRequestForm />
         </div>
       </FlexRow>
@@ -151,4 +151,4 @@ const AppointmentRequestFormView = () => {
   );
 };
 
-export default AppointmentRequestFormView;
+export default AppointmentRequestView;

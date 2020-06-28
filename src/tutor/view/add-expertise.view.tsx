@@ -5,9 +5,11 @@ import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import { toast } from 'react-toastify';
 import { SuccessMessage } from 'ui/alert/toast-alert';
 import { Button } from 'ui/form/button';
-import { TextArea, Input } from 'ui/form/input';
+import { TextArea, Input, Select } from 'ui/form/input';
 import { ErrorAlert } from 'ui/alert/inline-alert';
 import { addExperties } from 'api/request.api';
+import { categories } from 'data/mock.data';
+import Hr from 'ui/form/hr';
 
 const ExpertiseFormRow = ({
   totalExpertise,
@@ -20,59 +22,59 @@ const ExpertiseFormRow = ({
     <React.Fragment>
       {totalExpertise.map((element, key) => (
         <FlexRow key={key}>
-          <div className="col-md-3">
-            {element === 1 && <label htmlFor={`name${element}`}>Field</label>}
+          <div className="col-md-6">
             <Input
               type="text"
-              name={`name${element}`}
-              id={`name${element}`}
               required={true}
-              placeholder="Field"
+              id={`name${element}`}
+              name={`name${element}`}
+              label="Area of experties"
+              placeholder="Area of experties"
             />
           </div>
           <div className="col-md-3">
-            {element === 1 && (
-              <label htmlFor={`category${element}`}>Category</label>
-            )}
-            <Input
+            <Select
               type="text"
-              name={`category${element}`}
-              id={`category${element}`}
               required={true}
               placeholder="Category"
+              label="Category"
+              options={categories}
+              id={`category${element}`}
+              name={`category${element}`}
             />
           </div>
-          <div className="col-md-2">
-            {element === 1 && (
-              <label htmlFor={`experience${element}`}>Experience</label>
-            )}
+          <div className="col-md-3">
             <Input
               type="number"
-              name={`experience${element}`}
-              id={`experience${element}`}
               required={true}
-              placeholder="Experience"
+              label="Experience years"
+              placeholder="Experience years"
+              id={`experience${element}`}
+              name={`experience${element}`}
             />
           </div>
-          <div className="col-md-4">
-            {element === 1 && (
-              <label htmlFor={`description${element}`}>Description</label>
-            )}
+          <div className="col-md-12">
             <TextArea
               type="textarea"
               name={`description${element}`}
               id={`description${element}`}
               required={true}
+              label="Description"
               placeholder="Enter description"
               className="col-md-12"
             />
           </div>
           {element === totalExpertise.length && element !== 1 && (
-            <i
-              className="icon ion-md-close position-absolute expertise-close-btn text-danger"
+            <span
+              className="expertise-close-btn small text-danger pr-3"
               onClick={() => removeExpertise(totalExpertise, setTotalExpertise)}
-            />
+            >
+              Remove Row
+            </span>
           )}
+          <div className="col-md-12 pl- pr-2">
+            <Hr className="col-md-12 ml-0 mr-0 p-0" />
+          </div>
         </FlexRow>
       ))}
     </React.Fragment>
@@ -138,9 +140,9 @@ const AddExpertiseForm = () => {
           setTotalExpertise([...totalExpertise, totalExpertise.length + 1])
         }
       >
-        Add New Expertise
+        Add New Row
       </div>
-      <div className="col-md-3 p-0">
+      <div className="col-md-3 pl-3 pr-3">
         <Button name="Add Expertise" className="md btn-primary" />
       </div>
     </form>

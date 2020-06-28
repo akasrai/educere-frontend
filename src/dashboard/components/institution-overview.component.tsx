@@ -7,8 +7,8 @@ import Hr from 'ui/form/hr';
 const appointments = [
   {
     date: ' Jul 2nd 2020',
-    startTime: '09:00 pm',
-    endTime: '10:00 pm',
+    startTime: '09:00 am',
+    endTime: '10:00 am',
     agenda: 'Covid-19 Awareness Program',
     location: 'Salleri Nayabazaar, Solukhumbu',
     tutor: 'Dr. Gopi Krishna Shrestha',
@@ -31,7 +31,7 @@ const UpcomingAppointments = () => {
       {appointments.map((appointment, key) => (
         <Fragment key={key}>
           <div className="col-md-12 d-flex shake">
-            <i className="icon ion-md-notifications-outline mr-2 d-inline-block" />
+            <i className="icon ion-md-notifications-outline mr-2 d-inline-block text-muted" />
             <div className="">
               <p className="m-0">
                 You have{' '}
@@ -62,7 +62,7 @@ const UpcomingAppointments = () => {
       ))}
 
       <div className="col-md-12 d-flex shake">
-        <i className="icon ion-md-notifications-outline mr-2 d-inline-block" />
+        <i className="icon ion-md-notifications-outline mr-2 d-inline-block text-muted" />
 
         <p className="m-0">
           <span className="text-primary bold">Dr. Sailesh Singh</span> is
@@ -72,7 +72,7 @@ const UpcomingAppointments = () => {
       </div>
       <Hr className="col-md-12 p-0" />
       <div className="col-md-12 d-flex shake">
-        <i className="icon ion-md-notifications-outline mr-2 d-inline-block" />
+        <i className="icon ion-md-notifications-outline mr-2 d-inline-block text-muted" />
 
         <p className="m-0">
           <span className="text-primary bold">The Theme University</span> is
@@ -94,20 +94,7 @@ const InstitutionOverView = () => {
             <p className="text-muted m-0">Events this months</p>
           </div>
         </div>
-
-        <div className="col-md-4">
-          <div className="rounded border p-3 text-center">
-            <h1 className="bold">10</h1>
-            <p className="text-muted m-0">Events this months</p>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="rounded border p-3 text-center">
-            <h1 className="bold">10</h1>
-            <p className="text-muted m-0">Events this months</p>
-          </div>
-        </div> */}
+ */}
         <div className="col-md-12 mt-2">
           <div className="border rounded p-4">
             <UpcomingAppointments />
