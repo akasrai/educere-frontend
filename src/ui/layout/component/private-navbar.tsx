@@ -78,7 +78,7 @@ const PrivateNavBar = () => {
               ) : (
                 <i className="icon ion-md-contact h3 mr-2 m-0 text-muted" />
               )}
-              <button className="bold p pt-1 user-tool-btn">
+              <button className="bold p user-tool-btn">
                 <span className="d-none d-md-inline text-muted">
                   {user.name}
                 </span>
