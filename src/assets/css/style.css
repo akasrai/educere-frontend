@@ -647,8 +647,8 @@ img.logo {
 
 .notification .notification-btn .dropdown {
   top: 50%;
-  left: -12px;
-  width: 300px;
+  left: 17px;
+  width: 305px;
   padding: 10px 0px;
   position: absolute;
   background: #f9fafc;
@@ -666,7 +666,7 @@ img.logo {
   content: '';
   position: absolute;
   top: -6px;
-  left: 20px;
+  right: 115px;
   width: 0;
   height: 0;
   z-index: 1300;
@@ -1041,7 +1041,7 @@ img.logo {
 
 .notification-count {
   position: absolute;
-  left: 20px;
+  right: -5px;
   width: 15px;
   font-size: 10px;
   border-radius: 100%;

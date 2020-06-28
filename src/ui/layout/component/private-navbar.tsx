@@ -74,12 +74,12 @@ const PrivateNavBar = () => {
             </div>
           </div>
           <div className="col-md-3 p-0 d-flex">
-            <div className="notification">
+            <div className="notification col-md-6 pr-0">
               <button
                 className="bold p pt-1 notification-btn"
                 onClick={() => setNotificationCount(0)}
               >
-                <i className="icon ion-md-notifications-outline h3 mr-4 m-0 text-muted" />
+                <i className="icon ion-md-notifications-outline h3 m-0 text-muted" />
                 <span className="notification-count">
                   {notificationCount ? notificationCount : ''}
                 </span>
@@ -109,7 +109,7 @@ const PrivateNavBar = () => {
               </button>
             </div>
 
-            <div className="user-tool">
+            <div className="user-tool col-md-6">
               {user.photo ? (
                 <div className="dp">
                   <img src={user.photo} alt="dp" />
