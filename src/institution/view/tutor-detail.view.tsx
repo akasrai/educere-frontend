@@ -88,26 +88,90 @@ const TutorDetailView = (props: any) => {
           </div>
           <p className="mt-3 small">{tutor?.bio}</p>
 
-          <div className="col-md-12 p-0">
-            <Hr />
-            <h5>
-              <i className="icon ion-md-school mr-1" />
-              Experties
-            </h5>
-            <p className="m-0">
-              <i className="icon ion-ios-arrow-forward mr-1" />
-              Sofware Engineer
-            </p>
+          <div className="col-md-12 p-0 row m-0">
+            <Hr className="col-md-12 p-0" />
+            <div className="col-md-5 p-0 schedule-text">
+              <h5>
+                <i className="icon ion-md-school mr-1" />
+                Experties
+              </h5>
+              <p className="m-0">
+                <i className="icon ion-ios-arrow-forward mr-1" />
+                Sofware Engineer
+              </p>
 
-            <p className="m-0">
-              <i className="icon ion-ios-arrow-forward mr-1" />
-              Data Engineer
-            </p>
+              <p className="m-0">
+                <i className="icon ion-ios-arrow-forward mr-1" />
+                Data Engineer
+              </p>
 
-            <p className="m-0">
-              <i className="icon ion-ios-arrow-forward mr-1" />
-              UI/UX Engineer
-            </p>
+              <p className="m-0">
+                <i className="icon ion-ios-arrow-forward mr-1" />
+                UI/UX Engineer
+              </p>
+            </div>
+
+            <div className="col-md-7 p-0">
+              <h5 className="">
+                <i className="icon ion-md-time mr-1" />
+                Avaibility
+              </h5>
+              <div className="schedule col-md-12 p-4 border rounded schedule-text mt-4">
+                <div className="avl-date text-muted">
+                  <i className="icon ion-md-calendar mr-2" />
+                  Jul 12th 2020
+                </div>
+                <div>
+                  <p className="m-0 text-muted d-inline mr-3">
+                    <i className="icon ion-md-time mr-1" />
+                    10:00 am - 12:00 pm
+                  </p>
+                  <p className="m-0 text-muted d-inline">
+                    <i className="icon ion-md-pin mr-1" />
+                    Putalisadak Rd, Kathmandu
+                  </p>
+                </div>
+
+                <div>
+                  <p className="m-0 text-muted d-inline mr-3">
+                    <i className="icon ion-md-time mr-1" />
+                    03:00 pm - 06:00 pm
+                  </p>
+                  <p className="m-0 text-muted d-inline">
+                    <i className="icon ion-md-pin mr-1" />
+                    Online
+                  </p>
+                </div>
+              </div>
+
+              <div className="schedule col-md-12 p-4 border rounded schedule-text mt-4">
+                <div className="avl-date text-muted">
+                  <i className="icon ion-md-calendar mr-2" />
+                  Jul 30th 2020
+                </div>
+                <div>
+                  <p className="m-0 text-muted d-inline mr-3">
+                    <i className="icon ion-md-time mr-1" />
+                    11:00 am - 2:00 pm
+                  </p>
+                  <p className="m-0 text-muted d-inline">
+                    <i className="icon ion-md-pin mr-1" />
+                    Barahi Chowk, Pokhara
+                  </p>
+                </div>
+
+                <div>
+                  <p className="m-0 text-muted d-inline mr-3">
+                    <i className="icon ion-md-time mr-1" />
+                    04:00 pm - 06:00 pm
+                  </p>
+                  <p className="m-0 text-muted d-inline">
+                    <i className="icon ion-md-pin mr-1" />
+                    Mahendrapul rd, Pokhara
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </FlexRow>

@@ -6,11 +6,33 @@ import { PopupAlert } from 'ui/alert/popup-alert';
 import { FlexRow } from 'ui/layout/component/flex';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import { SuccessMessage, ErrorMessage } from 'ui/alert/toast-alert';
+import Hr from 'ui/form/hr';
 
 const appointments = [
-  { id: 1, description: 'Conference for SEE students.', status: 'Accepted' },
-  { id: 2, description: 'Conference for +2 students.', status: 'Pending' },
-  { id: 3, description: 'Conference for BIT students.', status: 'Rejected' },
+  {
+    description: 'Web Design workshop to School Children',
+    status: 'Accepted',
+    date: 'Jul 13th 2020',
+    time: '01:00 pm - 03:00 pm',
+    requestedBy: 'Janata Mavi',
+    location: 'Sauraha, Chitwan',
+  },
+  {
+    description: 'Cloud Computing Session',
+    status: 'Pending',
+    date: 'Jul 22nd 2020',
+    time: '12:00 pm - 02:00 pm',
+    requestedBy: 'Theme College',
+    location: '12th Rd Down Town, Kathmandu',
+  },
+  {
+    description: 'Guest lecturer on Cloud Computing for BIT students.',
+    status: 'Rejected',
+    date: 'Jul 13th 2020',
+    time: '09:00 am - 11:00 pm',
+    requestedBy: 'Fuye College',
+    location: 'New Road, Biratnagar',
+  },
 ];
 
 const AppointmentList = ({
@@ -33,41 +55,53 @@ const AppointmentList = ({
   return (
     <div className="p-1">
       {appointments.map((appointment, key) => (
-        <div className="row pb-2">
-          <span className="col-md-8 appointment-text">
-            {appointment.description}
-          </span>
-          {appointment.status === 'Pending' ? (
+        <div className="row p-0 m-0">
+          <div className="col-md-9 p-0 text-muted">
+            {appointment.status === 'Accepted' && (
+              <span className="accpeted d-block">
+                <i className="icon ion-md-checkmark-circle mr-1" />
+                Confirmed
+              </span>
+            )}
+
+            {appointment.status === 'Rejected' && (
+              <span className="accpeted d-block bg-danger">
+                <i className="icon ion-md-checkmark-circle mr-1" />
+                Canceld
+              </span>
+            )}
+            <p className="lead text-primary m-0"> {appointment.description}</p>
+            <p className="m-0 d-inline mr-3">
+              <i className="icon ion-md-calendar" /> {appointment.date}
+            </p>
+            <p className="m-0 d-inline mr-3">
+              <i className="icon ion-md-time" /> {appointment.time}
+            </p>
+            <p className="m-0 d-inline mr-3">
+              <i className="icon ion-md-person" /> {appointment.requestedBy}
+            </p>
+            <p className="m-0 d-inline mr-3">
+              <i className="icon ion-md-pin" /> {appointment.location}
+            </p>
+          </div>
+          {appointment.status === 'Pending' && (
             <React.Fragment>
-              <span className="col-md-2 p-1"></span>
-              <div className="col-md-1 p-1">
+              <div className="col-md-3 p-0">
                 <Button
                   name="Accept"
                   onClick={handleModalAndAction}
-                  className="sm btn-outline-success p-1"
+                  className="sm btn-outline-success p-1 col-md-7 float-right"
                 />
-              </div>
-              <div className="col-md-1 p-1">
+
                 <Button
                   name="Reject"
                   onClick={handleModalAndAction}
-                  className="sm btn-outline-danger p-1"
+                  className="sm btn-outline-danger p-1 col-md-7 float-right"
                 />
               </div>
             </React.Fragment>
-          ) : (
-            <div className="col-md-4 p-1 text-right text-white">
-              <span
-                className={`p-1 ${
-                  appointment.status === 'Accepted'
-                    ? 'btn-sm bg-success pt-2 pb-2 pr-3 pl-3'
-                    : 'btn-sm bg-danger pt-2 pb-2 pr-3 pl-3'
-                }`}
-              >
-                {appointment.status}
-              </span>
-            </div>
           )}
+          <Hr className="col-md-12 p-0" />
         </div>
       ))}
     </div>
@@ -91,22 +125,21 @@ const handleRequest = (action: string) => {
 };
 
 const AppointmentRequestView = () => {
+  const [action, setAction] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isTakingAction, setIsTakingAction] = useState<boolean>(false);
-  const [action, setAction] = useState<string>('');
 
   return (
     <AuthenticatedLayout className="fixed-height-layout">
-      <p className="p-0">Appointment Requests</p>
-
       <FlexRow className="justify-content-center tutor-list">
-        <div className="col-md-12 p-4 border">
+        <div className="col-md-12 p-4 border rounded">
+          <h5>Appointment Request</h5>
+          <Hr className="col-md-12 p-0" />
           <AppointmentList
             setIsModalOpen={setIsModalOpen}
             setAction={setAction}
             action={action}
           />
-          {console.log(isTakingAction, isModalOpen)}
           <PopupAlert
             alert={isModalOpen}
             title="Are you sure?"
@@ -115,9 +148,9 @@ const AppointmentRequestView = () => {
                 ? 'Are you sure you want to accept?'
                 : 'Are you sure you want to reject?'
             }`}
-            className="sm"
-            asyncAction={() => handleRequest(action)}
+            className="md "
             isTakingAction={isTakingAction}
+            asyncAction={() => handleRequest(action)}
             toggleConfirmationBox={() => setIsModalOpen(!isModalOpen)}
           />
         </div>
@@ -125,4 +158,5 @@ const AppointmentRequestView = () => {
     </AuthenticatedLayout>
   );
 };
+
 export default AppointmentRequestView;

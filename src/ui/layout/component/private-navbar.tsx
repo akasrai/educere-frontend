@@ -17,10 +17,10 @@ import { ROUTE } from 'app/app.route-path';
 import { AuthContext } from 'auth/auth.context';
 import { USER_ROLES } from 'app/app.user-type';
 import {
-  getRandomNumber,
-  notifications,
   pictures,
   persons,
+  notifications,
+  getRandomNumber,
 } from 'data/mock.data';
 
 const handleSignOut = async (
@@ -74,42 +74,42 @@ const PrivateNavBar = () => {
             </div>
           </div>
           <div className="col-md-3 p-0 d-flex">
-            <div className="notification col-md-6 pr-0">
-              <button
-                className="bold p pt-1 notification-btn"
-                onClick={() => setNotificationCount(0)}
-              >
-                <i className="icon ion-md-notifications-outline h3 m-0 text-muted" />
-                <span className="notification-count">
-                  {notificationCount ? notificationCount : ''}
-                </span>
-                <div className="dropdown text-muted">
-                  <ul className="list-unstyled">
-                    {Array.from(Array(5)).map((key) => (
-                      <li className="p-2">
-                        <FlexRow>
-                          <img
-                            src={pictures.getRandomPicture()}
-                            className="col-md-3 pr-0 pl-1 notification-picture"
-                            alt="img"
-                          />
-                          <span className="col-md-9 notification-message pr-0">
-                            <strong className="text-primary bold">
-                              {persons.getRandomName()}
-                            </strong>
-                            {roles.includes(USER_ROLES.TUTOR)
-                              ? notifications.getRandomTutorMessage()
-                              : notifications.getRandomInstitutionMessage()}
-                          </span>
-                        </FlexRow>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </button>
-            </div>
+            <div className="user-tool">
+              <div className="notification p-relative pr-3">
+                <button
+                  className="bold p pt-1 notification-btn"
+                  onClick={() => setNotificationCount(0)}
+                >
+                  <span className="notification-count">
+                    {notificationCount ? notificationCount : ''}
+                  </span>
+                  <i className="icon ion-md-notifications-outline h3 m-0 text-muted" />
+                  <div className="dropdown text-muted">
+                    <ul className="list-unstyled">
+                      {Array.from(Array(5)).map((key) => (
+                        <li className="p-2">
+                          <FlexRow>
+                            <img
+                              src={pictures.getRandomPicture()}
+                              className="col-md-3 pr-0 pl-1 notification-picture"
+                              alt="img"
+                            />
+                            <span className="col-md-9 notification-message pr-0">
+                              <strong className="text-primary bold">
+                                {persons.getRandomName()}
+                              </strong>
+                              {roles.includes(USER_ROLES.TUTOR)
+                                ? notifications.getRandomTutorMessage()
+                                : notifications.getRandomInstitutionMessage()}
+                            </span>
+                          </FlexRow>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </button>
+              </div>
 
-            <div className="user-tool col-md-6">
               {user.photo ? (
                 <div className="dp">
                   <img src={user.photo} alt="dp" />

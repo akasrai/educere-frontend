@@ -93,20 +93,23 @@ export const RadioButton = (props: InputProps) => {
 };
 
 export const Select = (props: InputProps) => {
-  const { name, placeholder, options = [], required, className } = props;
+  const { name, placeholder, options = [], required, className, label } = props;
 
   return (
-    <select
-      name={name}
-      required={required}
-      className={`custom-select ${className}`}
-    >
-      <option value="">{placeholder}</option>
-      {options.map((option, key) => (
-        <option key={key} value={option.value}>
-          {option.name}
-        </option>
-      ))}
-    </select>
+    <>
+      {label && <label className="small mb-0">{label}</label>}
+      <select
+        name={name}
+        required={required}
+        className={`custom-select ${className}`}
+      >
+        <option value="">{placeholder}</option>
+        {options.map((option, key) => (
+          <option key={key} value={option.value}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+    </>
   );
 };

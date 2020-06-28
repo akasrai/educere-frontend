@@ -24,14 +24,6 @@ const appoinments = [
     agenda: ['Introduction to Smart City', 'Smart City Workshop'],
     status: 'accepted',
   },
-  {
-    title: 'Smart City',
-    location: 'Ghandruk Gurung Gau Kaski, Nepal',
-    date: 'Jul 30, 2020',
-    speaker: 'Dr. Jon Doe',
-    agenda: ['Introduction to Smart City', 'Smart City Workshop'],
-    status: 'accepted',
-  },
 ];
 
 const AppointmentsView = () => {
