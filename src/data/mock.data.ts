@@ -37,7 +37,16 @@ export const categories = [
 ];
 
 export const profession = {
-  job: ['Professor', 'Software Engineer', 'Doctor', 'Surgeon'],
+  job: [
+    'Professor',
+    'Software Engineer',
+    'Doctor',
+    'Surgeon',
+    'Chef',
+    'UI/UX Engineer',
+    'Researcher',
+    'Dentist',
+  ],
 
   getRandomJob() {
     const rand = Math.floor(Math.random() * Math.floor(this.job.length));

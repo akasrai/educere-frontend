@@ -7,7 +7,7 @@ import { Tutor } from 'institution/institution.type';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import { Input, Select } from 'ui/form/input';
 import { Button } from 'ui/form/button';
-import { categories } from 'data/mock.data';
+import { categories, profession } from 'data/mock.data';
 import { ROUTE } from 'app/app.route-path';
 
 const getTutors = async (setTutors: (props: any) => void) => {
@@ -33,7 +33,7 @@ const TutorCard = ({ tutor }: { tutor: Tutor }) => (
       <p className="bold m-0">
         {tutor.firstName} {tutor.lastName}
       </p>
-      <p className="small">Teacher</p>
+      <p className="small">{profession.getRandomJob()}</p>
       <Link
         to={{ pathname: ROUTE.TUTOR_DETAILS, tutor }}
         className="col-12 btn btn-md btn-outline-primary p-1"
