@@ -54,8 +54,6 @@ const AppointmentList = ({
   }
   return (
     <div className="p-1">
-      <h5>Appointment Request</h5>
-      <Hr className="col-md-12 p-0" />
       {appointments.map((appointment, key) => (
         <div className="row p-0 m-0">
           <div className="col-md-9 p-0 text-muted">
@@ -135,6 +133,8 @@ const AppointmentRequestView = () => {
     <AuthenticatedLayout className="fixed-height-layout">
       <FlexRow className="justify-content-center tutor-list">
         <div className="col-md-12 p-4 border rounded">
+          <h5>Appointment Request</h5>
+          <Hr className="col-md-12 p-0" />
           <AppointmentList
             setIsModalOpen={setIsModalOpen}
             setAction={setAction}

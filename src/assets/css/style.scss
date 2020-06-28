@@ -583,6 +583,7 @@ img.logo {
 .notification {
   display: flex;
   justify-content: flex-end;
+  position: relative;
 
   .notification-btn {
     border: 0;
@@ -602,8 +603,8 @@ img.logo {
 
     .dropdown {
       top: 50%;
-      left: -12px;
-      width: 300px;
+      right: -143px;
+      width: 305px;
       padding: 10px 0px;
       position: absolute;
       background: $color-grey-light;
@@ -620,7 +621,7 @@ img.logo {
         content: '';
         position: absolute;
         top: -6px;
-        left: 20px;
+        right: 167px;
         width: 0;
         height: 0;
         z-index: 1300;
@@ -647,6 +648,7 @@ img.logo {
 .user-tool {
   display: flex;
   justify-content: flex-end;
+  width: inherit;
 
   .dp {
     width: 30px;
@@ -880,6 +882,24 @@ img.logo {
       border-radius: 100%;
       border: 2px solid rgb(223, 222, 222);
     }
+  }
+}
+
+.schedule-text {
+  font-size: 14px;
+}
+
+.schedule {
+  position: relative;
+
+  .avl-date {
+    position: absolute;
+    padding: 3px 10px;
+    position: absolute;
+    margin-top: -40px;
+    background: aliceblue;
+    border-radius: 3px;
+    border: 1px solid #deedf9;
   }
 }
 

@@ -6,6 +6,7 @@ import { Button } from 'ui/form/button';
 import { toast } from 'react-toastify';
 import { SuccessMessage } from 'ui/alert/toast-alert';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
+import Hr from 'ui/form/hr';
 
 const handleSubmit = async (e: any, setError: Function) => {
   e.preventDefault();
@@ -44,8 +45,6 @@ const AppointmentRequestForm = () => {
       className="col-8 p-md-3 p-0 m-auto"
       onSubmit={(e) => handleSubmit(e, setError)}
     >
-      <h4 className="p-2 text-primary">Appointment Request</h4>
-
       <ErrorAlert message={error} />
       <div className="col-md-12">
         <Input
@@ -144,6 +143,8 @@ const AppointmentRequestView = () => {
     <AuthenticatedLayout className="fixed-height-layout">
       <FlexRow>
         <div className="col-md-12 p-4 rounded border">
+          <h5 className="p-2 text-primary">Appointment Request</h5>
+          <Hr className="col-md-12 p-0" />
           <AppointmentRequestForm />
         </div>
       </FlexRow>

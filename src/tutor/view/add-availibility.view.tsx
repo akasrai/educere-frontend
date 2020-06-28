@@ -23,16 +23,12 @@ const AvailabilityFormRow = ({
       {totalSchedule.map((element, key) => (
         <div key={key} className={`col-md-12 row p-0`}>
           <div className={`col-md-4`}>
-            {element === 1 && (
-              <label className="p-0" htmlFor={`availabilityFrom${element}`}>
-                Date
-              </label>
-            )}
             <Input
               type="date"
               required={true}
               id={`availabilityFrom${element}`}
               name={`availabilityFrom${element}`}
+              label="Date"
             />
           </div>
           <div
@@ -40,14 +36,12 @@ const AvailabilityFormRow = ({
               availabilityType === 'Offline' ? '2' : '4'
             } p-1 pr-1`}
           >
-            {element === 1 && (
-              <label htmlFor={`availabilityTo${element}`}>From</label>
-            )}
             <Input
               id={`availabilityTo${element}`}
               type="time"
               name={`availabilityTo${element}`}
               required={true}
+              label="From"
             />
           </div>
 
@@ -56,27 +50,23 @@ const AvailabilityFormRow = ({
               availabilityType === 'Offline' ? '2' : '4'
             } p-1 pr-1`}
           >
-            {element === 1 && (
-              <label htmlFor={`availabilityTo${element}`}>To</label>
-            )}
             <Input
               id={`availabilityTo${element}`}
               type="time"
               name={`availabilityTo${element}`}
               required={true}
+              label="To"
             />
           </div>
           {availabilityType === 'Offline' && (
             <div className="col-md-4 p-1 pr-0">
-              {element === 1 && (
-                <label htmlFor={`location${element}`}>Location</label>
-              )}
               <Input
                 id={`location${element}`}
                 type="text"
                 name={`location${element}`}
                 required={true}
-                placeholder="Select Location"
+                placeholder="Enter Location"
+                label="Location"
               />
             </div>
           )}
@@ -186,12 +176,12 @@ const AddAvailibilityForm = () => {
       </div>
 
       <div>
-        <label htmlFor="description">Description</label>
         <TextArea
           type="textarea"
           name="description"
           required={true}
-          placeholder="Enter description"
+          label="Description"
+          placeholder="Description..."
           className="col-md-12"
         />
       </div>
