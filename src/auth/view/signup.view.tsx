@@ -22,7 +22,9 @@ const SigninView = () => {
         <Vr />
         <div className="col-md-5 float-right">
           <div className="col-md-12 pt-5 pl-5 pr-1 rounded login-form">
-            <h3 className="text-primary ml-md-3 ml-0 mb-3">Good choice :)</h3>
+            <h3 className="text-primary ml-md-3 ml-0 mb-3">
+              Signup for Free :)
+            </h3>
             <SignupForm />
             <p className="text-muted p-3 small">
               Already have an account? <Link to={ROUTE.SIGNIN}>Sign In</Link>

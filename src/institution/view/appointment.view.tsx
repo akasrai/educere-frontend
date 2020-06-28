@@ -34,7 +34,7 @@ const AppointmentsView = () => {
           <div key={key} className="col-12 rounded border p-4 mb-3">
             <span className="accpeted d-block">
               <i className="icon ion-md-checkmark-circle mr-1" />
-              Accepted
+              Confirmed
             </span>
             <h3 className="text-primary">{appoinment.title}</h3>
 

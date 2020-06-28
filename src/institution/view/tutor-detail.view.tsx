@@ -128,7 +128,7 @@ const TutorDetailView = (props: any) => {
                   </p>
                   <p className="m-0 text-muted d-inline">
                     <i className="icon ion-md-pin mr-1" />
-                    Putalisadak Rd, Kathmandu
+                    Kathmandu
                   </p>
                 </div>
 
@@ -156,7 +156,7 @@ const TutorDetailView = (props: any) => {
                   </p>
                   <p className="m-0 text-muted d-inline">
                     <i className="icon ion-md-pin mr-1" />
-                    Barahi Chowk, Pokhara
+                    Pokhara
                   </p>
                 </div>
 
@@ -167,7 +167,7 @@ const TutorDetailView = (props: any) => {
                   </p>
                   <p className="m-0 text-muted d-inline">
                     <i className="icon ion-md-pin mr-1" />
-                    Mahendrapul rd, Pokhara
+                    Pokhara
                   </p>
                 </div>
               </div>

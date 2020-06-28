@@ -89,8 +89,8 @@ const handleSubmit = async (
 ) => {
   e.preventDefault();
 
-  const formData: any = getFormData(e.target, setError, availabilityType);
-  console.log(formData);
+  // const formData: any = getFormData(e.target, setError, availabilityType);
+  // console.log(formData);
 
   // const response = await sendData(formData);
 

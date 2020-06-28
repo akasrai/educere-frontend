@@ -66,10 +66,18 @@ const AppointmentList = ({
 
             {appointment.status === 'Rejected' && (
               <span className="accpeted d-block bg-danger">
-                <i className="icon ion-md-checkmark-circle mr-1" />
-                Canceld
+                <i className="icon ion-md-close-circle mr-1" />
+                Canceled
               </span>
             )}
+
+            {appointment.status === 'Pending' && (
+              <span className="accpeted d-block bg-info">
+                <i className="icon ion-md-information-circle mr-1" />
+                Pending
+              </span>
+            )}
+
             <p className="lead text-primary m-0"> {appointment.description}</p>
             <p className="m-0 d-inline mr-3">
               <i className="icon ion-md-calendar" /> {appointment.date}
@@ -85,21 +93,19 @@ const AppointmentList = ({
             </p>
           </div>
           {appointment.status === 'Pending' && (
-            <React.Fragment>
-              <div className="col-md-3 p-0">
-                <Button
-                  name="Accept"
-                  onClick={handleModalAndAction}
-                  className="sm btn-outline-success p-1 col-md-7 float-right"
-                />
+            <div className="col-md-3 p-0">
+              <Button
+                name="Accept"
+                onClick={handleModalAndAction}
+                className="sm btn-outline-success p-1 col-md-7 float-right"
+              />
 
-                <Button
-                  name="Reject"
-                  onClick={handleModalAndAction}
-                  className="sm btn-outline-danger p-1 col-md-7 float-right"
-                />
-              </div>
-            </React.Fragment>
+              <Button
+                name="Reject"
+                onClick={handleModalAndAction}
+                className="sm btn-outline-danger p-1 col-md-7 float-right"
+              />
+            </div>
           )}
           <Hr className="col-md-12 p-0" />
         </div>

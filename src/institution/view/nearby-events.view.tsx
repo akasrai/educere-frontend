@@ -28,7 +28,7 @@ const nearbyEvents = [
   {
     expertName: 'Pasang Dorje Lama',
     date: 'July 20th 2020',
-    location: 'Baneswor, Kathmandu',
+    location: 'Kathmandu',
     contactNo: '9807896233',
     email: 'pasang234242@gmail.com',
     avaibility: [
@@ -42,7 +42,7 @@ const nearbyEvents = [
   {
     expertName: 'Bikash Gurung',
     date: 'Aug 29th 2020',
-    location: 'Sikles Gau, Kaski',
+    location: 'Ghandruk',
     contactNo: '9869874567',
     email: 'bikashgrg23@gmail.com',
     avaibility: [
@@ -73,7 +73,7 @@ const nearbyEvents = [
   {
     expertName: 'Namita Sapkota',
     date: 'July 20th 2020',
-    location: 'Salleri Nayabazaar, Solukhumbu',
+    location: 'Salleri, Solukhumbu',
     contactNo: '9818239878',
     email: 'sapkotanamita@gmail.com',
     avaibility: [
