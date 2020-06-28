@@ -3,11 +3,12 @@ import React, {
   useMemo,
   useState,
   Fragment,
+  useEffect,
   useContext,
   useReducer,
 } from 'react';
 
-import { Flex } from './flex';
+import { Flex, FlexRow } from './flex';
 import * as auth from 'auth/auth.state';
 import { Action } from 'auth/auth.type';
 import { history } from 'app/app.history';
@@ -15,6 +16,12 @@ import { signOut } from 'api/resource.api';
 import { ROUTE } from 'app/app.route-path';
 import { AuthContext } from 'auth/auth.context';
 import { USER_ROLES } from 'app/app.user-type';
+import {
+  getRandomNumber,
+  notifications,
+  pictures,
+  persons,
+} from 'data/mock.data';
 
 const handleSignOut = async (
   dispatch: (props: Action) => void,
@@ -36,6 +43,7 @@ const PrivateNavBar = () => {
     AuthContext
   );
   const [isSignedOut, setIsSignedOut] = useState(false);
+  const [notificationCount, setNotificationCount] = useState<number>();
   const [authState, dispatch] = useReducer(auth.reducer, auth.initialState);
 
   useMemo(() => {
@@ -43,6 +51,10 @@ const PrivateNavBar = () => {
       setCurrentAuth(authState);
     }
   }, [isSignedOut, authState, setCurrentAuth]);
+
+  useEffect(() => {
+    setNotificationCount(getRandomNumber(6));
+  }, []);
 
   return (
     <Fragment>
@@ -63,10 +75,37 @@ const PrivateNavBar = () => {
           </div>
           <div className="col-md-3 p-0 d-flex">
             <div className="notification">
-              <button className="bold p pt-1 notification-btn">
+              <button
+                className="bold p pt-1 notification-btn"
+                onClick={() => setNotificationCount(0)}
+              >
                 <i className="icon ion-md-notifications-outline h3 mr-4 m-0 text-muted" />
-
-                <div className="dropdown text-muted">Hello</div>
+                <span className="notification-count">
+                  {notificationCount ? notificationCount : ''}
+                </span>
+                <div className="dropdown text-muted">
+                  <ul className="list-unstyled">
+                    {Array.from(Array(5)).map((key) => (
+                      <li className="p-2">
+                        <FlexRow>
+                          <img
+                            src={pictures.getRandomPicture()}
+                            className="col-md-3 pr-0 pl-1 notification-picture"
+                            alt="img"
+                          />
+                          <span className="col-md-9 notification-message pr-0">
+                            <strong className="text-primary">
+                              {persons.getRandomName()}
+                            </strong>
+                            {roles.includes(USER_ROLES.TUTOR)
+                              ? notifications.getRandomTutorMessage()
+                              : notifications.getRandomInstitutionMessage()}
+                          </span>
+                        </FlexRow>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </button>
             </div>
 

@@ -45,3 +45,55 @@ export const profession = {
     return this.job[rand];
   },
 };
+
+export const notifications = {
+  institutionMessage: [
+    ' has accepted your Appointment.',
+    ' has rejected your Appointment.',
+    ' has a session near your place.',
+    ' has available time tomorrow.',
+  ],
+
+  tutorMessage: [
+    ' has started following you.',
+    ' has requested your Appointment.',
+    ' has visited your profile.',
+    ' has subscribed you.',
+  ],
+
+  getRandomInstitutionMessage() {
+    const rand = Math.floor(
+      Math.random() * Math.floor(this.institutionMessage.length)
+    );
+
+    return this.institutionMessage[rand];
+  },
+
+  getRandomTutorMessage() {
+    const rand = Math.floor(
+      Math.random() * Math.floor(this.tutorMessage.length)
+    );
+
+    return this.tutorMessage[rand];
+  },
+};
+
+export const persons = {
+  name: [
+    'Ram Poudel',
+    'Ramesh Tiwari',
+    'Akasky Rai',
+    'Pasang Dorje',
+    'Bikash Gurung',
+  ],
+
+  getRandomName() {
+    const rand = Math.floor(Math.random() * Math.floor(this.name.length));
+
+    return this.name[rand];
+  },
+};
+
+export const getRandomNumber = (limit: number) => {
+  return Math.floor(Math.random() * Math.floor(limit));
+};

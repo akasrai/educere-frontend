@@ -24,3 +24,22 @@
 .bg-lightblue {
   background-color: #e2f0fb;
 }
+
+.notification-count {
+  position: absolute;
+  left: 20px;
+  width: 15px;
+  font-size: 10px;
+  border-radius: 100%;
+  background: red;
+  color: white;
+}
+
+.notification-message {
+  line-height: 25px;
+}
+
+.notification-picture {
+  max-width: 65px;
+  border-radius: 100%;
+}
