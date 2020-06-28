@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { FlexRow } from 'ui/layout/component/flex';
+import { FlexRow, Flex } from 'ui/layout/component/flex';
 import { ErrorAlert } from 'ui/alert/inline-alert';
 import { Input, TextArea, RadioButton } from 'ui/form/input';
 import { Button } from 'ui/form/button';
 import { toast } from 'react-toastify';
 import { SuccessMessage } from 'ui/alert/toast-alert';
+import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 
 const handleSubmit = async (e: any, setError: Function) => {
   e.preventDefault();
@@ -40,9 +41,11 @@ const AppointmentRequestForm = () => {
   const [availabilityType, setAvailabilityType] = useState<string>('');
   return (
     <form
-      className="col-6 p-md-3 p-0"
+      className="col-12 p-md-3 p-0"
       onSubmit={(e) => handleSubmit(e, setError)}
     >
+      <h4 className="p-2">Appointment Request Form</h4>
+
       <ErrorAlert message={error} />
       <div className="col-md-12">
         <Input
@@ -129,11 +132,23 @@ const AppointmentRequestForm = () => {
           className="col-md-12"
         />
       </div>
-      <div className="col-md-3">
+      <div className="col-md-4">
         <Button name="Send Request" className="md btn-primary" />
       </div>
     </form>
   );
 };
 
-export default AppointmentRequestForm;
+const AppointmentRequestFormView = () => {
+  return (
+    <AuthenticatedLayout className="fixed-height-layout">
+      <FlexRow>
+        <div className="col-md-6 p-4 rounded border">
+          <AppointmentRequestForm />
+        </div>
+      </FlexRow>
+    </AuthenticatedLayout>
+  );
+};
+
+export default AppointmentRequestFormView;

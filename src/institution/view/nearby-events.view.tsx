@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { FlexRow } from 'ui/layout/component/flex';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import { profession, categories } from 'data/mock.data';
 import { Input, Select } from 'ui/form/input';
 import { Button } from 'ui/form/button';
+import { ROUTE } from 'app/app.route-path';
 
 const nearbyEvents = [
   {
@@ -124,9 +126,12 @@ const EventList = () => {
                 <i className="icon ion-md-pin mr-1" />
                 <span className="text-primary bold">{event.location} </span>
               </p>
-              <div className="col-md-4 mt-3  m-0 btn btn-outline-primary btn-md p-1">
+              <Link
+                className="col-md-4 mt-3  m-0 btn btn-outline-primary btn-md p-1"
+                to={ROUTE.BOOK_TUTOR}
+              >
                 <span className="">Book Now</span>
-              </div>
+              </Link>
             </div>
             <div className="col-md-6">
               <p className="m-0 bold mt-2">
@@ -135,16 +140,18 @@ const EventList = () => {
               </p>
               <table>
                 {event.avaibility.map((avl, key) => (
-                  <tr key={key}>
-                    <td className="p-2">{avl.date}</td>
-                    <td className="p-2">
-                      {avl.time.map((t, key) => (
-                        <p key={key} className="m-0">
-                          {t}
-                        </p>
-                      ))}
-                    </td>
-                  </tr>
+                  <tbody key={key}>
+                    <tr key={key}>
+                      <td className="p-2">{avl.date}</td>
+                      <td className="p-2">
+                        {avl.time.map((t, key) => (
+                          <p key={key} className="m-0">
+                            {t}
+                          </p>
+                        ))}
+                      </td>
+                    </tr>
+                  </tbody>
                 ))}
               </table>
             </div>

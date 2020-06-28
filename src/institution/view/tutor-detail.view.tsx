@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Tutor } from 'institution/institution.type';
 import AuthenticatedLayout from 'ui/layout/authenticated.layout';
 import { FlexRow } from 'ui/layout/component/flex';
 import { profession } from 'data/mock.data';
-import { Button } from 'ui/form/button';
 import { socialMedia } from 'helper/common-helper';
 import Hr from 'ui/form/hr';
+import { ROUTE } from 'app/app.route-path';
 
 interface SocialMediaProps {
   icon: string;
@@ -17,7 +18,7 @@ interface SocialMediaProps {
 const SocialMedia = ({ icon, link, username }: SocialMediaProps) =>
   username ? (
     <p className="m-0 d-inline">
-      <a href={link} target="_blank" title={username}>
+      <a href={link} target="_blank" rel="noopener noreferrer" title={username}>
         <i className={`icon ion-${icon} mr-2`} />
       </a>
     </p>
@@ -75,9 +76,15 @@ const TutorDetailView = (props: any) => {
                 link={socialMedia.getLinkedIn(tutor?.github || '')}
               />
             </div>
-            <div className="col-md-3 btn btn-md btn-primary p-0 mt-2">
+            <div className="col-md-3 btn btn-md btn-primary p-0 mr-2 mt-2">
               <small>Follow</small>
             </div>
+            <Link
+              className="col-md-3 btn btn-md btn-outline-primary p-0  mt-2"
+              to={ROUTE.BOOK_TUTOR}
+            >
+              <small>Book</small>
+            </Link>
           </div>
           <p className="mt-3 small">{tutor?.bio}</p>
 
