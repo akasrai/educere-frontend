@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/educere-frontend/static/css/main.a94526b1.chunk.css",
+    "main.js": "/educere-frontend/static/js/main.20dca847.chunk.js",
+    "main.js.map": "/educere-frontend/static/js/main.20dca847.chunk.js.map",
+    "runtime-main.js": "/educere-frontend/static/js/runtime-main.ab29549f.js",
+    "runtime-main.js.map": "/educere-frontend/static/js/runtime-main.ab29549f.js.map",
+    "static/css/2.d34346ea.chunk.css": "/educere-frontend/static/css/2.d34346ea.chunk.css",
+    "static/js/2.e13f2e83.chunk.js": "/educere-frontend/static/js/2.e13f2e83.chunk.js",
+    "static/js/2.e13f2e83.chunk.js.map": "/educere-frontend/static/js/2.e13f2e83.chunk.js.map",
+    "index.html": "/educere-frontend/index.html",
+    "precache-manifest.589f14e58a6064aaf6c37e1ebf549859.js": "/educere-frontend/precache-manifest.589f14e58a6064aaf6c37e1ebf549859.js",
+    "service-worker.js": "/educere-frontend/service-worker.js",
+    "static/css/2.d34346ea.chunk.css.map": "/educere-frontend/static/css/2.d34346ea.chunk.css.map",
+    "static/css/main.a94526b1.chunk.css.map": "/educere-frontend/static/css/main.a94526b1.chunk.css.map",
+    "static/js/2.e13f2e83.chunk.js.LICENSE.txt": "/educere-frontend/static/js/2.e13f2e83.chunk.js.LICENSE.txt",
+    "static/media/blue-spinner.d6062871.svg": "/educere-frontend/static/media/blue-spinner.d6062871.svg",
+    "static/media/dotted-loader.fb05bb01.svg": "/educere-frontend/static/media/dotted-loader.fb05bb01.svg",
+    "static/media/info-icon.5e110b92.svg": "/educere-frontend/static/media/info-icon.5e110b92.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ab29549f.js",
+    "static/css/2.d34346ea.chunk.css",
+    "static/js/2.e13f2e83.chunk.js",
+    "static/css/main.a94526b1.chunk.css",
+    "static/js/main.20dca847.chunk.js"
+  ]
+}
