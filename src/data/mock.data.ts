@@ -81,7 +81,11 @@ export const notifications = {
 export const persons = {
   name: [
     'Ram Poudel',
-    'Ramesh Tiwari',
+    'Sita Jha',
+    'Einstein',
+    'I.Newton',
+    'Bill Gates',
+    'Raj Kapoor',
     'Akasky Rai',
     'Pasang Dorje',
     'Bikash Gurung',
