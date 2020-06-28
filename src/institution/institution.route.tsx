@@ -7,6 +7,7 @@ import FindTutorView from './view/find-tutor.view';
 import AppointmentsView from './view/appointment.view';
 import NearbyEventsView from './view/nearby-events.view';
 import TutorDetailView from './view/tutor-detail.view';
+import AppointmentRequestFormView from './view/appointment-request-form.component';
 
 const InstitutionRoute = () => (
   <Switch>
@@ -25,6 +26,11 @@ const InstitutionRoute = () => (
       exact
       path={ROUTE.NEARBY_EVENTS}
       component={NearbyEventsView}
+    />
+    <PrivateRoute
+      exact
+      path={ROUTE.BOOK_TUTOR}
+      component={AppointmentRequestFormView}
     />
   </Switch>
 );

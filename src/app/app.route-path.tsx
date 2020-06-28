@@ -17,4 +17,5 @@ export const ROUTE = {
   NEARBY_EVENTS: '/institution/nearby',
   TUTOR_DETAILS: '/institution/tutor',
   INSTITUTION_APPOINTMENTS: '/institution/appointment',
+  BOOK_TUTOR: '/institution/tutor/book',
 };
