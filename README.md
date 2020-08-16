@@ -7,4 +7,4 @@ Also a crowdsourced platform for knowledge sharing accessible through multiple c
 [Educere backend](https://github.com/Bikash-Gurung/educere-backend)
 
 ***
-Created with ReactJS
+Created with React
